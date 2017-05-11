@@ -24,6 +24,7 @@
 <html>
     <head>
         <title>Rusty's Tools</title>
+        <link rel="stylesheet" href="style/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="style/css/bootstrap.min.css"/>
         <script src="style/js/jquery-3.2.1.min.js"></script>
         <script src="style/js/bootstrap.min.js"></script>
@@ -52,6 +53,32 @@
         </nav>
         <div class="container container-fluid">
             <div class="col-md-3 col-sm-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Tools</div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Other
+                                <ul>
+                                    <li>
+                                        <i id="toolslist-info-button-1" data-toggle="popover" title="Password-Generator" data-content="A Simple Password generator with options to choose how complex your password will be." class="fa fa-info-circle"></i>&nbsp;
+                                        <a href="https://tools.rusty.info/pwgen">Password-Generator</a></li>
+                                </ul>
+                            </li>
+                            <li>Games
+                                <ul>
+                                    <li>Steam
+                                        <ul>
+                                            <li>
+                                                <i id="toolslist-info-button-2" data-toggle="popover" title="Collection-ID grabber" data-content="Tool to extract all ids from a workshop collection (steam)" class="fa fa-info-circle"></i>&nbsp;
+                                                <a href="https://tools.rusty.info/stcolids">StColIDs</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="col-md-9 col-sm-12">
                 <div class="panel panel-primary">
