@@ -1,0 +1,9 @@
+before_script:
+- wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+- wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
+error-check:
+  script:
+    - php phpcs.phar -p --tab-width=4 --error-severity=1 --extensions=php,phtml,html,inc,lib --ignore=*/3rdparty/* --colors --standard=PSR2 --warning-severity=0 ./
+#warning-check:
+#  script:
+#    - php phpcs.phar -p --tab-width=4 --error-severity=0 --colors --standard=PSR2 --warning-severity=1 ./
