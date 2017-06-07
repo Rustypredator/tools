@@ -61,7 +61,7 @@
                                 <ul>
                                     <li>
                                         <i id="toolslist-info-button-1" data-toggle="popover" title="Password-Generator" data-content="A Simple Password generator with options to choose how complex your password will be." class="fa fa-info-circle"></i>&nbsp;
-                                        <a href="https://tools.rusty.info/pwgen">Password-Generator</a></li>
+                                        <a href="https://tools.rusty.info/tools/pwgen">Password-Generator</a></li>
                                 </ul>
                             </li>
                             <li>Games
@@ -70,7 +70,7 @@
                                         <ul>
                                             <li>
                                                 <i id="toolslist-info-button-2" data-toggle="popover" title="Collection-ID grabber" data-content="Tool to extract all ids from a workshop collection (steam)" class="fa fa-info-circle"></i>&nbsp;
-                                                <a href="https://tools.rusty.info/stcolids">StColIDs</a>
+                                                <a href="https://tools.rusty.info/tools/stcolids">StColIDs</a>
                                             </li>
                                         </ul>
                                     </li>
