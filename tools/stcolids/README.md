@@ -1,5 +1,3 @@
-## STColIDs [![build status](https://gitlab.com/rustyinfo/stcolids/badges/master/build.svg)](https://gitlab.com/rustyinfo/stcolids/commits/master)  
-
 This Program pulls all IDs of Workshop Mods from a Steam Workshop Collection  
 
 ## modify for self-hosting  
