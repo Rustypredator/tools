@@ -66,10 +66,6 @@
                                 <a href="https://tools.rusty.info/tools/stcolids">StColIDs</a>
                             </li>
                             <li>
-                                <i id="toolslist-info-button-3" data-toggle="popover" title="String Reverser" data-content="Reverse a String of words" class="fa fa-info-circle"></i>&nbsp;
-                                <a href="https://tools.rusty.info/tools/strrev">StrRev</a>
-                            </li>
-                            <li>
                                 <i id="toolslist-info-button-4" data-toggle="popover" title="Team Shuffle" data-content="Tool to create Mixed Teams from a List of Names" class="fa fa-info-circle"></i>&nbsp;
                                 <a href="https://tools.rusty.info/tools/TeamShuffle">TeamShuffle</a>
                             </li>
