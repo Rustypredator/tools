@@ -66,14 +66,42 @@
                 </div>
             </div>
             <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Define your Players:</div>
+                    <div class="panel-body">
+                        <form action="" method="POST">
+                            <label for="players">Comma Separated List of your Players:</label>
+                            <textarea name="players" class="form-control">
+                                This list has to be Comma Separated like this:<br/>
+                                john doe,jane doe,max,peter,mali<br/>
+                                (You'll have to delete this text ;) )
+                            </textarea>
+                            <label for="teams">Amount of Teams</label>
+                            <input type="number" name="teams" value="2"/>
+                            <input type="submit" name="submit" class="btn btn-success form-control"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <?php if($_POST): ?>
+            <div class="col-md-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">Your Teams:</div>
-                    <div class="panel-body">
-                        //
-                    </div>
+                    <table class="table table-striped table-hover table-condensed">
+                        <?php
+                            $data = $_POST;
+                            $teams = $data['teams'];
+                            $players = $data['players'];
+                            echo "teams:";
+                            var_dump($teams);
+                            echo "<br/>players:";
+                            var_dump($players);
+                        ?>
+                    </table>
                     <div class="panel-footer"></div>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </body>
     <footer>
