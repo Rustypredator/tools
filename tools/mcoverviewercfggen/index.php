@@ -27,8 +27,8 @@
         <meta encoding="UTF-8"/>
         <meta title="StColIDs - Rusty's Tools" description="Tool to extract Mod-IDs from Steam collections"/>
         <link rel="stylesheet" href="style/css/bootstrap.min.css" />
-        <script src="style/js/jquery-3.2.1.min.js"></script>
-        <script src="style/js/bootstrap.min.js"></script>
+        <script src="../style/js/jquery-3.2.1.min.js"></script>
+        <script src="../style/js/bootstrap.min.js"></script>
         <script src="style/js/main.js"></script>
     </head>
     <body>

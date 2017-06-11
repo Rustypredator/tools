@@ -27,9 +27,9 @@
         <meta encoding="UTF-8"/>
         <meta title="StrRev - Rusty's Tools" description="Reverse String"/>
         <link rel="stylesheet" href="style/css/bootstrap.min.css" />
-        <script src="style/js/jquery-3.2.1.min.js"></script>
-        <script src="style/js/bootstrap.min.js"></script>
-        <script src="style/js/main.js"></script>
+        <script src="../style/js/jquery-3.2.1.min.js"></script>
+        <script src="../style/js/bootstrap.min.js"></script>
+        <script src="../style/js/main.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-default">
