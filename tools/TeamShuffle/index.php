@@ -25,7 +25,7 @@
     <head>
         <title>TeamShuffle - Rusty's Tools</title>
         <meta encoding="UTF-8"/>
-        <meta title="StrRev - Rusty's Tools" description=""/>
+        <meta title="StrRev - Rusty's Tools" description="Tool for mixing any number of Players into any number of Teams"/>
         <link rel="stylesheet" href="https://tools.rusty.info/style/css/bootstrap.min.css" />
         <script src="https://tools.rusty.info/style/js/jquery-3.2.1.min.js"></script>
         <script src="https://tools.rusty.info/style/js/bootstrap.min.js"></script>
@@ -82,38 +82,41 @@
             <div class="col-md-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">Your Teams:</div>
-                    <table class="table table-striped table-hover table-condensed">
-                        <?php
-                            $data = $_POST;
-                            $teamcount = $data['teams'];
-                            $players = explode(",", $data['players']);
-                            $playercount = count($players);
-                            if ($teamscount < 2) {
-                                echo "<div class=\"alert alert-warning\">Why would you want to shuffle the players in one team?</div>";
-                            }
-                            $teams = array();
-                            for ($i = 1; $i <= $teamcount; $i++) {
-                                $teams[$i] = array();
-                            }
-                            $count = 0;
-                            while(count($players)) {
-                                for ($i = 1; $i <= count($teams); $i++) {
-                                    $rand = rand(0, count($players)-1);
-                                    $teams[$i][] = $players[$rand];
-                                    unset($players[$rand]);
+                    <div class="panel-body">
+                        <ul>
+                            <?php
+                                $data = $_POST;
+                                $teamcount = $data['teams'];
+                                $players = explode(",", $data['players']);
+                                $playercount = count($players);
+                                if ($teamcount < 2) {
+                                    echo "<div class=\"alert alert-warning\">Why would you want to shuffle the players in one team?</div>";
                                 }
-                                $count ++;
-                                if ($count > 30) break;
-                            }
-                            echo "<thead>";
-                            foreach ($teams as $nr => $team) {
-                                echo "<th>Team - $nr</th>";
-                            }
-                            echo "</thead><tbody>";
-                            print_r($teams);
-                            echo "</tbody>"
-                        ?>
-                    </table>
+                                $teams = array();
+                                for ($i = 1; $i <= $teamcount; $i++) {
+                                    $teams[$i] = array();
+                                }
+                                $count = 0;
+                                while(count($players)) {    //as long as there are items in $players array do this
+                                    for ($i = 1; $i <= count($teams); $i++) {   //as long as $i is lower or equal to number of teams do this
+                                        $rand = rand(0, count($players)-1); //select a random number between 0 and count of players left
+                                        $teams[$i][] = $players[$rand];     //put player with id $rand in the team $i
+                                        unset($players[$rand]);             //remove assigned player
+                                        $players = array_values($players);    //reindex players array
+                                    }
+                                    $count ++;
+                                    if ($count > 30) break;
+                                }
+                                foreach ($teams as $nr => $team) {
+                                    echo "<ul><b>Team $nr</b>";
+                                    foreach ($team as $player) {
+                                        echo "<li>$player</li>";
+                                    }
+                                    echo "</ul><br/>";
+                                }
+                            ?>
+                        <ul>
+                    </div>
                     <div class="panel-footer"></div>
                 </div>
             </div>
