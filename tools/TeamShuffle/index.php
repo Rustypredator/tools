@@ -85,33 +85,33 @@
                     <table class="table table-striped table-hover table-condensed">
                         <?php
                             $data = $_POST;
-                            $teamscount = $data['teams'];
+                            $teamcount = $data['teams'];
                             $players = explode(",", $data['players']);
                             $playercount = count($players);
                             if ($teamscount < 2) {
                                 echo "<div class=\"alert alert-warning\">Why would you want to shuffle the players in one team?</div>";
                             }
-                            echo "teams: ";
-                            var_dump($teamscount);
-                            echo "<br/>players: ";
-                            var_dump($players);
-                            echo "<br/>Playercount: ";
-                            var_dump($playercount);
                             $teams = array();
-                            for ($i = 1; $i <= $teamscount; $i++) {
+                            for ($i = 1; $i <= $teamcount; $i++) {
                                 $teams[$i] = array();
                             }
-                            echo "<br/>Teams: ";
-                            var_dump($teams);
+                            $count = 0;
                             while(count($players)) {
-                                for ($i = 1; $i < count($teams); $i++) {
-                                    $rand = rand(0,count($players));
+                                for ($i = 1; $i <= count($teams); $i++) {
+                                    $rand = rand(0, count($players)-1);
                                     $teams[$i][] = $players[$rand];
                                     unset($players[$rand]);
                                 }
+                                $count ++;
+                                if ($count > 30) break;
                             }
-                            echo "<br/>Teams: ";
-                            var_dump($teams);
+                            echo "<thead>";
+                            foreach ($teams as $nr => $team) {
+                                echo "<th>Team - $nr</th>";
+                            }
+                            echo "</thead><tbody>";
+                            print_r($teams);
+                            echo "</tbody>"
                         ?>
                     </table>
                     <div class="panel-footer"></div>
