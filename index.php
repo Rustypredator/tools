@@ -57,24 +57,21 @@
                     <div class="panel-heading">Tools</div>
                     <div class="panel-body">
                         <ul>
-                            <li>Other
-                                <ul>
-                                    <li>
-                                        <i id="toolslist-info-button-1" data-toggle="popover" title="Password-Generator" data-content="A Simple Password generator with options to choose how complex your password will be." class="fa fa-info-circle"></i>&nbsp;
-                                        <a href="https://tools.rusty.info/tools/pwgen">Password-Generator</a></li>
-                                </ul>
+                            <li>
+                                <i id="toolslist-info-button-1" data-toggle="popover" title="Password-Generator" data-content="A Simple Password generator with options to choose how complex your password will be." class="fa fa-info-circle"></i>&nbsp;
+                                <a href="https://tools.rusty.info/tools/pwgen">Password-Generator</a>
                             </li>
-                            <li>Games
-                                <ul>
-                                    <li>Steam
-                                        <ul>
-                                            <li>
-                                                <i id="toolslist-info-button-2" data-toggle="popover" title="Collection-ID grabber" data-content="Tool to extract all ids from a workshop collection (steam)" class="fa fa-info-circle"></i>&nbsp;
-                                                <a href="https://tools.rusty.info/tools/stcolids">StColIDs</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li>
+                                <i id="toolslist-info-button-2" data-toggle="popover" title="Collection-ID grabber" data-content="Tool to extract all ids from a workshop collection (steam)" class="fa fa-info-circle"></i>&nbsp;
+                                <a href="https://tools.rusty.info/tools/stcolids">StColIDs</a>
+                            </li>
+                            <li>
+                                <i id="toolslist-info-button-3" data-toggle="popover" title="String Reverser" data-content="Reverse a String of words" class="fa fa-info-circle"></i>&nbsp;
+                                <a href="https://tools.rusty.info/tools/strrev">StrRev</a>
+                            </li>
+                            <li>
+                                <i id="toolslist-info-button-4" data-toggle="popover" title="Team Shuffle" data-content="Tool to create Mixed Teams from a List of Names" class="fa fa-info-circle"></i>&nbsp;
+                                <a href="https://tools.rusty.info/tools/TeamShuffle">TeamShuffle</a>
                             </li>
                         </ul>
                     </div>
