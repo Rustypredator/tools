@@ -66,8 +66,8 @@
                                 <a href="https://tools.rusty.info/tools/stcolids">StColIDs</a>
                             </li>
                             <li>
-                                <i id="toolslist-info-button-4" data-toggle="popover" title="Team Shuffle" data-content="Tool to create Mixed Teams from a List of Names" class="fa fa-info-circle"></i>&nbsp;
-                                <a href="https://tools.rusty.info/tools/TeamShuffle">TeamShuffle</a>
+                                <i id="toolslist-info-button-4" data-toggle="popover" title="Team Mix" data-content="Tool to create Mixed Teams from a List of Names" class="fa fa-info-circle"></i>&nbsp;
+                                <a href="https://tools.rusty.info/tools/TeamMix">TeamMix</a>
                             </li>
                         </ul>
                     </div>

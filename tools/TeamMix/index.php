@@ -1,6 +1,6 @@
 <?php
     /**
-     * TeamShuffle
+     * TeamMix
      * Copyright (C) 2017  rusty.info
      *
      * Git: https://gitlab.com/rustyinfo/tools-homepage
@@ -23,9 +23,9 @@
 ?>
 <html>
     <head>
-        <title>TeamShuffle - Rusty's Tools</title>
+        <title>TeamMixer - Rusty's Tools</title>
         <meta encoding="UTF-8"/>
-        <meta title="StrRev - Rusty's Tools" description="Tool for mixing any number of Players into any number of Teams"/>
+        <meta title="TeamMixer - Rusty's Tools" description="Tool for mixing any number of Players into any number of Teams"/>
         <link rel="stylesheet" href="https://tools.rusty.info/style/css/bootstrap.min.css" />
         <script src="https://tools.rusty.info/style/js/jquery-3.2.1.min.js"></script>
         <script src="https://tools.rusty.info/style/js/bootstrap.min.js"></script>
@@ -46,7 +46,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="https://tools.rusty.info/tools/TeamShuffle">TeamShuffle <span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="https://tools.rusty.info/tools/TeamMix">TeamMix <span class="sr-only">(current)</span></a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -56,7 +56,7 @@
                 <div class="panel panel-success">
                     <div class="panel-heading" href="#info-collapse" data-target="#info-collapse" data-toggle="collapse">Intro (click me for info)</div>
                     <div class="panel-body collapse" id="info-collapse">
-                        <h3>TeamShuffle</h3>
+                        <h3>TeamMixer</h3>
                         <p>
                             This Tools aims at Groups who have trouble forming Teams.<br/>
                             You can put in any number of Names and The Tool will form a Team for you.
@@ -90,7 +90,7 @@
                                 $players = explode(",", $data['players']);
                                 $playercount = count($players);
                                 if ($teamcount < 2) {
-                                    echo "<div class=\"alert alert-warning\">Why would you want to shuffle the players in one team?</div>";
+                                    echo "<div class=\"alert alert-warning\">Why would you want to Mix the players in one team?</div>";
                                 }
                                 $teams = array();
                                 for ($i = 1; $i <= $teamcount; $i++) {
