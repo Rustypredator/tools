@@ -27,9 +27,9 @@
         <meta encoding="UTF-8"/>
         <meta title="StrRev - Rusty's Tools" description=""/>
         <link rel="stylesheet" href="style/css/bootstrap.min.css" />
-        <script src="style/js/jquery-3.2.1.min.js"></script>
-        <script src="style/js/bootstrap.min.js"></script>
-        <script src="style/js/main.js"></script>
+        <script src="../style/js/jquery-3.2.1.min.js"></script>
+        <script src="../style/js/bootstrap.min.js"></script>
+        <script src="../style/js/main.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <?php if($_POST): ?>
+            <?php if ($_POST) : ?>
             <div class="col-md-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">Your Teams:</div>

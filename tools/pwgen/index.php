@@ -25,8 +25,8 @@
     <head>
         <title>PWGen - Rusty's Tools</title>
         <link rel="stylesheet" href="style/css/bootstrap.min.css"/>
-        <script src="style/js/jquery-3.2.1.min.js"></script>
-        <script src="style/js/bootstrap.min.js"></script>
+        <script src="../style/js/jquery-3.2.1.min.js"></script>
+        <script src="../style/js/bootstrap.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-default">
