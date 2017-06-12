@@ -56,14 +56,6 @@
                 <div class="panel panel-success">
                     <div class="panel-heading" href="#info-collapse" data-target="#info-collapse" data-toggle="collapse">Intro (click me for info)</div>
                     <div class="panel-body collapse" id="info-collapse">
-                        {TUTORIAL}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">Start</div>
-                    <div class="panel-body">
                         <p>
                             If You already Have generated a Config file with this Tool,
                             You propably have saved the config file that was available for download at the end.
@@ -71,11 +63,29 @@
                         <p>
                             You can use that config file here, to restore all your previous settings:
                         </p>
-                        <input type="file" name="config" class="form-control"/>
                     </div>
-                    <div class="panel-footer">
-                        <input type="reset" name="reset" class="btn btn-danger form-control pull-left" />
-                        <input type="submit" name="submit" class="btn btn-success form-control pull-right" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel-group" id="config-tabs" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading_load" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_load" aria-expanded="false" aria-controls="collapse_load">Load existing Config</div>
+                        <div class="collapse in" id="collapse_load" role="tabpanel" aria-labelledby="heading_load">
+                            <div class="panel-body" >
+                                <label for="config">Existing Config File:</label>
+                                <input type="file" name="config" class="form-control"/>
+                            </div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading_worlds" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_worlds" aria-expanded="false" aria-controls="collapse_worlds">Define your Worlds</div>
+                        <div class="collapse in" id="collapse_worlds" role="tabpanel" aria-labelledby="heading_worlds">
+                            <div class="panel-body" >
+                                {WORLDS}
+                            </div>
+                            <div class="panel-footer"></div>
+                        </div>
                     </div>
                 </div>
             </div>
