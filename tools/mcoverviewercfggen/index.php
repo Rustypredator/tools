@@ -1,9 +1,9 @@
 <?php
     /**
-     * stcolids
+     * McOvCFGGen
      * Copyright (C) 2017  rusty.info
      *
-     * Git: https://gitlab.com/rustyinfo/stcolids
+     * Git: https://gitlab.com/rustyinfo/tools-homepage
      *
      * This program is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@
         <meta encoding="UTF-8"/>
         <meta title="McOvCFGGen - Rusty's Tools" description="Configuration Generator for The Minecraft Overviewer"/>
         <link rel="stylesheet" href="../../style/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../../style/css/font-awesome.min.css" />
         <script src="../../style/js/jquery-3.2.1.min.js"></script>
         <script src="../../style/js/bootstrap.min.js"></script>
     </head>
@@ -82,7 +83,11 @@
                         <div class="panel-heading" role="tab" id="heading_worlds" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_worlds" aria-expanded="false" aria-controls="collapse_worlds">Define your Worlds</div>
                         <div class="collapse out" id="collapse_worlds" role="tabpanel" aria-labelledby="heading_worlds">
                             <div class="panel-body" >
-                                {WORLDS}
+                                <div id="worlds_form">
+                                    <input type="text" name="worlds[1][name]" class="form-control"/>
+                                    <input type="text" name="worlds[1][path]" class="form-control"/>
+                                </div>
+                                <button onclick="addWorlds()" class="btn btn-success"><i class="fa fa-lg fa-plus"></i>&nbspAdd World</button>
                             </div>
                             <div class="panel-footer"></div>
                         </div>
@@ -91,7 +96,7 @@
                         <div class="panel-heading" role="tab" id="heading_filters" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_filters" aria-expanded="false" aria-controls="collapse_filters">Define your Filters (For Markers)</div>
                         <div class="collapse out" id="collapse_filters" role="tabpanel" aria-labelledby="heading_filters">
                             <div class="panel-body" >
-                                {WORLDS}
+                                {FILTERS}
                             </div>
                             <div class="panel-footer"></div>
                         </div>
