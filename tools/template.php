@@ -1,6 +1,6 @@
 <?php
     /**
-     * stcolids
+     * {NAME}
      * Copyright (C) 2017  rusty.info
      *
      * Git: https://gitlab.com/rustyinfo/stcolids
@@ -23,9 +23,9 @@
 ?>
 <html>
     <head>
-        <title>McOvCFGGen - Rusty's Tools</title>
+        <title>{NAME} - Rusty's Tools</title>
         <meta encoding="UTF-8"/>
-        <meta title="McOvCFGGen - Rusty's Tools" description="Configuration Generator for The Minecraft Overviewer"/>
+        <meta title="{NAME} - Rusty's Tools" description="{DESCRIPTION}"/>
         <link rel="stylesheet" href="../../style/css/bootstrap.min.css" />
         <script src="../../style/js/jquery-3.2.1.min.js"></script>
         <script src="../../style/js/bootstrap.min.js"></script>
@@ -46,39 +46,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="https://tools.rusty.info/tools/McOvCFGGen">McOvCFGGen <span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="https://tools.rusty.info/tools/{URL_KEY}">{NAME} <span class="sr-only">(current)</span></a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
         <div class="container container-fluid">
-            <div class="col-md-12">
-                <div class="panel panel-success">
-                    <div class="panel-heading" href="#info-collapse" data-target="#info-collapse" data-toggle="collapse">Intro (click me for info)</div>
-                    <div class="panel-body collapse" id="info-collapse">
-                        {TUTORIAL}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">Start</div>
-                    <div class="panel-body">
-                        <p>
-                            If You already Have generated a Config file with this Tool,
-                            You propably have saved the config file that was available for download at the end.
-                        </p>
-                        <p>
-                            You can use that config file here, to restore all your previous settings:
-                        </p>
-                        <input type="file" name="config" class="form-control"/>
-                    </div>
-                    <div class="panel-footer">
-                        <input type="reset" name="reset" class="btn btn-danger form-control pull-left" />
-                        <input type="submit" name="submit" class="btn btn-success form-control pull-right" />
-                    </div>
-                </div>
-            </div>
+            {CONTENT}
         </div>
     </body>
     <footer>
