@@ -61,7 +61,7 @@
                             You propably have saved the config file that was available for download at the end.
                         </p>
                         <p>
-                            You can use that config file here, to restore all your previous settings:
+                            You can use that config file here, to restore all your previous settings
                         </p>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             <div class="col-md-12">
                 <div class="panel-group" id="config-tabs" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading_load" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_load" aria-expanded="false" aria-controls="collapse_load">Load existing Config</div>
+                        <div class="panel-heading" role="tab" id="heading_load" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_load" aria-expanded="true" aria-controls="collapse_load">Load existing Config</div>
                         <div class="collapse in" id="collapse_load" role="tabpanel" aria-labelledby="heading_load">
                             <div class="panel-body" >
                                 <label for="config">Existing Config File:</label>
@@ -80,7 +80,16 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="heading_worlds" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_worlds" aria-expanded="false" aria-controls="collapse_worlds">Define your Worlds</div>
-                        <div class="collapse in" id="collapse_worlds" role="tabpanel" aria-labelledby="heading_worlds">
+                        <div class="collapse out" id="collapse_worlds" role="tabpanel" aria-labelledby="heading_worlds">
+                            <div class="panel-body" >
+                                {WORLDS}
+                            </div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading_filters" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_filters" aria-expanded="false" aria-controls="collapse_filters">Define your Filters (For Markers)</div>
+                        <div class="collapse out" id="collapse_filters" role="tabpanel" aria-labelledby="heading_filters">
                             <div class="panel-body" >
                                 {WORLDS}
                             </div>
