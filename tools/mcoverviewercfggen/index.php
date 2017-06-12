@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="../../style/css/font-awesome.min.css" />
         <script src="../../style/js/jquery-3.2.1.min.js"></script>
         <script src="../../style/js/bootstrap.min.js"></script>
+        <script src="main.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-default">
