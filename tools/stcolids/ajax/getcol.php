@@ -58,6 +58,13 @@ if (!is_numeric($data['collection'])) {
 }
 
 //all things present, get the collection
+
+//regexpressions
+//for mod id: $re = '/<a href="https:\/\/steamcommunity.com\/sharedfiles\/filedetails\/\?id\=(.*?)">/';
+//for title: $re = '/<div class="workshopItemTitle">(.*?)<\/div>/';
+//for author name: $re = '/workshopItemAuthorName">\s*<a href=".*?">(.*?)<\/a>/';
+//for author profile link: $re = '/workshopItemAuthorName">\s*<a href="(.*?)\/myworkshopfiles?.*<\/span>/';
+
 require_once("3rdparty/simple_html_dom.php");
 $baseurl = "http://steamcommunity.com/sharedfiles/filedetails/?id=";
 $collectionurl = $baseurl.$data['collection'];
