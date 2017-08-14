@@ -21,11 +21,23 @@
  */
 
 /**
- * Extends the form
+ * Extends the Worlds Form
  * @return void
  */
-function extend_worlds() {
+function addWorlds() {
     form = document.getElementById('worlds_form');
+    input = document.createElement('input');
+    input.type = "text";
+    input.name = "added_1"
+    input.class = "form-control"
+    form.appendChild(input)
+}
+/**
+ * Extends the Markers Form
+ * @return void
+ */
+function addWorlds() {
+    form = document.getElementById('markers_form');
     input = document.createElement('input');
     input.type = "text";
     input.name = "added_1"

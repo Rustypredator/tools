@@ -102,6 +102,14 @@
                             <div class="panel-footer"></div>
                         </div>
                     </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading_points" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_points" aria-expanded="false" aria-controls="collapse_points">Define Markers</div>
+                        <div class="collapse out" id="collapse_points" role="tabpanel" aria-labelledby="heading_points">
+                            <div class="panel-body">
+                                <button onclick="addMarker()" class="btn btn-success"><i class="fa fa-lg fa-plus"></i>&nbspAdd Marker</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
