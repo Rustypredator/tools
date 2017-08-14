@@ -63,7 +63,7 @@
                             You propably have saved the config file that was available for download at the end.
                         </p>
                         <p>
-                            You can use that config file here, to restore all your previous settings
+                            You can (not yet) use that config file here, to restore all your previous settings
                         </p>
                     </div>
                 </div>
@@ -85,10 +85,22 @@
                         <div class="collapse out" id="collapse_worlds" role="tabpanel" aria-labelledby="heading_worlds">
                             <div class="panel-body" >
                                 <div id="worlds_form">
-                                    <input type="text" name="worlds[1][name]" class="form-control"/>
-                                    <input type="text" name="worlds[1][path]" class="form-control"/>
+                                    <div class="panel panel-primary" id="world_">
+                                        <div class="panel-heading">New World:<span class="pull-right" role="button" onclick="rempanel('world_')"><i class="fa fa-lg fa-times"></i></span></div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label for="worlds1name">Name of the World</label>
+                                                <input type="text" name="worlds[1][name]" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="worlds1path">Path to the world</label>
+                                                <input type="text" name="worlds[1][path]" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button onclick="addWorlds()" class="btn btn-success"><i class="fa fa-lg fa-plus"></i>&nbspAdd World</button>
+                                <hr/>
+                                <button onclick="addWorlds()" class="btn btn-block btn-success"><i class="fa fa-lg fa-plus"></i>&nbsp;Add World</button>
                             </div>
                             <div class="panel-footer"></div>
                         </div>
@@ -97,7 +109,9 @@
                         <div class="panel-heading" role="tab" id="heading_filters" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_filters" aria-expanded="false" aria-controls="collapse_filters">Define your Filters (For Markers)</div>
                         <div class="collapse out" id="collapse_filters" role="tabpanel" aria-labelledby="heading_filters">
                             <div class="panel-body" >
-                                {FILTERS}
+                                <div id="filters_form">
+                                </div>
+                                <button onclick="addFilter()" class="btn btn-success"><i></i>&nbsp;Add Custom Filter</button>
                             </div>
                             <div class="panel-footer"></div>
                         </div>
@@ -106,7 +120,9 @@
                         <div class="panel-heading" role="tab" id="heading_points" data-toggle="collapse" data-parent="#config-tabs" href="#collapse_points" aria-expanded="false" aria-controls="collapse_points">Define Markers</div>
                         <div class="collapse out" id="collapse_points" role="tabpanel" aria-labelledby="heading_points">
                             <div class="panel-body">
-                                <button onclick="addMarker()" class="btn btn-success"><i class="fa fa-lg fa-plus"></i>&nbspAdd Marker</button>
+                                <div id="markers_form">
+                                </div>
+                                <button onclick="addMarker()" class="btn btn-success"><i class="fa fa-lg fa-plus"></i>&nbsp;Add Marker</button>
                             </div>
                         </div>
                     </div>
