@@ -25,22 +25,14 @@
  * @return void
  */
 function addWorlds() {
-    form = document.getElementById('worlds_form');
-    input = document.createElement('input');
-    input.type = "text";
-    input.name = "added_1"
-    input.class = "form-control"
-    form.appendChild(input)
+    $("#worlds_form").append($('<div class="panel panel-primary" id="world_"><div class="panel-heading">New World:<span class="pull-right" role="button" onclick="rempanel('world_')"><i class="fa fa-lg fa-times"></i></span></div><div class="panel-body"><div class="form-group"><label for="worlds1name">Name of the World</label><input type="text" name="worlds[1][name]" class="form-control"/></div><div class="form-group"><label for="worlds1path">Path to the world</label><input type="text" name="worlds[1][path]" class="form-control"/></div></div></div>'));
 }
-/**
- * Extends the Markers Form
- * @return void
- */
-function addWorlds() {
-    form = document.getElementById('markers_form');
-    input = document.createElement('input');
-    input.type = "text";
-    input.name = "added_1"
-    input.class = "form-control"
-    form.appendChild(input)
+function addFilter() {
+    $("#filters_form").append($());
+}
+function addMarker() {
+    $("#markers_form").append($());
+}
+function rempanel(panelid) {
+    $(panelid).remove();
 }
