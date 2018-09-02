@@ -66,9 +66,19 @@
                                 <a href="https://tools.rusty.info/tools/stcolids">StColIDs</a>
                             </li>
                             <li>
-                                <i id="toolslist-info-button-4" data-toggle="popover" title="Team Mix" data-content="Tool to create Mixed Teams from a List of Names" class="fa fa-info-circle"></i>&nbsp;
+                                <i id="toolslist-info-button-3" data-toggle="popover" title="Team Mix" data-content="Tool to create Mixed Teams from a List of Names" class="fa fa-info-circle"></i>&nbsp;
                                 <a href="https://tools.rusty.info/tools/TeamMix">TeamMix</a>
                             </li>
+                            <ul>Ciphers
+                                <li>
+                                    <i id="toolslist-info-button-4" data-toggle="popover" title="Ceasar Cipher" data-content="Ceasar Cipher" class="fa fa-info-circle"></i>&nbsp;
+                                    <a href="https://tools.rusty.info/tools/ciphers/ceasar">Ceasar Cipher</a>
+                                </li>
+                                <li>
+                                    <i id="toolslist-info-button-5" data-toggle="popover" title="Vigenère Cipher" data-content="Vigenère Cipher" class="fa fa-info-circle"></i>&nbsp;
+                                    <a href="https://tools.rusty.info/tools/ciphers/ceasar">Vigenère Cipher</a>
+                                </li>
+                            </ul>
                         </ul>
                     </div>
                 </div>
