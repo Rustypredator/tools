@@ -1,6 +1,7 @@
 <?php
 /**
  * Morse Alphabet from: https://de.wikipedia.org/wiki/Morsezeichen
+ * 
  * @var [type]
  */
 return $alphabet = array(
