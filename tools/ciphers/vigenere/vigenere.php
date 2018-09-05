@@ -112,7 +112,7 @@ function decrypt($content,$key,$alphabet,$alphabetString)
     $keyIndex = 0;
     $keyArray = str_split($key);
     $newContent = array();
-    foreach($contentArr as $item) {
+    foreach ($contentArr as $item) {
         if (in_array($item, array(",",".",";",":"," ","!","\"","§","\$","%","&","/","(",")","=","?"))) {
             array_push($newContent, $item);
             continue; //skip those
@@ -121,11 +121,11 @@ function decrypt($content,$key,$alphabet,$alphabetString)
             $keyIndex = 0; //start key from beginning if end
         }
         $keyVal = $key[$keyIndex];
-        $rowId = array_search($keyVal,$alphabetStringArray);
+        $rowId = array_search($keyVal, $alphabetStringArray);
         $row = $alphabet[$rowId];
-        $alphabetStringIndex = array_search($item,$row);
+        $alphabetStringIndex = array_search($item, $row);
         $newItem = $alphabetStringArray[$alphabetStringIndex];
-        array_push($newContent,$newItem);
+        array_push($newContent, $newItem);
         $keyIndex++;
     }
     $finalContent = implode("", $newContent);
