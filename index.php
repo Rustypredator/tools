@@ -26,9 +26,6 @@
         <title>Rusty's Tools</title>
         <link rel="stylesheet" href="style/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="style/css/bootstrap.min.css"/>
-        <script src="style/js/jquery-3.2.1.min.js"></script>
-        <script src="style/js/bootstrap.min.js"></script>
-        <script src="style/js/main.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -69,13 +66,17 @@
                                 <i id="toolslist-info-button-3" data-toggle="popover" title="Team Mix" data-content="Tool to create Mixed Teams from a List of Names" class="fa fa-info-circle"></i>&nbsp;
                                 <a href="https://tools.rusty.info/tools/TeamMix">TeamMix</a>
                             </li>
+                            <li>
+                                <i id="toolslist-info-button-4" data-toggle="popover" title="SE Component Calculator" data-content="A Tool to calculate the Resources and Components needed to build Structures in SpaceEngineers" class="fa fa-info-circle"></i>&nbsp;
+                                <a href="https://tools.rusty.info/tools/secompcalc">SE Component Calculator</a>
+                            </li>
                             <ul>Ciphers
                                 <li>
-                                    <i id="toolslist-info-button-4" data-toggle="popover" title="Ceasar Cipher" data-content="Ceasar Cipher" class="fa fa-info-circle"></i>&nbsp;
+                                    <i id="toolslist-info-button-5" data-toggle="popover" title="Ceasar Cipher" data-content="Ceasar Cipher" class="fa fa-info-circle"></i>&nbsp;
                                     <a href="https://tools.rusty.info/tools/ciphers/ceasar">Ceasar Cipher</a>
                                 </li>
                                 <li>
-                                    <i id="toolslist-info-button-5" data-toggle="popover" title="Vigenère Cipher" data-content="Vigenère Cipher" class="fa fa-info-circle"></i>&nbsp;
+                                    <i id="toolslist-info-button-6" data-toggle="popover" title="Vigenère Cipher" data-content="Vigenère Cipher" class="fa fa-info-circle"></i>&nbsp;
                                     <a href="https://tools.rusty.info/tools/ciphers/ceasar">Vigenère Cipher</a>
                                 </li>
                             </ul>
@@ -99,5 +100,8 @@
                 </div>
             </div>
         </div>
+        <script src="style/js/jquery-3.2.1.min.js"></script>
+        <script src="style/js/bootstrap.min.js"></script>
+        <script src="style/js/main.js"></script>
     </body>
 </html>
