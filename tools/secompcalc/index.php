@@ -28,10 +28,7 @@ $partlist_object = json_decode($partlist_json);
 <html>
     <head>
         <title>SECompCalc - Rusty's Tools</title>
-        <link rel="stylesheet" href="../../style/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="../../style/css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="../../style/css/select2.min.css"/>
-        <link rel="stylesheet" href="../../style/css/toastr.min.css"/>
+        <link rel="stylesheet" href="../../style/css/main.css"/>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -45,14 +42,12 @@ $partlist_object = json_decode($partlist_json);
                     </button>
                     <a class="navbar-brand" href="https://tools.rusty.info">Rusty's Tools</a>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="https://tools.rusty.info/tools/secompcalc">SECompCalc <span class="sr-only">(current)</span></a></li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </nav>
         <div class="container container-fluid">
             <div class="col-md-12">
@@ -113,7 +108,7 @@ $partlist_object = json_decode($partlist_json);
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="panel panel-success">
-                    <div class="panel-heading">Parts needed:<button class="pull-right"><i class="fa fa-lg fa-refresh"></i>&nbsp;Recalculate</button></div>
+                    <div class="panel-heading">Parts needed:<button class="pull-right btn btn-success btn-sm"><i class="fa fa-lg fa-refresh"></i>&nbsp;Recalculate</button></div>
                     <div class="panel-body">
                         -
                     </div>
@@ -138,7 +133,7 @@ $partlist_object = json_decode($partlist_json);
                 //debug
                 console.log(blocklist);
                 //clear table
-                $("#partlist > tbody:tr").remove(); 
+                $("#partlist > tbody:children").remove();
                 //cycle blocklist
                 for (size in blocklist) {
                     let row = "<tr><td>"+block.ident+"</td><td>"+block.amount+"</td><td>"+block.size+"</td><td>actions here</td></tr>";
