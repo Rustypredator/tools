@@ -31,6 +31,7 @@ $partlist_object = json_decode($partlist_json);
         <link rel="stylesheet" href="../../style/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="../../style/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="../../style/css/select2.min.css"/>
+        <link rel="stylesheet" href="../../style/css/toastr.min.css"/>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -64,30 +65,57 @@ $partlist_object = json_decode($partlist_json);
                 <div class="panel panel-primary">
                     <div class="panel-heading">Add Blocks</div>
                     <div class="panel-body">
-                        <form method="" action="">
-                            <div class="col-sm-8">
-                                <select id="partpicker-part" name="part" class="part-selector form-control">
-                                    <option value="null">-- Select Part to add --</option>
-                                    <?php foreach ($partlist_object->blocks as $block): ?>
-                                    <?php
-                                        $ident = $block->ident;
-                                        $label = $block->label;
-                                        $ingredients = $block->ingredients;
-                                    ?>
-                                    <option value="<?php echo $label; ?>"><?php echo $label; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-sm-2">
-                                <select id="partpicker-gridsize" name="gridsize" class="gridsize-selector form-control">
-                                    <option value="large">Large</option>
-                                    <option value="small">Small</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="number" value="1" min="1" max="1000" class="form-control"/>
-                            </div>
-                        </form>
+                        <p>
+                            Select a Part from the List below and click the "Add" Button to add it to the list.
+                        </p>
+                        <div class="col-sm-6">
+                            <select id="partpicker-part" name="part" class="part-selector form-control">
+                                <option value="null">-- Select Part to add --</option>
+                                <?php foreach ($partlist_object->blocks as $block): ?>
+                                <?php
+                                    $ident = $block->ident;
+                                    $label = $block->label;
+                                    $ingredients = $block->ingredients;
+                                ?>
+                                <option value="<?php echo $label; ?>"><?php echo $label; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <select id="partpicker-gridsize" name="gridsize" class="gridsize-selector form-control">
+                                <option value="large">Large</option>
+                                <option value="small">Small</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <input id="partpicker-amount" type="number" value="1" min="1" max="1000" class="form-control"/>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-success"><i class="fa fa-lg fa-plus" onclick="addpart()"></i>&nbsp;Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Added Blocks (newest on top)</div>
+                    <table class="panel-body table table-striped table-condensed table-hover" id="partlist">
+                        <thead>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Size</th>
+                            <th>Actions</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Parts needed:<button class="pull-right"><i class="fa fa-lg fa-refresh"></i>&nbsp;Recalculate</button></div>
+                    <div class="panel-body">
+                        -
                     </div>
                 </div>
             </div>
@@ -95,12 +123,48 @@ $partlist_object = json_decode($partlist_json);
         <script src="../../style/js/jquery-3.2.1.min.js"></script>
         <script src="../../style/js/bootstrap.min.js"></script>
         <script src="../../style/js/select2.min.js"></script>
+        <script src="../../style/js/toastr.min.js"></script>
         <script src="../../style/js/main.js"></script>
         <script>
             $(document).ready(function() {
-                $('.part-selector').select2({theme: "classic"});
-                $('.gridsize-selector').select2({theme: "classic"});
+                $('.part-selector').select2();
+                $('.gridsize-selector').select2();
             });
+            let blocklist = {"large": {}, "small": {}};
+            function calculateparts() {
+                $('#partscost').html("lol");
+            }
+            function populatetable() {
+                //debug
+                console.log(blocklist);
+                //clear table
+                $("#partlist > tbody:tr").remove(); 
+                //cycle blocklist
+                for (size in blocklist) {
+                    let row = "<tr><td>"+block.ident+"</td><td>"+block.amount+"</td><td>"+block.size+"</td><td>actions here</td></tr>";
+                    $('#partlist > tbody:last-child').append(row);
+                }
+            }
+            function addpart() {
+                let partident = $('#partpicker-part').val();
+                let partsize = $('#partpicker-gridsize').val();
+                let amount = $('#partpicker-amount').val();
+                if (partident in blocklist[partsize]) {
+                    //update amount
+                    let oldamount = blocklist[partsize][partident].amount;
+                    blocklist[partsize][partident].amount = oldamount + amount;
+                } else {
+                    blocklist[partsize][partident] = {
+                        "ident": partident,
+                        "size": partsize,
+                        "amount": amount
+                    }
+                }
+                let msg = "adding "+amount+" of "+partident+" size: "+partsize;
+                populatetable();
+                calculateparts();
+                toastr["success"]("title", msg);
+            }
         </script>
     </body>
     <footer>
