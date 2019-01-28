@@ -21,14 +21,16 @@
  * @author Florian Steltenkamp <contact@rusty.info>
  */
 require_once("../functions.php");
+
+$partlist_json = file_get_contents("parts.json");
+$partlist_object = json_decode($partlist_json);
 ?>
 <html>
     <head>
         <title>SECompCalc - Rusty's Tools</title>
         <link rel="stylesheet" href="../../style/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="../../style/css/font-awesome.min.css"
-        <script src="../../style/js/jquery-3.2.1.min.js"></script>
-        <script src="../../style/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../../style/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="../../style/css/select2.min.css"/>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -62,11 +64,44 @@ require_once("../functions.php");
                 <div class="panel panel-primary">
                     <div class="panel-heading">Add Blocks</div>
                     <div class="panel-body">
-                        //
+                        <form method="" action="">
+                            <div class="col-sm-8">
+                                <select id="partpicker-part" name="part" class="part-selector form-control">
+                                    <option value="null">-- Select Part to add --</option>
+                                    <?php foreach ($partlist_object->blocks as $block): ?>
+                                    <?php
+                                        $ident = $block->ident;
+                                        $label = $block->label;
+                                        $ingredients = $block->ingredients;
+                                    ?>
+                                    <option value="<?php echo $label; ?>"><?php echo $label; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select id="partpicker-gridsize" name="gridsize" class="gridsize-selector form-control">
+                                    <option value="large">Large</option>
+                                    <option value="small">Small</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="number" value="1" min="1" max="1000" class="form-control"/>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="../../style/js/jquery-3.2.1.min.js"></script>
+        <script src="../../style/js/bootstrap.min.js"></script>
+        <script src="../../style/js/select2.min.js"></script>
+        <script src="../../style/js/main.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.part-selector').select2({theme: "classic"});
+                $('.gridsize-selector').select2({theme: "classic"});
+            });
+        </script>
     </body>
     <footer>
     </footer>
