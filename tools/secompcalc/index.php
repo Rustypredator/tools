@@ -22,8 +22,7 @@
  */
 require_once("../functions.php");
 
-$partlist_json = file_get_contents("parts.json");
-$partlist_object = json_decode($partlist_json);
+$partlist_object = json_decode(file_get_contents("parts.json"));
 ?>
 <html>
     <head>
