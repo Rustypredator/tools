@@ -16,7 +16,7 @@
     foreach ($blocks as $block) {
         if ($block->ident === $ident) {
             $name = $block->label;
-            echo json_encode(array("success"=>false, "message"=>"Label for $ident was found.", "name"=>$name));
+            echo json_encode(array("success"=>true, "message"=>"Label for $ident was found.", "name"=>$name));
             return;
         }
     }
