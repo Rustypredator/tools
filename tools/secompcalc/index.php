@@ -72,7 +72,7 @@ $partlist_object = json_decode($partlist_json);
                                     $label = $block->label;
                                     $ingredients = $block->ingredients;
                                 ?>
-                                <option value="<?php echo $label; ?>"><?php echo $label; ?></option>
+                                <option value="<?php echo $ident; ?>"><?php echo $label; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -101,7 +101,7 @@ $partlist_object = json_decode($partlist_json);
                             <th>Size</th>
                             <th>Actions</th>
                         </thead>
-                        <tbody>
+                        <tbody id="partlist_tbody">
                         </tbody>
                     </table>
                 </div>
@@ -133,11 +133,16 @@ $partlist_object = json_decode($partlist_json);
                 //debug
                 console.log(blocklist);
                 //clear table
-                $("#partlist > tbody:children").remove();
+                document.getElementById("partlist_tbody").innerHTML = "";
                 //cycle blocklist
-                for (size in blocklist) {
-                    let row = "<tr><td>"+block.ident+"</td><td>"+block.amount+"</td><td>"+block.size+"</td><td>actions here</td></tr>";
-                    $('#partlist > tbody:last-child').append(row);
+                for (block in blocklist["small"]) {
+                    let row = "<tr><td>"+block.ident+"</td><td>"+block.amount+"</td><td>small</td><td>actions here</td></tr>";
+                    $('#partlist_tbody:last-child').append(row);
+                }
+                for (block in blocklist["large"]) {
+                    obj = blocklist["large"][block];
+                    let row = "<tr><td>"+obj.ident+"</td><td>"+obj.amount+"</td><td>large</td><td>actions here</td></tr>";
+                    $('#partlist_tbody:last-child').append(row);
                 }
             }
             function addpart() {
@@ -151,7 +156,6 @@ $partlist_object = json_decode($partlist_json);
                 } else {
                     blocklist[partsize][partident] = {
                         "ident": partident,
-                        "size": partsize,
                         "amount": amount
                     }
                 }
