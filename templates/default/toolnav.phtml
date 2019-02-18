@@ -1,0 +1,27 @@
+<div class="card text-dark bg-warning">
+    <div class="card-header">Tools</div>
+    <div class="card-body">
+        <ul class="nav nav-pills flex-column">
+            <?php
+                //load tools
+                $tools = scandir($toolsdir);
+                //remove . and ..
+                array_shift($tools);
+                array_shift($tools);
+                foreach ($tools as $tool) {
+                    $toolpath = $toolsdir.$tool."/";
+                    $toolurl = $toolsurl.$tool."/";
+                    $content = "";
+                    if ( is_dir($toolpath) ) {
+                        $toolconfig = json_decode(file_get_contents($toolpath."config.json"));
+                        $content .= "<li class='nav-item'><a class='nav-link";
+                        if ( $tool == $toolname )
+                            $content .= " active";
+                        $content .= "' href='$toolurl'>".$toolconfig->label."</a></li>";
+                    }
+                    echo $content;
+                }
+            ?>
+        </ul>
+    </div>
+</div>

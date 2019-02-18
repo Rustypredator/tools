@@ -20,88 +20,37 @@
  *
  * @author Florian Steltenkamp <contact@rusty.info>
  */
+require "init.php";
+$toolname = "";
 ?>
 <html>
     <head>
         <title>Rusty's Tools</title>
-        <link rel="stylesheet" href="style/css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="style/css/bootstrap.min.css"/>
+        <?php include $templatedir."head/cssfiles.phtml"; ?>
     </head>
     <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="https://tools.rusty.info">Rusty's Tools</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="https://tools.rusty.info/">Home <span class="sr-only">(current)</span></a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        <div class="container container-fluid">
-            <div class="col-md-3 col-sm-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Tools</div>
-                    <div class="panel-body">
-                        <ul>
-                            <li>
-                                <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Password-Generator" data-content="A Simple Password generator with options to choose how complex your password will be."></i>&nbsp;
-                                <a href="https://tools.rusty.info/tools/pwgen">Password-Generator</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Collection-ID grabber" data-content="Tool to extract all ids from a workshop collection (steam)"></i>&nbsp;
-                                <a href="https://tools.rusty.info/tools/stcolids">StColIDs</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Team Mix" data-content="Tool to create Mixed Teams from a List of Names"></i>&nbsp;
-                                <a href="https://tools.rusty.info/tools/TeamMix">TeamMix</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-info-circle infobtn" data-toggle="popover" title="SE Component Calculator" data-content="A Tool to calculate the Resources and Components needed to build Structures in SpaceEngineers"></i>&nbsp;
-                                <a href="https://tools.rusty.info/tools/secompcalc">SE Component Calculator</a>
-                            </li>
-                            <ul>Ciphers
-                                <li>
-                                    <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Ceasar Cipher" data-content="Ceasar Cipher"></i>&nbsp;
-                                    <a href="https://tools.rusty.info/tools/ciphers/ceasar">Ceasar Cipher</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Vigenère Cipher" data-content="Vigenère Cipher"></i>&nbsp;
-                                    <a href="https://tools.rusty.info/tools/ciphers/vigenere">Vigenère Cipher</a>
-                                </li>
-                            </ul>
-                        </ul>
+        <?php $additionalNavItems = "<li class='nav-item active'><a class='nav-link' href='https://tools.rusty.info'>Home <span class='sr-only'>(current)</span></a></li>"; ?>
+        <?php $additionalNavItemsRight = ""; ?>
+        <?php include $templatedir."navbar.phtml"; ?>
+        <div class="container-fluid">
+            <div class="row">
+                <?php include $templatedir."toolnav.phtml"; ?>
+                <div class="col-md-9 col-sm-12">
+                    <div class="card text-white bg-dark">
+                        <div class="card-header">Welcome</div>
+                        <div class="card-body">
+                            <p>
+                                Welcome to my little collection of (hopefully) useful tools.<br/>
+                                There are not many yet, but this collection will continue to grow because i make these tools whenever i need them.<br/>
+                                If you have ideas for useful simple tools you have'nt found yet on the interwebs, feel free to contact me: <a href="mailto:contact@rusty.info">E-Mail</a><br/>
+                                <br/>
+                                Feel free to browse a little and hopefully you will find something useful ;)
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-9 col-sm-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Welcome</div>
-                    <div class="panel-body">
-                        <p>
-                            Welcome to my little collection of (hopefully) useful tools.<br/>
-                            There are not many yet, but this collection will continue to grow because i make these tools whenever i need them.<br/>
-                            If you have ideas for useful simple tools you have'nt found yet on the interwebs, feel free to contact me: <a href="mailto:contact@rusty.info">E-Mail</a><br/>
-                            <br/>
-                            Feel free to browse a little and hopefully you will find something useful ;)
-                        </p>
-                    </div>
-                    <div class="panel-footer"></div>
                 </div>
             </div>
         </div>
-        <script src="style/js/jquery-3.2.1.min.js"></script>
-        <script src="style/js/bootstrap.min.js"></script>
-        <script src="style/js/main.js"></script>
+        <?php include $templatedir."head/jsfiles.phtml"; ?>
     </body>
 </html>
