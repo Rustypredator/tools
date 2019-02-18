@@ -27,8 +27,10 @@
         <meta encoding="UTF-8"/>
         <meta title="{NAME} - Rusty's Tools" description="{DESCRIPTION}"/>
         <link rel="stylesheet" href="../../style/css/bootstrap.min.css" />
-        <script src="../../style/js/jquery-3.2.1.min.js"></script>
-        <script src="../../style/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../../style/css/all.min.css" />
+        <link rel="stylesheet" href="../../style/css/toastr.min.css" />
+        <link rel="stylesheet" href="../../style/css/select2.min.css" />
+        <link rel="stylesheet" href="../../style/css/main.css" />
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -42,14 +44,12 @@
                     </button>
                     <a class="navbar-brand" href="https://tools.rusty.info">Rusty's Tools</a>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="https://tools.rusty.info/tools/{URL_KEY}">{NAME} <span class="sr-only">(current)</span></a></li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </nav>
         <div class="container container-fluid">
             <div class="col-md-12">
@@ -62,6 +62,13 @@
             </div>
             {CONTENT}
         </div>
+        <script src="../../style/js/jquery-3.3.1.min.js"></script>
+        <script src="../../style/js/popper.min.js"></script>
+        <script src="../../style/js/bootstrap.min.js"></script>
+        <script src="../../style/js/toastr.min.js"></script>
+        <script src="../../style/js/all.min.js"></script>
+        <script src="../../style/js/select2.min.js"></script>
+        <script src="../../style/js/main.js"></script>
     </body>
     <footer>
     </footer>
