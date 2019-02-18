@@ -77,7 +77,7 @@
                                 </li>
                                 <li>
                                     <i id="toolslist-info-button-6" data-toggle="popover" title="Vigenère Cipher" data-content="Vigenère Cipher" class="fa fa-info-circle"></i>&nbsp;
-                                    <a href="https://tools.rusty.info/tools/ciphers/ceasar">Vigenère Cipher</a>
+                                    <a href="https://tools.rusty.info/tools/ciphers/vigenere">Vigenère Cipher</a>
                                 </li>
                             </ul>
                         </ul>
