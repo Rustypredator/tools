@@ -55,28 +55,28 @@
                     <div class="panel-body">
                         <ul>
                             <li>
-                                <i id="toolslist-info-button-1" data-toggle="popover" title="Password-Generator" data-content="A Simple Password generator with options to choose how complex your password will be." class="fa fa-info-circle"></i>&nbsp;
+                                <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Password-Generator" data-content="A Simple Password generator with options to choose how complex your password will be."></i>&nbsp;
                                 <a href="https://tools.rusty.info/tools/pwgen">Password-Generator</a>
                             </li>
                             <li>
-                                <i id="toolslist-info-button-2" data-toggle="popover" title="Collection-ID grabber" data-content="Tool to extract all ids from a workshop collection (steam)" class="fa fa-info-circle"></i>&nbsp;
+                                <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Collection-ID grabber" data-content="Tool to extract all ids from a workshop collection (steam)"></i>&nbsp;
                                 <a href="https://tools.rusty.info/tools/stcolids">StColIDs</a>
                             </li>
                             <li>
-                                <i id="toolslist-info-button-3" data-toggle="popover" title="Team Mix" data-content="Tool to create Mixed Teams from a List of Names" class="fa fa-info-circle"></i>&nbsp;
+                                <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Team Mix" data-content="Tool to create Mixed Teams from a List of Names"></i>&nbsp;
                                 <a href="https://tools.rusty.info/tools/TeamMix">TeamMix</a>
                             </li>
                             <li>
-                                <i id="toolslist-info-button-4" data-toggle="popover" title="SE Component Calculator" data-content="A Tool to calculate the Resources and Components needed to build Structures in SpaceEngineers" class="fa fa-info-circle"></i>&nbsp;
+                                <i class="fa fa-info-circle infobtn" data-toggle="popover" title="SE Component Calculator" data-content="A Tool to calculate the Resources and Components needed to build Structures in SpaceEngineers"></i>&nbsp;
                                 <a href="https://tools.rusty.info/tools/secompcalc">SE Component Calculator</a>
                             </li>
                             <ul>Ciphers
                                 <li>
-                                    <i id="toolslist-info-button-5" data-toggle="popover" title="Ceasar Cipher" data-content="Ceasar Cipher" class="fa fa-info-circle"></i>&nbsp;
+                                    <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Ceasar Cipher" data-content="Ceasar Cipher"></i>&nbsp;
                                     <a href="https://tools.rusty.info/tools/ciphers/ceasar">Ceasar Cipher</a>
                                 </li>
                                 <li>
-                                    <i id="toolslist-info-button-6" data-toggle="popover" title="Vigenère Cipher" data-content="Vigenère Cipher" class="fa fa-info-circle"></i>&nbsp;
+                                    <i class="fa fa-info-circle infobtn" data-toggle="popover" title="Vigenère Cipher" data-content="Vigenère Cipher"></i>&nbsp;
                                     <a href="https://tools.rusty.info/tools/ciphers/vigenere">Vigenère Cipher</a>
                                 </li>
                             </ul>
