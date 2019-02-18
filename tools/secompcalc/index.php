@@ -125,6 +125,28 @@ $partlist_object = json_decode(file_get_contents("parts.json"));
                 $('.gridsize-selector').select2();
             });
             let blocklist = {"large": {}, "small": {}};
+            function getnames(namelist = []) {
+                $.ajax
+                (
+                    {
+                        type: 'POST',
+                        url: 'nameresolv.php',
+                        data: dataString,
+                        cache: false,
+                        beforeSend: function() {},
+                        success: function(data) {
+                            let success = data.success;
+                            if(success) {
+                                toastr.success("Got names from resolver!");
+                                return data.names;
+                            } else {
+                                let message = data.message;
+                                toastr.error(message);
+                            }
+                        }
+                    }
+                )
+            }
             function calculateparts() {
                 $('#partscost').html("lol");
             }
