@@ -52,6 +52,14 @@
             </div><!-- /.container-fluid -->
         </nav>
         <div class="container container-fluid">
+            <div class="col-md-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading" href="#info-collapse" data-target="#info-collapse" data-toggle="collapse">Info (click me)</div>
+                    <div class="panel-body collapse" id="info-collapse">
+                        {INFOCONTENT}
+                    </div>
+                </div>
+            </div>
             {CONTENT}
         </div>
     </body>
