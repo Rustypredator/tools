@@ -21,10 +21,7 @@
  */
 
 //enable popovers for toolslist
-$('#toolslist-info-button-1').popover();
-$('#toolslist-info-button-2').popover();
-$('#toolslist-info-button-3').popover();
-$('#toolslist-info-button-4').popover();
+$('.infobtn').popover();
 toastr.options = {
     "closeButton": true,
     "debug": false,
