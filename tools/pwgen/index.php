@@ -55,7 +55,7 @@ require_once("../functions.php");
             <div class="col-md-12">
                 <?php
                     $content = "<h3>PWGen</h3><small>Simple Password Generator</small><p>This tool allows you, to generate a simple or more complex password. ( or more than one )<br/>Thats basically it, You can choose, wich characters you want to have, and wich length your password should be.<br/>Also you can select to generate more than one Password at a Time, wich is handy, if you want to \"upgrade\" all your accounts ;)</p><br/><h4>Guide:</h4><p>It is very simple to use this Tool.<br/><ul>Steps:<li>1. Select what your Password should contain ( using the checkboxes )</li><li>2. Select wich length your Password(s) sould be.</li><li>3. Select how many Passwords you want to generate at once</li><li>4. Push le Button</li></ul>Thats it. not that hard, right?<br/>I hope this tool will help you as much as it has helped me ;)</p>";
-                    printBootstrapPanel("pwgen_info","success","Info (click me)",$content,true,false);
+                    printBootstrapPanel("pwgen_info", "success", "Info (click me)", $content, true, false);
                 ?>
             </div>
             <div class="col-md-12">
