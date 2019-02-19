@@ -40,4 +40,17 @@ toastr.options = {
     "hideEasing": "linear",
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
-  }
+};
+//Syntaxhighlighter config:
+SyntaxHighlighter.defaults['auto-links']= true;
+SyntaxHighlighter.defaults['class-name']= '';
+SyntaxHighlighter.defaults['collapse']= false;
+SyntaxHighlighter.defaults['first-line']= 1;
+SyntaxHighlighter.defaults['gutter']= true;
+SyntaxHighlighter.defaults['highlight']= null;
+SyntaxHighlighter.defaults['html-script']= false;
+SyntaxHighlighter.defaults['smart-tabs']= true;
+SyntaxHighlighter.defaults['tab-size']= 4;
+SyntaxHighlighter.defaults['toolbar']= true;
+//load syntaxhighlighter for all tagged areas
+SyntaxHighlighter.all();
