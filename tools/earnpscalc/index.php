@@ -20,87 +20,85 @@
  *
  * @author Florian Steltenkamp <contact@rusty.info>
  */
-require "../functions.php";
+require "../../init.php";
+$toolname = "earnpscalc";
 ?>
 <html>
     <head>
-        <title>EarnPsCalc - Rusty's Tools</title>
-        <link rel="stylesheet" href="../../style/css/main.css"/>
+        <title>Rusty's Tools - EarnPsCalc</title>
+        <?php include $templatedir."head/cssfiles.phtml"; ?>
     </head>
     <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="https://tools.rusty.info">Rusty's Tools</a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="https://tools.rusty.info/tools/earnpscalc">EarnPsCalc <span class="sr-only">(current)</span></a></li>
-                        <li><a onclick="save()"><i class="fa fa-lg fa-save"></i>&nbsp;Save</a></li>
-                        <li><a onclick="load()"><i class="fa fa-lg fa-upload"></i>&nbsp;Load</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container" style="width:95%;">
-            <div class="col-sm-12 col-md-12">
-                <?php
-                    $content = "<h3>Earnings per Second Calculator</h3><p>With this tool you will be able to calculate how much you are earning per second of a resource.<br/>You can add producers and consumers for different resources (multiple ones per resource are possible too)<br/>You can see an overall gain/loss at the bottom.</p>";
-                    printBootstrapPanel("earnpscalc_info", "success", "Info (click me)", $content, true, false);
-                ?>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Producers</div>
-                    <div class="panel-body">
-                        <button class="btn btn-success btn-sm btn-block" onclick="addproducer()"><i class="fa fa-plus"></i>&nbsp;Add Producer</button>
-                        <input type="hidden" value="0" name="pcount" id="pcount"/>
-                        <br/>
-                        <div id="producersList"></div>
+        <?php
+            $additionalNavItems = "<li class='nav-item'><a class='nav-link' href='".$baseurl."'>Home</a></li>";
+            $additionalNavItems .= "<li class='nav-item active'><a class='nav-link' href='".$baseurl.$toolname."'>EarnPsCalc <span class='sr-only'>(current)</span></a></li>"
+        ?>
+        <?php
+            $additionalNavItemsRight = "<li><a onclick='save()'><i class='fa fa-lg fa-save'></i>&nbsp;Save</a></li>";
+            $additionalNavItemsRight .= "<li><a onclick='load()'><i class='fa fa-lg fa-upload'></i>&nbsp;Load</a></li>";
+        ?>
+        <?php include $templatedir."navbar.phtml"; ?>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <?php include $templatedir."toolnav.phtml"; ?>
+                    <div class="card text-white bg-success" style="margin-top:15px;">
+                        <div class="card-header collapsed" type="button" data-toggle="collapse" data-target="#infoCollapse" aria-expanded="false" aria-controls="infoCollapse">INFO ( Click me! )</div>
+                        <div class="card-body collapse" id="infoCollapse">
+                            <h3>Earnings per Second Calculator</h3>
+                            <p>
+                                With this tool you will be able to calculate how much you are earning per second of a resource.<br/>
+                                You can add producers and consumers for different resources (multiple ones per resource are possible too)<br/>
+                                You can see an overall gain/loss at the bottom.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Consumers</div>
-                    <div class="panel-body">
-                        <button class="btn btn-success btn-sm btn-block" onclick="addconsumer()"><i class="fa fa-plus"></i>&nbsp;Add Consumer</button>
-                        <input type="hidden" value="0" name="ccount" id="ccount"/>
-                        <br/>
-                        <div id="consumersList"></div>
+                <div class="col-md-9 col-sm-12">
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="card text-white bg-dark">
+                                <div class="card-header">Producers</div>
+                                <div class="card-body">
+                                    <button class="btn btn-success btn-sm btn-block" onclick="addproducer()"><i class="fa fa-plus"></i>&nbsp;Add Producer</button>
+                                    <input type="hidden" value="0" name="pcount" id="pcount"/>
+                                    <br/>
+                                    <div id="producersList"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="card text-white bg-dark">
+                                <div class="card-header">Consumers</div>
+                                <div class="card-body">
+                                    <button class="btn btn-success btn-sm btn-block" onclick="addconsumer()"><i class="fa fa-plus"></i>&nbsp;Add Consumer</button>
+                                    <input type="hidden" value="0" name="ccount" id="ccount"/>
+                                    <br/>
+                                    <div id="consumersList"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Result:<button class="btn btn-succes btn-sm pull-right" onclick="recalc()"><i class="fa fa-refresh"></i>&nbsp;Recalculate</button></div>
-                    <table class="table table-striped table-hover table-condensed panel-body" id="tableResult">
-                        <thead>
-                            <th>Resource</th>
-                            <th>Production</th>
-                            <th>Consumption</th>
-                            <th>Gain/Loss</th>
-                        </thead>
-                        <tbody id="tableResultBody">
-                            <tr id="rowRemoveMe">
-                                <td colspan="4">--nothing here yet--</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="card text-light bg-secondary">
+                        <div class="card-header">Results:<button class="btn btn-succes btn-sm content-justify-end" onclick="recalc()"><i class="fa fa-sync"></i>&nbsp;Recalculate</button></div>
+                        <table class="table table-striped table-hover table-condensed card-body" id="tableResult">
+                            <thead>
+                                <th>Resource</th>
+                                <th>Production</th>
+                                <th>Consumption</th>
+                                <th>Gain/Loss</th>
+                            </thead>
+                            <tbody id="tableResultBody">
+                                <tr id="rowRemoveMe">
+                                    <td colspan="4">--nothing here yet--</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        <script src="../../style/js/jquery-3.2.1.min.js"></script>
-        <script src="../../style/js/bootstrap.min.js"></script>
-        <script src="../../style/js/select2.min.js"></script>
-        <script src="../../style/js/toastr.min.js"></script>
-        <script src="../../style/js/main.js"></script>
+        <?php include $templatedir."head/jsfiles.phtml"; ?>
         <script>
             function save() {
                 alert("not implemented yet");
@@ -112,18 +110,21 @@ require "../functions.php";
             
             function addproducer() {
                 count = parseInt($('#pcount').val());
-                content = "<div class='form-inline' id='p" + count + "'><input class='form-control' type='text' id='p" + count + "_resource' placeholder='name of resource'/><input class='form-control' type='number' id='p" + count + "_amount' placeholder='amount'/> per <input class='form-control' type='number' id='p" + count + "_time' placeholder='0' min='0'/><select class='form-control' id='p" + count +"_timeunit'><option value='s'>Seconds</option><option value='m'>Minutes</option><option value='h'>Hours</option><option value='d'>Days</option></select><button onclick='delitm(\"p" + count + "\")' class='btn btn-danger'><i class='fa fa-trash' ></i></button></div>";
+                content = "<div class='form-group form-group row' id='p" + count + "'><div class='col-sm-4'><input class='form-control' type='text' id='p" + count + "_resource' placeholder='name of resource'/></div><div class='col-sm-2'><input class='form-control' type='number' id='p" + count + "_amount' placeholder='amount'/></div><div class='col-sm-1'> per </div><div class='col-sm-2'><input class='form-control' type='number' id='p" + count + "_time' placeholder='0' min='0'/></div><div class='col-sm-2'><select id='p" + count +"_timeunit'><option value='s'>Seconds</option><option value='m'>Minutes</option><option value='h'>Hours</option><option value='d'>Days</option></select></div><div class='col-sm-1'><button onclick='delitm(\"p" + count + "\")' class='btn btn-danger'><i class='fa fa-trash' ></i></button></div></div>";
                 newnumber = count + 1;
                 $('#pcount').val(newnumber);
                 $('#producersList').append(content);
+                //refresh selects
+                $('#p'+count+"_timeunit").select2();
             }
 
             function addconsumer() {
                 count = parseInt($('#ccount').val());
                 newnumber = count + 1;
-                content = "<div class='form-inline' id='c" + newnumber + "'><input class='form-control' type='text' id='c" + newnumber + "_resource' placeholder='name of resource'/><input class='form-control' type='number' id='c" + newnumber + "_amount' placeholder='amount'/> per <input class='form-control' type='number' id='c" + newnumber + "_time' placeholder='0' min='0'/><select class='form-control' id='c" + newnumber +"_timeunit'><option value='s'>Seconds</option><option value='m'>Minutes</option><option value='h'>Hours</option><option value='d'>Days</option></select><button onclick='delitm(\"c" + newnumber + "\")' class='btn btn-danger'><i class='fa fa-trash' ></i></button></div>";
+                content = "<div class='form-group form-group row' id='c" + newnumber + "'><div class='col-sm-4'><input class='form-control' type='text' id='c" + newnumber + "_resource' placeholder='name of resource'/></div><div class='col-sm-2'><input class='form-control' type='number' id='c" + newnumber + "_amount' placeholder='amount'/></div><div class='col-sm-1'> per </div><div class='col-sm-2'><input class='form-control' type='number' id='c" + newnumber + "_time' placeholder='0' min='0'/></div><div class='col-sm-2'><select id='c" + newnumber +"_timeunit'><option value='s'>Seconds</option><option value='m'>Minutes</option><option value='h'>Hours</option><option value='d'>Days</option></select></div><div class='col-sm-1'><button onclick='delitm(\"c" + newnumber + "\")' class='btn btn-danger'><i class='fa fa-trash' ></i></button></div></div>";
                 $('#ccount').val(newnumber);
                 $('#consumersList').append(content);
+                $('#c'+count+"_timeunit").select2();
             }
 
             function recalc() {
@@ -154,7 +155,7 @@ require "../functions.php";
                     } else if (unit == "d") {
                         seconds = ((time*24)*60)*60 //convert to seconds
                     }
-                    prodpersec = (amount/seconds).toFixed(2); //convert to r/s
+                    prodpersec = parseFloat((amount/seconds).toFixed(2)); //convert to r/s
                     if (resource in rps) {
                         currentrps = parseInt(rps[resource].rps);
                         currentprod = parseInt(rps[resource].production);
@@ -197,7 +198,7 @@ require "../functions.php";
                     } else if (unit == "d") {
                         seconds = ((time*24)*60)*60 //convert to seconds
                     }
-                    prodpersec = (amount/seconds).toFixed(2); //convert to r/s
+                    prodpersec = parseFloat((amount/seconds).toFixed(2)); //convert to r/s
                     if (resource in rps) {
                         currentrps = parseInt(rps[resource].rps);
                         currentcons = parseInt(rps[resource].consumption);
@@ -230,17 +231,20 @@ require "../functions.php";
                     rs = rps[r].rps;
                     content = "<tr><td>" + name + "</td><td>+" + production + "/s</td><td>" + consumption + "/s</td>";
                     if (rs < 0) {
-                        content += "<td><span class='text-danger'><b>" + rs + "</b></span>/s, ";
-                        content += "<span class='text-danger'><b>" + (rs*60) + "</b></span>/m, ";
-                        content += "<span class='text-danger'><b>" + (rs*60)*60 + "</b></span>/h, ";
-                        content += "<span class='text-danger'><b>" + ((rs*60)*60)*24 + "</b></span>/d</td>";
+                        content += "<td><span class='text-danger'><b>" + parseFloat((rs).toFixed(2)) + "</b></span>/s, ";
+                        content += "<span class='text-danger'><b>" + parseFloat((rs*60).toFixed(2)) + "</b></span>/m, ";
+                        content += "<span class='text-danger'><b>" + parseFloat(((rs*60)*60).toFixed(2)) + "</b></span>/h, ";
+                        content += "<span class='text-danger'><b>" + parseFloat((((rs*60)*60)*24).toFixed(2)) + "</b></span>/d</td>";
                     } else if ( rs > 0) {
-                        content += "<td><span class='text-success'><b>+" + rs + "</b></span>/s, ";
-                        content += "<span class='text-success'><b>+" + (rs*60) + "</b></span>/m, ";
-                        content += "<span class='text-success'><b>+" + (rs*60)*60 + "</b></span>/h, ";
-                        content += "<span class='text-success'><b>+" + ((rs*60)*60)*24 + "</b></span>/d</td>";
+                        content += "<td><span class='text-success'><b>+" + parseFloat((rs).toFixed(2)) + "</b></span>/s, ";
+                        content += "<span class='text-success'><b>+" + parseFloat(((rs*60)).toFixed(2)) + "</b></span>/m, ";
+                        content += "<span class='text-success'><b>+" + parseFloat(((rs*60)*60).toFixed(2)) + "</b></span>/h, ";
+                        content += "<span class='text-success'><b>+" + parseFloat((((rs*60)*60)*24).toFixed(2)) + "</b></span>/d</td>";
                     } else {
-                        content += "<td>" + rs + "/s, " + (rs*60) + "/m, " + (rs*60)*60 + "/h, " + ((rs*60)*60)*24 + "/d</td>";
+                        content += "<td><b>+" + parseFloat((rs).toFixed(2)) + "</b>/s, ";
+                        content += "<b>+" + parseFloat(((rs*60)).toFixed(2)) + "</b>/m, ";
+                        content += "<b>+" + parseFloat(((rs*60)*60).toFixed(2)) + "</b>/h, ";
+                        content += "<b>+" + parseFloat((((rs*60)*60)*24).toFixed(2)) + "</b>/d</td>";
                     }
                     content += "</tr>";
                     $('#tableResultBody').append(content);
@@ -252,6 +256,4 @@ require "../functions.php";
             }
         </script>
     </body>
-    <footer>
-    </footer>
 </html>
