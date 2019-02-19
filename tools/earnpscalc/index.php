@@ -80,7 +80,7 @@ $toolname = "earnpscalc";
                         </div>
                     </div>
                     <div class="card text-light bg-secondary">
-                        <div class="card-header">Results:<button class="btn btn-succes btn-sm content-justify-end" onclick="recalc()"><i class="fa fa-sync"></i>&nbsp;Recalculate</button></div>
+                        <div class="card-header"><button class="btn btn-primary btn-sm content-justify-end" onclick="recalc()"><i class="fa fa-sync"></i></button>&nbsp;&nbsp;Results:</div>
                         <table class="table table-striped table-hover table-condensed card-body" id="tableResult">
                             <thead>
                                 <th>Resource</th>
