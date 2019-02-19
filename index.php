@@ -34,7 +34,9 @@ $toolname = "";
         <?php include $templatedir."navbar.phtml"; ?>
         <div class="container-fluid">
             <div class="row">
-                <?php include $templatedir."toolnav.phtml"; ?>
+                <div class="col-md-3 col-sm-12">
+                    <?php include $templatedir."toolnav.phtml"; ?>
+                </div>
                 <div class="col-md-9 col-sm-12">
                     <div class="card text-white bg-dark">
                         <div class="card-header">Welcome</div>
