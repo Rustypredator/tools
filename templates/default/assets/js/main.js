@@ -22,6 +22,8 @@
 
 //enable popovers for toolslist
 $('.infobtn').popover();
+//select2 on all select boxes
+$('select').select2();
 toastr.options = {
     "closeButton": true,
     "debug": false,
