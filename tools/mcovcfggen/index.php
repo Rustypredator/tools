@@ -53,15 +53,35 @@ $toolDescShort = "";
                 <div class="col-md-9 col-sm-12">
                     <div class="row" style="margin-bottom:15px;">
                         <div class="col-sm-12 col-md-6">
-                            <div class="card text-white bg-dark">
-                                <div class="card-header">{title}</div>
+                            <div class="card text-light bg-dark">
+                                <div class="card-header">Worlds</div>
                                 <div class="card-body">
-                                    {content}
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <input class="form-control" type="text" id="newWorldName" placeholder="name"/>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input class="form-control" type="text" id="newWorldPath" placeholder="path"/>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-success" onclick="addworld()"><i class="fa fa-plus"></i>&nbsp;Add World</button>
+                                        </div>
+                                    </div>
                                 </div>
+                                <table class="table table-hover table-condensed card-body text-light">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Path</th>
+                                            <th>RenderType</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="worldsList"><tr><td colspan="3"></td></tr></tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <div class="card text-white bg-dark">
+                            <div class="card text-light bg-dark">
                                 <div class="card-header">{title}</div>
                                 <div class="card-body">
                                     {content}
@@ -69,11 +89,39 @@ $toolDescShort = "";
                             </div>
                         </div>
                     </div>
-                    <div class="card text-light bg-secondary">
-                        <div class="card-header">Config Output</div>
+                    <div class="card text-light bg-dark" style="margin-bottom:15px;">
+                        <div class="card-header">Renders</div>
                         <div class="card-body">
-                            <pre class="brush: json" rows="1">
-                                blablabla
+                            <p>
+                                Select a world you added from the dropdown below and specify the parameters of the render. if you dont want a specific parameter, just leave it free.
+                            </p>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <select id="newRenderWorld">
+                                        <option value="none" selected>--Add a world first!--</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-success" onclick="addrender()"><i class="fa fa-plus"></i>&nbsp;Add Render</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card text-light bg-secondary">
+                        <div class="card-header"><button class="btn btn-primary btn-sm" onclick="recalc()"><i class="fa fa-sync"></i></button>&nbsp;&nbsp;Config Output</div>
+                        <div class="card-body">
+                            <pre>
+                                <code class="json">
+worlds["My world"] = "/home/username/server/world"
+
+renders["normalrender"] = {
+    "world": "My world",
+    "title": "Normal Render of My World",
+}
+
+outputdir = "/home/username/mcmap"
+texturepath="/full/path/to/texturepack.zip"
+                                </code>
                             </pre>
                         </div>
                     </div>
@@ -81,6 +129,23 @@ $toolDescShort = "";
             </div>
         </div>
         <?php include $templatedir."head/jsfiles.phtml"; ?>
-        <script src="main.js"></script>
+        <script>
+            function addWorld() {
+                //
+                //repopulate worldselection in render
+            }
+
+            function addMarker() {
+                //
+            }
+
+            function addRender() {
+                //
+            }
+
+            function recalc() {
+                //
+            }
+        </script>
     </body>
 </html>
