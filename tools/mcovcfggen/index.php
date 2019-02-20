@@ -72,7 +72,7 @@ $toolDescShort = "";
                     <div class="card text-light bg-secondary">
                         <div class="card-header">Config Output</div>
                         <div class="card-body">
-                            <pre class="highlight" rows="1">
+                            <pre class="brush: json" rows="1">
                                 blablabla
                             </pre>
                         </div>
