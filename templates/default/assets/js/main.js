@@ -1,8 +1,7 @@
 /**
- * stcolids
  * Copyright (C) 2017  rusty.info
  *
- * Git: https://gitlab.com/rustyinfo/stcolids
+ * Git: https://gitlab.com/rustyinfo/tools-homepage
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,16 +40,5 @@ toastr.options = {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
 };
-//Syntaxhighlighter config:
-SyntaxHighlighter.defaults['auto-links']= true;
-SyntaxHighlighter.defaults['class-name']= '';
-SyntaxHighlighter.defaults['collapse']= false;
-SyntaxHighlighter.defaults['first-line']= 1;
-SyntaxHighlighter.defaults['gutter']= true;
-SyntaxHighlighter.defaults['highlight']= null;
-SyntaxHighlighter.defaults['html-script']= false;
-SyntaxHighlighter.defaults['smart-tabs']= true;
-SyntaxHighlighter.defaults['tab-size']= 4;
-SyntaxHighlighter.defaults['toolbar']= true;
-//load syntaxhighlighter for all tagged areas
-SyntaxHighlighter.all();
+//highlightjs
+hljs.initHighlightingOnLoad();
