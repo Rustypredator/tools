@@ -64,39 +64,40 @@ $toolDescShort = "";
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-12">
-                    <div class="card text-white bg-dark">
-                        <div class="card-header">Input</div>
-                        <div class="card-body">
-                            <label for="collection">Collection-ID:</label>
-                            <input class="form-control" type="text" name="collection" id="form_collection"/>
-                            <br/>
-                            <button onclick="pull_collection()" class="btn btn-block btn-info">Get Mod-Ids</button>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 15px;">
-                        <div class="col-md-6">
-                            <div class="card text-light bg-secondary">
-                                <div class="card-header">Raw ( only IDs)</div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="card text-white bg-dark">
+                                <div class="card-header">Input</div>
                                 <div class="card-body">
-                                    <textarea id="raw_ids" rows="6" class="form-control"></textarea>
+                                    <label for="collection">Collection-ID:</label>
+                                    <input class="form-control" type="text" name="collection" id="form_collection"/>
+                                    <br/>
+                                    <button onclick="pull_collection()" class="btn btn-block btn-info">Get Mod-Ids</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-12 col-md-6">
                             <div class="card text-light bg-secondary">
-                                <div class="card-header">Found <span class="badge badge-info" id="badge_count">0</span> Workshop Items</div>
-                                <table class="card-body table table-hover table-striped">
-                                    <thead>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Url</th>
-                                    </thead>
-                                    <tbody id="table_fillme">
-                                        <tr id="table_removeme"><td colspan="3"><span class="text-center">nothing here yet</span></td></tr>
-                                    </tbody>
-                                </table>
+                                <div class="card-header">Raw ( only IDs)</div>
+                                <div class="card-body">
+                                    <textarea id="rawIds" rows="4" class="form-control"></textarea>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="card text-light bg-secondary" style="margin-top: 15px;">
+                        <div class="card-header">Found <span class="badge badge-info" id="badgeCount">0</span> Workshop Items</div>
+                        <table class="card-body table table-hover table-striped text-light">
+                            <thead>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Url</th>
+                            </thead>
+                            <tbody id="workshopItemsTable">
+                                <tr><td colspan="3"><span class="text-center">nothing here yet</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -113,7 +114,7 @@ $toolDescShort = "";
                     $.ajax (
                         {
                             type: 'POST',
-                            url: 'https://tools.rusty.info/stcolids/ajax/getcol.php',
+                            url: toolurl + 'ajax/getcol.php',
                             data: dataString,
                             cache: false,
                             beforeSend: function() {
@@ -124,12 +125,14 @@ $toolDescShort = "";
                                 var obj = JSON.parse(data);
                                 if (obj.type == 'success') {
                                     //get steam stuff successfull
-                                    $('#table_removeme').remove();
-                                    $('#badge_count').append(obj.modscount)
+                                    $('#workshopItemsTable tr').remove();
+                                    $('#badgeCount').html(obj.modscount);
+                                    $('#rawIds').html("");
                                     var modsdata = obj.modsdata;
                                     modsdata.forEach(function(entry) {
-                                        $('#raw_ids').append(entry.id+'\n');
-                                        $('#table_fillme').append('<tr><td>'+entry.id+'</td><td>'+entry.name+'</td><td><a href="'+entry.url+'">Workshop Link</a></td></tr>');
+                                        let row = '<tr><td>'+entry.id+'</td><td>'+entry.name+'</td><td><a href="'+entry.url+'">Workshop Link</a></td></tr>';
+                                        $('#rawIds').append(entry.id+'\n');
+                                        $('#workshopItemsTable').append(row);
                                     });
                                 } else {
                                     //failed. display message
