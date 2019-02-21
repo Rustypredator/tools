@@ -15,7 +15,7 @@
                     if ( is_dir($toolpath) ) {
                         $toolconfig = json_decode(file_get_contents($toolpath."config.json"));
                         $content .= "<li class='nav-item'><a class='nav-link";
-                        if ( $tool == $toolname )
+                        if ( $tool == $toolshort )
                             $content .= " active";
                         $content .= "' href='$toolurl'>".$toolconfig->label."</a></li>";
                     }
