@@ -22,16 +22,15 @@
  */
 require "../../init.php";
 $toolname = "{NAME}";
+$toolshort = strtolower($toolname);
+$toolDescShort = "";
 ?>
 <html>
-    <head>
-        <title>Rusty's Tools - {NAME}</title>
-        <?php include $templatedir."head/cssfiles.phtml"; ?>
-    </head>
+    <?php include $templatedir."head/head.phtml"; ?>
     <body>
         <?php
             $additionalNavItems = "<li class='nav-item'><a class='nav-link' href='".$baseurl."'>Home</a></li>";
-            $additionalNavItems .= "<li class='nav-item active'><a class='nav-link' href='".$baseurl.$toolname."'>{NAME} <span class='sr-only'>(current)</span></a></li>"
+            $additionalNavItems .= "<li class='nav-item active'><a class='nav-link' href='".$baseurl.$toolshort."'>{NAME} <span class='sr-only'>(current)</span></a></li>"
         ?>
         <?php $additionalNavItemsRight = ""; ?>
         <?php include $templatedir."navbar.phtml"; ?>
