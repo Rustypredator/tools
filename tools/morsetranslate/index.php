@@ -21,7 +21,6 @@
  * @author Florian Steltenkamp <contact@rusty.info>
  */
 require "../../init.php";
-$toolname = "morsetranslate";
 
 $alphabet = array(
     //alphabet
@@ -96,16 +95,16 @@ $alphabet = array(
     '(error/repeat)' => '........'
 );
 
+$toolname = "MorseTranslate";
+$toolshort = strtolower($toolname);
+$toolDescShort = "";
 ?>
 <html>
-    <head>
-        <title>Rusty's Tools - MorseTranslator</title>
-        <?php include $templatedir."head/cssfiles.phtml"; ?>
-    </head>
+<?php include $templatedir."head/head.phtml"; ?>
     <body>
         <?php
             $additionalNavItems = "<li class='nav-item'><a class='nav-link' href='".$baseurl."'>Home</a></li>";
-            $additionalNavItems .= "<li class='nav-item active'><a class='nav-link' href='".$baseurl.$toolname."'>MorseTranslator <span class='sr-only'>(current)</span></a></li>"
+            $additionalNavItems .= "<li class='nav-item active'><a class='nav-link' href='".$baseurl.$toolname."'><?php echo $toolname; ?> <span class='sr-only'>(current)</span></a></li>"
         ?>
         <?php $additionalNavItemsRight = ""; ?>
         <?php include $templatedir."navbar.phtml"; ?>
