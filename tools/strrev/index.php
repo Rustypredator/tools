@@ -49,8 +49,12 @@ $toolDescShort = "Reverse String";
                             <p>
                                 It is very simple to use this Tool.<br/>
                             <ul>Steps:
-                                <li>1. Put your String in the field</li>
-                                <li>2. Push le button...</li>
+                                <li>1. Start typing in the "input" field</li>
+                                <li>2. Your reversed string should appear in the output field.</li>
+                            </ul>
+                            <ul>Troubleshooting:
+                                <li>Q: The text is not changing anymore!</li>
+                                <li>A: Just reload the page, it should work again!</li>
                             </ul>
                             </p>
                         </div>
@@ -66,7 +70,7 @@ $toolDescShort = "Reverse String";
                     <div class="card text-light bg-secondary" style="margin-top: 15px;">
                         <div class="card-header">Output:</div>
                         <div class="card-body">
-                            <textarea id="strOutput" class="form-control" rows="10">-- your reversed string will appear here --</textarea>
+                            <textarea id="strOutput" class="form-control" rows="4">-- your reversed string will appear here --</textarea>
                         </div>
                     </div>
                 </div>
