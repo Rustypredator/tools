@@ -30,7 +30,7 @@ $toolDescShort = "";
     <body>
         <?php
             $additionalNavItems = "<li class='nav-item'><a class='nav-link' href='".$baseurl."'>Home</a></li>";
-            $additionalNavItems .= "<li class='nav-item active'><a class='nav-link' href='".$baseurl.$toolname."'><?php echo $toolname; ?> <span class='sr-only'>(current)</span></a></li>"
+            $additionalNavItems .= "<li class='nav-item active'><a class='nav-link' href='".$baseurl.$toolshort."'>$toolname <span class='sr-only'>(current)</span></a></li>"
         ?>
         <?php $additionalNavItemsRight = ""; ?>
         <?php include $templatedir."navbar.phtml"; ?>
