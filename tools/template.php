@@ -37,7 +37,7 @@ $toolname = "{NAME}";
         <?php include $templatedir."navbar.phtml"; ?>
         <div class="container-fluid">
             <div class="row">
-            <div class="col-md-3 col-sm-12">
+                <div class="col-md-3 col-sm-12">
                     <?php include $templatedir."toolnav.phtml"; ?>
                     <div class="card text-white bg-success" style="margin-top:15px;">
                         <div class="card-header collapsed" type="button" data-toggle="collapse" data-target="#infoCollapse" aria-expanded="false" aria-controls="infoCollapse">INFO ( Click me! )</div>
