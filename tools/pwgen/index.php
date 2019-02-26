@@ -62,7 +62,8 @@ $toolname = "pwgen";
 $toolshort = strtolower($toolname);
 $toolDescShort = "";
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <?php include $templatedir."head/head.phtml"; ?>
     <body>
         <?php
