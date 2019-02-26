@@ -107,30 +107,22 @@ $toolDescShort = "";
                         <div class="card-header">Generator Settings</div>
                         <div class="card-body">
                             <form class="form" action="" method="post">
-                                <label for="uc">Include Uppercase Chars?</label>
-                                <input class="form-control" name="uc" type="checkbox"
-                                <?php
-                                if ($_POST and $_POST['uc']) {
-                                    echo "checked";
-                                } ?>/>
-                                <label for="lc">Include Lowercase Chars?</label>
-                                <input class="form-control" name="lc" type="checkbox"
-                                <?php
-                                if ($_POST and $_POST['lc']) {
-                                    echo "checked";
-                                } ?>/>
-                                <label for="nr">Include Numbers?</label>
-                                <input class="form-control" name="nr" type="checkbox"
-                                <?php
-                                if ($_POST and $_POST['nr']) {
-                                    echo "checked";
-                                } ?>/>
-                                <label for="sc">Include Special Chars?</label>
-                                <input class="form-control" name="sc" type="checkbox"
-                                <?php
-                                if ($_POST and $_POST['sc']) {
-                                    echo "checked";
-                                } ?>/>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="uc" id="uc" <?php if ($_POST and $_POST['uc']) echo "checked";?>>
+                                    <label class="custom-control-label" for="uc">Include Uppercase Chars?</label>
+                                </div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="lc" id="lc" <?php if ($_POST and $_POST['lc']) echo "checked"; ?>>
+                                    <label class="custom-control-label" for="lc">Include Lowercase Chars?</label>
+                                </div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="nr" id="nr" <?php if ($_POST and $_POST['nr']) echo "checked";?>>
+                                    <label class="custom-control-label" for="nr">Include Numbers?</label>
+                                </div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="sc" id="sc" <?php if ($_POST and $_POST['sc']) echo "checked";?>>
+                                    <label class="custom-control-label" for="sc">Include Special Chars?</label>
+                                </div><br/>
                                 <label for="length">Define the Length of your Password(s)</label>
                                 <input class="form-control" name="length" type="numeric"
                                 <?php
