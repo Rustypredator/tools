@@ -37,8 +37,8 @@
                     </div>
                     <div class="form-group">
                         <div class="custom-control">
-                            <input type="numeric" class="custom-control-input" id="pwgen_length" value="{{$pwgen_length}}"/>
-                            <label class="custom-control-label" for="pwgen_length">Define the Length of your Password(s)</label>
+                            <input type="numeric" class="form-control" id="pwgen_length" value="{{$pwgen_length}}"/>
+                            <label for="pwgen_length">Define the Length of your Password(s)</label>
                         </div>
                     </div>
                     <div class="form-group">
