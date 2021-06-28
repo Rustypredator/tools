@@ -11,8 +11,10 @@
             </div>
             <div class="card-body">
                 <form class="form" action="" method="post">
-                    <label for="uc">Include Uppercase Chars?</label>
-                    <input class="custom-control-input" name="uc" type="checkbox" @if ($pwgen_uc) checked @endif/>
+                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                        <input class="custom-control-input" name="uc" type="checkbox" @if ($pwgen_uc) checked @endif/>
+                        <label for="uc">Include Uppercase Chars?</label>
+                    </div>
                     <label for="lc">Include Lowercase Chars?</label>
                     <input class="custom-control-input" name="lc" type="checkbox" @if ($pwgen_lc) checked @endif/>
                     <label for="nr">Include Numbers?</label>
