@@ -28,10 +28,27 @@ class AppServiceProvider extends ServiceProvider
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $uid = Auth::id();
-            $event->menu->add('Main');
+            $tools = [
+                (object)[
+                    'translate_key' => 'tool_pwgen_title',
+                    'icon' => 'fas fa-fw fa-key',
+                    'url' => '/tools/pwgen'
+                ]
+            ];
+            $event->menu->add(['header'=>'TOOLS']);
             //Add Tools
+            foreach($tools as $i => $tool) {
+                $event->menu->add([
+                    'text' => $tool->translate_key,
+                    'icon' => $tool->icon,
+                    'url' => $tool->url
+                ]);
+            }
             if(is_numeric($uid) && $uid > 0) {
                 //add internal stuff
+                $event->menu->add([
+                    'header' => 'Administration'
+                ]);
             }
         });
     }
