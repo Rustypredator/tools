@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
                 ]);
             }
             //Add to menu
-            $event->menu->add($items);
+            $event->menu->add(['header' => 'test']);
         });
     }
 }
