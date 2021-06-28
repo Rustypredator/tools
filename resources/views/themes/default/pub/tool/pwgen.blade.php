@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                        <div class="custom-control">
                             <input type="numeric" class="custom-control-input" id="pwgen_length" value="{{$pwgen_length}}"/>
                             <label class="custom-control-label" for="pwgen_length">Define the Length of your Password(s)</label>
                         </div>
