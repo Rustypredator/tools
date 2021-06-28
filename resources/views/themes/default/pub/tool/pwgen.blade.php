@@ -3,8 +3,15 @@
 @section('content')
     <div class="row">
         <div class="card bg-gradient-warning col-12">
-            <div class="panel-heading">Generator Settings</div>
-            <div class="panel-body">
+            <div class="card-header border-0">
+                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Generator Settings</h3>
+                <!-- card tools -->
+                <div class="card-tools">
+                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <div class="card-body">
                 <form class="form" action="" method="post">
                     <label for="uc">Include Uppercase Chars?</label>
                     <input class="form-control" name="uc" type="checkbox" @if ($pwgen_uc) checked @endif/>
@@ -29,8 +36,15 @@
                 </form>
             </div>
         </div>
-        <div class="card bg-gradient-warning col-12">
-            <div class="panel-heading">Your Passwords</div>
+        <div class="card bg-secondary col-12">
+            <div class="card-header border-0">
+                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Your Passwords</h3>
+                <!-- card tools -->
+                <div class="card-tools">
+                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
             <table class="panel-body table table-hover table-striped">
                 <thead>
                     <th></th>
