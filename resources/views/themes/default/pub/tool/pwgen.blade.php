@@ -35,23 +35,23 @@
                             <label class="custom-control-label" for="pwgen_sw_sc">Include Special Chars?</label>
                         </div>
                     </div>
-                    <label for="lc">Include Lowercase Chars?</label>
-                    <input class="custom-control-input" name="lc" type="checkbox" @if ($pwgen_lc) checked @endif/>
-                    <label for="nr">Include Numbers?</label>
-                    <input class="custom-control-input" name="nr" type="checkbox" @if ($pwgen_nr) checked @endif/>
-                    <label for="sc">Include Special Chars?</label>
-                    <input class="custom-control-input" name="sc" type="checkbox" @if ($pwgen_sc) checked @endif/>
-                    <label for="length">Define the Length of your Password(s)</label>
-                    <input class="custom-control-input" name="length" type="numeric" value="{{$pwgen_length}}"/>
-                    <label for="batch">Select how many Passwords you want</label>
-                    <select name="batch" class="custom-select">
-                        <option value="1" @if ($pwgen_amount == 1) selected @endif>1</option>
-                        <option value="5" @if ($pwgen_amount == 5) selected @endif>5</option>
-                        <option value="10" @if ($pwgen_amount == 10) selected @endif>10</option>
-                        <option value="15" @if ($pwgen_amount == 15) selected @endif>15</option>
-                        <option value="50" @if ($pwgen_amount == 50) selected @endif>50</option>
-                        <option value="100" @if ($pwgen_amount == 100) selected @endif>100</option>
-                    </select>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                            <input type="numeric" class="custom-control-input" id="pwgen_length" value="{{$pwgen_length}}"/>
+                            <label class="custom-control-label" for="pwgen_length">Define the Length of your Password(s)</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Select how many Passwords you want</label>
+                        <select name="amount" class="custom-select">
+                            <option value="1" @if ($pwgen_amount == 1) selected @endif>1</option>
+                            <option value="5" @if ($pwgen_amount == 5) selected @endif>5</option>
+                            <option value="10" @if ($pwgen_amount == 10) selected @endif>10</option>
+                            <option value="15" @if ($pwgen_amount == 15) selected @endif>15</option>
+                            <option value="50" @if ($pwgen_amount == 50) selected @endif>50</option>
+                            <option value="100" @if ($pwgen_amount == 100) selected @endif>100</option>
+                        </select>
+                    </div>
                     <input type="submit" class="btn btn-block btn-success"/>
                 </form>
             </div>
