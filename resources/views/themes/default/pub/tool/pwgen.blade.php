@@ -42,8 +42,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="amount">Select how many Passwords you want</label>
-                        <select name="amount" class="custom-select">
+                        <label for="pwgen_sw_amount">Select how many Passwords you want</label>
+                        <select name="pwgen_sw_amount" id="pwgen_sw_amount" class="custom-select">
                             <option value="1" @if ($pwgen_amount == 1) selected @endif>1</option>
                             <option value="5" @if ($pwgen_amount == 5) selected @endif>5</option>
                             <option value="10" @if ($pwgen_amount == 10) selected @endif>10</option>
@@ -52,7 +52,7 @@
                             <option value="100" @if ($pwgen_amount == 100) selected @endif>100</option>
                         </select>
                     </div>
-                    <input type="submit" class="btn btn-block btn-success"/>
+                    <button onclick="getPassword()" class="btn btn-success btn-block">Generate Passwords</button>
                 </form>
             </div>
         </div>
@@ -82,4 +82,37 @@
             </table>
         </div>
     </div>
+@stop
+
+@section('client-js')
+    <script>
+        function genPassword() {
+            var uc = $('#pwgen_sw_uc').val()
+            var lc = $('#pwgen_sw_lc').val()
+            var nr = $('#pwgen_sw_nr').val()
+            var sc = $('#pwgen_sw_sc').val()
+            var length = $('#pwgen_sw_length').val()
+            var amount = $('#pwgen_sw_amount').val()
+            requestdata = "_token=" + '{{csrf_token()}}' + "&uc=" + pwgen_sw_uc + "&lc=" + pwgen_sw_lc + "&nr=" + pwgen_sw_nr + "&sc=" + pwgen_sw_sc + "&length=" + pwgen_sw_length + "&amount=" + pwgen_sw_amount
+            $.ajax
+            (
+                {
+                    type: 'POST',
+                    url: '/tools/ajax/pwgen',
+                    data: requestdata,
+                    cache: false,
+                    beforeSend: function() {},
+                    success: function(data) {
+                        data = JSON.parse(data)
+                        if(success) {
+                            alert("pswds")
+                            console.log(data)
+                        } else {
+                            alert("error")
+                        }
+                    }
+                }
+            )
+        }
+    </script>
 @stop

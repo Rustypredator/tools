@@ -57,37 +57,6 @@ class ToolController extends Controller
         }
     }
 
-    private function pwgen(Request $request) {
-        $data = [
-            'pwgen_uc' => true,
-            'pwgen_lc' => false,
-            'pwgen_nr' => false,
-            'pwgen_sc' => false,
-            'pwgen_length' => 8,
-            'pwgen_amount' => 1
-        ];
-        if($request->has('uc') && $request->input('uc')) {
-            $data['pwgen_uc'] = true;
-        }
-        if($request->has('lc') && $request->input('lc')) {
-            $data['pwgen_lc'] = true;
-        }
-        if($request->has('nr') && $request->input('nr')) {
-            $data['pwgen_nr'] = true;
-        }
-        if($request->has('sc') && $request->input('sc')) {
-            $data['pwgen_sc'] = true;
-        }
-        if($request->has('length') && $request->input('length') >= 0) {
-            $data['pwgen_length'] = $request->input('length');
-        }
-        if($request->has('amount') && $request->input('amount' >= 0)) {
-            $data['pwgen_amount'] = $request->input('amount');
-        }
-
-        return view('themes.default.pub.tool.pwgen', $data);
-    }
-
     /**
      * Generates a Random string by the given options
      * @param  boolean $uppercase    enables uppercase chars
