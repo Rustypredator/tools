@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_num" @if($pwgen_num) checked @endif>
+                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_num" @if($pwgen_nr) checked @endif>
                             <label class="custom-control-label" for="pwgen_sw_num">Include Numbers?</label>
                         </div>
                     </div>
