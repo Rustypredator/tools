@@ -28,8 +28,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $uid = Auth::id();
-            $event->menu->add('MAIN NAVIGATION');
-            $event->menu->add('Your ID: ' . $uid);
+            $event->menu->add('Main');
+            //Add Tools
+            if(is_numeric($uid) && $uid > 0) {
+                //add internal stuff
+            }
         });
     }
 }
