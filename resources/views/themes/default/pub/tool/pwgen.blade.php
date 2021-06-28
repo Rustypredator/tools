@@ -2,14 +2,12 @@
 
 @section('content')
     <div class="row">
-        <div class="card bg-gradient-warning col-12">
+        <div class="card bg-gradient-warning col-12" style="margin-top:25px;">
             <div class="card-header border-0">
                 <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Generator Settings</h3>
-                <!-- card tools -->
                 <div class="card-tools">
                     <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
                 </div>
-                <!-- /.card-tools -->
             </div>
             <div class="card-body">
                 <form class="form" action="" method="post">
@@ -38,7 +36,7 @@
         </div>
         <div class="card bg-secondary col-12">
             <div class="card-header border-0">
-                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Your Passwords</h3>
+                <h3 class="card-title"><i class="fas fa-key mr-1"></i>Your Passwords</h3>
                 <!-- card tools -->
                 <div class="card-tools">
                     <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
