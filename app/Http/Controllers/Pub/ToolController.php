@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Pub;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class ToolController extends Controller
 {
