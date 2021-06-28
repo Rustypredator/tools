@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Dispatcher $events)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            $uid = Auth::id();
             //Add Support Links
             $items = [
                 [
@@ -53,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ]);
             //ACP Stuff
+            $uid = Auth::id();
             if(is_numeric($uid) && $uid > 0) {
                 //add internal stuff
                 $items = array_merge($items, [
