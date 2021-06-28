@@ -13,10 +13,10 @@
             </div>
             <div class="card-body">
                 <p>
-Welcome to my little collection of (hopefully) useful tools.
-There are not many yet, but this collection will continue to grow because i make these tools whenever i need them.
-If you have ideas for useful simple tools you haven't found yet on the internet, feel free to contact me: <a href="mailto:contact@rusty.info">E-Mail</a>
-
+Welcome to my little collection of (hopefully) useful tools.<br/>
+There are not many yet, but this collection will continue to grow because i make these tools whenever i need them.<br/>
+If you have ideas for useful simple tools you haven't found yet on the internet, feel free to contact me: <a href="mailto:contact@rusty.info">E-Mail</a><br/>
+<br/>
 Feel free to browse a little and hopefully you will find something useful ;)
                 </p>
             </div>
