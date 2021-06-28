@@ -13,8 +13,26 @@
                 <form class="form" action="" method="post">
                     <div class="form-group">
                         <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                            <input class="custom-control-input" name="uc" type="checkbox" @if ($pwgen_uc) checked @endif/>
-                            <label for="uc">Include Uppercase Chars?</label>
+                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_uc" @if($pwgen_uc) checked @endif>
+                            <label class="custom-control-label" for="pwgen_sw_uc">Include Uppercase Chars?</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_lc" @if($pwgen_lc) checked @endif>
+                            <label class="custom-control-label" for="pwgen_sw_lc">Include Lowercase Chars?</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_num" @if($pwgen_num) checked @endif>
+                            <label class="custom-control-label" for="pwgen_sw_num">Include Numbers?</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_sc" @if($pwgen_sc) checked @endif>
+                            <label class="custom-control-label" for="pwgen_sw_sc">Include Special Chars?</label>
                         </div>
                     </div>
                     <label for="lc">Include Lowercase Chars?</label>
