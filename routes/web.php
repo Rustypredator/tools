@@ -21,3 +21,6 @@ Route::get('/', function () {
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tools/{tool}/{toolSubsite?}', [App\Http\Controllers\Pub\ToolController::class, 'index']);
+Route::post('/tools/{tool}/{toolSubsite?}', [App\Http\Controllers\Pub\ToolController::class, 'index']);
+Route::post('/tools/ajax/{tool}', [App\Http\Controllers\Pub\ToolController::class, 'ajaxIndex']);
