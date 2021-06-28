@@ -28,14 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             //Add to menu
-            $event->menu->add([
-                ['header'=>'TOOLS'],
-                [
-                    'text' => 'tool_pwgen_title',
-                    'icon' => 'fas fa-fw fa-key',
-                    'url' => '/tools/pwgen'
-                ]
-            ]);
+            $event->menu->add(['header'=>'TOOLS']);
         });
     }
 }
