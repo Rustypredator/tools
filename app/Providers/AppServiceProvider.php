@@ -27,8 +27,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Dispatcher $events)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            //Add Support Links
-            $items = [
+            //Add to menu
+            $event->menu->add([
                 [
                     'text' => 'support_discord',
                     'icon' => 'fab fa-fw fa-discord',
@@ -40,10 +40,7 @@ class AppServiceProvider extends ServiceProvider
                     'icon' => 'fas fa-fw fa-comments',
                     'url' => 'https://rusty.info/',
                     'topnav' => true
-                ]
-            ];
-            //Add Tools
-            $items = array_merge($items, [
+                ],
                 ['header'=>'TOOLS'],
                 [
                     'text' => 'tool_pwgen_title',
@@ -51,16 +48,6 @@ class AppServiceProvider extends ServiceProvider
                     'url' => '/tools/pwgen'
                 ]
             ]);
-            //ACP Stuff
-            $uid = Auth::id();
-            if(is_numeric($uid) && $uid > 0) {
-                //add internal stuff
-                $items = array_merge($items, [
-                    'header' => 'Administration'
-                ]);
-            }
-            //Add to menu
-            $event->menu->add(['header' => 'test']);
         });
     }
 }
