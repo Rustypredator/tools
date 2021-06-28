@@ -43,22 +43,18 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ];
             $tools = [
-                (object)[
-                    'translate_key' => 'tool_pwgen_title',
+                ['header'=>'TOOLS'],
+                [
+                    'text' => 'tool_pwgen_title',
                     'icon' => 'fas fa-fw fa-key',
                     'url' => '/tools/pwgen'
                 ]
             ];
+            //Add Support Links
             $event->menu->add($supportLinks);
-            $event->menu->add(['header'=>'TOOLS']);
             //Add Tools
-            foreach($tools as $i => $tool) {
-                $event->menu->add([
-                    'text' => $tool->translate_key,
-                    'icon' => $tool->icon,
-                    'url' => $tool->url
-                ]);
-            }
+            $event->menu->add($tools);
+            //ACP Stuff
             if(is_numeric($uid) && $uid > 0) {
                 //add internal stuff
                 $event->menu->add([
