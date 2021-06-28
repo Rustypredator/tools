@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $uid = Auth::id();
             //Add Support Links
-            $event->menu->add([
+            $items = [
                 [
                     'text' => 'support_discord',
                     'icon' => 'fab fa-fw fa-discord',
@@ -42,9 +42,9 @@ class AppServiceProvider extends ServiceProvider
                     'url' => 'https://rusty.info/',
                     'topnav' => true
                 ]
-            ]);
+            ];
             //Add Tools
-            $event->menu->addAfter('support_forum', [
+            $items = array_merge($items, [
                 ['header'=>'TOOLS'],
                 [
                     'text' => 'tool_pwgen_title',
@@ -55,10 +55,12 @@ class AppServiceProvider extends ServiceProvider
             //ACP Stuff
             if(is_numeric($uid) && $uid > 0) {
                 //add internal stuff
-                $event->menu->add([
+                $items = array_merge($items, [
                     'header' => 'Administration'
                 ]);
             }
+            //Add to menu
+            $event->menu->add($items);
         });
     }
 }
