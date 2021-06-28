@@ -12,17 +12,17 @@
             <div class="card-body">
                 <form class="form" action="" method="post">
                     <label for="uc">Include Uppercase Chars?</label>
-                    <input class="form-control" name="uc" type="checkbox" @if ($pwgen_uc) checked @endif/>
+                    <input class="custom-control-input" name="uc" type="checkbox" @if ($pwgen_uc) checked @endif/>
                     <label for="lc">Include Lowercase Chars?</label>
-                    <input class="form-control" name="lc" type="checkbox" @if ($pwgen_lc) checked @endif/>
+                    <input class="custom-control-input" name="lc" type="checkbox" @if ($pwgen_lc) checked @endif/>
                     <label for="nr">Include Numbers?</label>
-                    <input class="form-control" name="nr" type="checkbox" @if ($pwgen_nr) checked @endif/>
+                    <input class="custom-control-input" name="nr" type="checkbox" @if ($pwgen_nr) checked @endif/>
                     <label for="sc">Include Special Chars?</label>
-                    <input class="form-control" name="sc" type="checkbox" @if ($pwgen_sc) checked @endif/>
+                    <input class="custom-control-input" name="sc" type="checkbox" @if ($pwgen_sc) checked @endif/>
                     <label for="length">Define the Length of your Password(s)</label>
-                    <input class="form-control" name="length" type="numeric" value="{{$pwgen_length}}"/>
+                    <input class="custom-control-input" name="length" type="numeric" value="{{$pwgen_length}}"/>
                     <label for="batch">Select how many Passwords you want</label>
-                    <select name="batch" class="form-control">
+                    <select name="batch" class="custom-select">
                         <option value="1" @if ($pwgen_amount == 1) selected @endif>1</option>
                         <option value="5" @if ($pwgen_amount == 5) selected @endif>5</option>
                         <option value="10" @if ($pwgen_amount == 10) selected @endif>10</option>
