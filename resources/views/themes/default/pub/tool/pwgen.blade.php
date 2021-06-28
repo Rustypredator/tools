@@ -1,8 +1,8 @@
 @extends('themes.default.pub.master')
 
 @section('content')
-    <div class="col-md-12">
-        <div class="panel panel-primary">
+    <div class="row">
+        <div class="card bg-gradient-warning col-12">
             <div class="panel-heading">Generator Settings</div>
             <div class="panel-body">
                 <form class="form" action="" method="post">
@@ -29,9 +29,7 @@
                 </form>
             </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="panel panel-info">
+        <div class="card bg-gradient-warning col-12">
             <div class="panel-heading">Your Passwords</div>
             <table class="panel-body table table-hover table-striped">
                 <thead>
@@ -40,7 +38,7 @@
                 </thead>
                 <tbody>
                     @if (empty($pwgen_generated))
-                        <tr><td><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>
+                        <tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>
                     @else
                         @foreach ( $pwgen_generated as $pw )
                         <tr><td></td><td>{{$pw}}</td></tr>
@@ -50,5 +48,4 @@
             </table>
         </div>
     </div>
-</div>
 @stop
