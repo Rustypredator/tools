@@ -1,4 +1,4 @@
-@extends('themes.default.public.master')
+@extends('themes.default.pub.master')
 
 @section('client-js')
     <script>
