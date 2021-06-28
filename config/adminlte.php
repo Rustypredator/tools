@@ -342,7 +342,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js                    ',
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js',
                 ],
             ],
         ],
