@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ]);
             //Add Tools
-            $event->menu->add([
+            $event->menu->addAfter('support_forum', [
                 ['header'=>'TOOLS'],
                 [
                     'text' => 'tool_pwgen_title',
