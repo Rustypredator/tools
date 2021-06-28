@@ -1,8 +1,8 @@
 @extends('themes.default.pub.master')
 
 @section('content')
-    <div class="row" style="margin-top:25px;">
-        <div class="card bg-gradient-warning col-12">
+    <div class="row">
+        <div class="card bg-gradient-warning col-12" style="margin-top:25px;">
             <div class="card-header border-0">
                 <h3 class="card-title"><i class="fas fa-hands-helping mr-1"></i>Welcome</h3>
                 <!-- card tools -->

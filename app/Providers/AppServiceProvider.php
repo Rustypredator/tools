@@ -28,32 +28,30 @@ class AppServiceProvider extends ServiceProvider
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $uid = Auth::id();
-            $supportLinks = [
+            //Add Support Links
+            $event->menu->add([
                 [
                     'text' => 'support_discord',
                     'icon' => 'fab fa-fw fa-discord',
                     'url' => 'https://discord.gg/DrKNGQn',
-                    'topnav' => true,
+                    'topnav' => true
                 ],
                 [
                     'text' => 'support_forum',
                     'icon' => 'fas fa-fw fa-comments',
                     'url' => 'https://rusty.info/',
-                    'topnav' => true,
+                    'topnav' => true
                 ]
-            ];
-            $tools = [
+            ]);
+            //Add Tools
+            $event->menu->add([
                 ['header'=>'TOOLS'],
                 [
                     'text' => 'tool_pwgen_title',
                     'icon' => 'fas fa-fw fa-key',
                     'url' => '/tools/pwgen'
                 ]
-            ];
-            //Add Support Links
-            $event->menu->add($supportLinks);
-            //Add Tools
-            $event->menu->add($tools);
+            ]);
             //ACP Stuff
             if(is_numeric($uid) && $uid > 0) {
                 //add internal stuff
