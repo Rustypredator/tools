@@ -26,7 +26,16 @@ class ToolController extends Controller
     {
         switch ($tool) {
             case 'pwgen':
-                $this->pwgen($request);
+                $data = [
+                    'pwgen_uc' => true,
+                    'pwgen_lc' => false,
+                    'pwgen_nr' => false,
+                    'pwgen_sc' => false,
+                    'pwgen_length' => 8,
+                    'pwgen_amount' => 1
+                ];
+                return view('themes.default.pub.tool.pwgen', $data);
+                //$this->pwgen($request);
                 break;
 
             default:
