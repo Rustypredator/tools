@@ -29,18 +29,6 @@ class AppServiceProvider extends ServiceProvider
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             //Add to menu
             $event->menu->add([
-                [
-                    'text' => 'support_discord',
-                    'icon' => 'fab fa-fw fa-discord',
-                    'url' => 'https://discord.gg/DrKNGQn',
-                    'topnav' => true
-                ],
-                [
-                    'text' => 'support_forum',
-                    'icon' => 'fas fa-fw fa-comments',
-                    'url' => 'https://rusty.info/',
-                    'topnav' => true
-                ],
                 ['header'=>'TOOLS'],
                 [
                     'text' => 'tool_pwgen_title',

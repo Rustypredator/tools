@@ -224,7 +224,20 @@ return [
     |
     */
 
-    'menu' => [],
+    'menu' => [
+        [
+            'text' => 'support_discord',
+            'icon' => 'fab fa-fw fa-discord',
+            'url' => 'https://discord.gg/DrKNGQn',
+            'topnav' => true
+        ],
+        [
+            'text' => 'support_forum',
+            'icon' => 'fas fa-fw fa-comments',
+            'url' => 'https://rusty.info/',
+            'topnav' => true
+        ]
+    ],
 
     /*
     |--------------------------------------------------------------------------
