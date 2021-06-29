@@ -49,7 +49,57 @@ class AppServiceProvider extends ServiceProvider
                     'text' => 'tool_pwgen_title',
                     'icon' => 'fas fa-fw fa-key',
                     'url' => '/tools/pwgen'
-                ]
+                ],
+                [
+                    'text' => 'tool_brwc_title',
+                    'icon' => 'fas fa-fw fa-dashboard',
+                    'url' => '/tools/brwc'
+                ],
+                [
+                    'text' => 'tool_earnpscalc_title',
+                    'icon' => 'fas fa-fw fa-time',
+                    'url' => '/tools/earnpscalc'
+                ],
+                [
+                    'text' => 'tool_enigma_title',
+                    'icon' => 'fas fa-fw fa-link',
+                    'url' => '/tools/enigma'
+                ],
+                [
+                    'text' => 'tool_morse_title',
+                    'icon' => 'fas fa-fw fa-link',
+                    'url' => '/tools/morse'
+                ],
+                [
+                    'text' => 'tool_vigenere_title',
+                    'icon' => 'fas fa-fw fa-link',
+                    'url' => '/tools/vigenere'
+                ],
+                [
+                    'text' => 'tool_secompcalc_title',
+                    'icon' => 'fas fa-fw fa-calculator',
+                    'url' => '/tools/secompcalc'
+                ],
+                [
+                    'text' => 'tool_stcolids_title',
+                    'icon' => 'fas fa-fw fa-list',
+                    'url' => '/tools/stcolids'
+                ],
+                [
+                    'text' => 'tool_strrev_title',
+                    'icon' => 'fas fa-fw fa-reverse',
+                    'url' => '/tools/strrev'
+                ],
+                [
+                    'text' => 'tool_teammix_title',
+                    'icon' => 'fas fa-fw fa-shuffle',
+                    'url' => '/tools/teammix'
+                ],
+                [
+                    'text' => 'tool_whatismyip_title',
+                    'icon' => 'fas fa-fw fa-question',
+                    'url' => '/tools/whatismyip'
+                ],
             ]);
             //ACP Stuff
             $uid = Auth::id();
