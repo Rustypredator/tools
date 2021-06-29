@@ -45,6 +45,8 @@ class ToolController extends Controller
     }
 
     public function ajaxIndex(Request $request, $tool) {
+        var_dump($request);
+        var_dump($tool);
         switch ($tool) {
             case 'pwgen':
                 $passwords = $this->generateRandomString($request->input('pwgen_uc'), $request->input('pwgen_lc'), $request->input('pwgen_sc'), $request->input('pwgen_nr'), $request->input('pwgen_length'), $request->input('pwgen_amount'));

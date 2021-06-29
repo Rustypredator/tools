@@ -24,8 +24,8 @@
                 </div>
                 <div class="form-group">
                     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                        <input type="checkbox" class="custom-control-input" id="pwgen_sw_num" @if($pwgen_nr) checked @endif>
-                        <label class="custom-control-label" for="pwgen_sw_num">Include Numbers?</label>
+                        <input type="checkbox" class="custom-control-input" id="pwgen_sw_nr" @if($pwgen_nr) checked @endif>
+                        <label class="custom-control-label" for="pwgen_sw_nr">Include Numbers?</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -41,8 +41,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="pwgen_sw_amount">Select how many Passwords you want</label>
-                    <select name="pwgen_sw_amount" id="pwgen_sw_amount" class="custom-select">
+                    <label for="pwgen_amount">Select how many Passwords you want</label>
+                    <select name="pwgen_amount" id="pwgen_amount" class="custom-select">
                         <option value="1" @if ($pwgen_amount == 1) selected @endif>1</option>
                         <option value="5" @if ($pwgen_amount == 5) selected @endif>5</option>
                         <option value="10" @if ($pwgen_amount == 10) selected @endif>10</option>
@@ -89,8 +89,8 @@
             var lc = $('#pwgen_sw_lc').val()
             var nr = $('#pwgen_sw_nr').val()
             var sc = $('#pwgen_sw_sc').val()
-            var length = $('#pwgen_sw_length').val()
-            var amount = $('#pwgen_sw_amount').val()
+            var length = $('#pwgen_length').val()
+            var amount = $('#pwgen_amount').val()
             requestdata = "_token=" + '{{csrf_token()}}' + "&uc=" + uc + "&lc=" + lc + "&nr=" + nr + "&sc=" + sc + "&length=" + length + "&amount=" + amount
             $.ajax
             (
