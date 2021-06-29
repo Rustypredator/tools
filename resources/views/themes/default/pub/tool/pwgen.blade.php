@@ -102,12 +102,7 @@
                     beforeSend: function() {},
                     success: function(data) {
                         data = JSON.parse(data)
-                        if(success) {
-                            alert("pswds")
-                            console.log(data)
-                        } else {
-                            alert("error")
-                        }
+                        console.log(data)
                     }
                 }
             )
