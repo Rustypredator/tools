@@ -1,19 +1,18 @@
 <?php
 
 return [
-
-    'main_navigation'               => 'MAIN NAVIGATION',
-    'blog'                          => 'Blog',
-    'pages'                         => 'Pages',
-    'account_settings'              => 'ACCOUNT SETTINGS',
-    'profile'                       => 'Profile',
-    'change_password'               => 'Change Password',
-    'multilevel'                    => 'Multi Level',
-    'level_one'                     => 'Level 1',
-    'level_two'                     => 'Level 2',
-    'level_three'                   => 'Level 3',
-    'labels'                        => 'LABELS',
-    'important'                     => 'Important',
-    'warning'                       => 'Warning',
-    'information'                   => 'Information',
+    'support_discord' => 'Discord',
+    'support_forum' => 'Forum',
+    'tools' => 'Tools',
+    'tool_pwgen_title' => 'Password-Generator',
+    'tool_brwc_title' => 'BigReactor Webcontrol',
+    'tool_earnpscalc_title' => 'Earnings/s Calculator',
+    'tool_enigma_title' => 'Enigma Encryption',
+    'tool_morse_title' => 'Morse Translator',
+    'tool_vigenere_title' => 'Vigénere Cipher',
+    'tool_secompcalc_title' => 'SpaceEngineers Component Calculator',
+    'tool_stcolids_title' => 'Steam Collection ID Grabber',
+    'tool_strrev_title' => 'String Reverser',
+    'tool_teammix_title' => 'Team Mixer',
+    'tool_whatismyip_title' => 'What is my IP'
 ];
