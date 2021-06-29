@@ -10,50 +10,48 @@
                 </div>
             </div>
             <div class="card-body">
-                <form class="form" action="" method="post">
-                    <div class="form-group">
-                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_uc" @if($pwgen_uc) checked @endif>
-                            <label class="custom-control-label" for="pwgen_sw_uc">Include Uppercase Chars?</label>
-                        </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                        <input type="checkbox" class="custom-control-input" id="pwgen_sw_uc" @if($pwgen_uc) checked @endif>
+                        <label class="custom-control-label" for="pwgen_sw_uc">Include Uppercase Chars?</label>
                     </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_lc" @if($pwgen_lc) checked @endif>
-                            <label class="custom-control-label" for="pwgen_sw_lc">Include Lowercase Chars?</label>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                        <input type="checkbox" class="custom-control-input" id="pwgen_sw_lc" @if($pwgen_lc) checked @endif>
+                        <label class="custom-control-label" for="pwgen_sw_lc">Include Lowercase Chars?</label>
                     </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_num" @if($pwgen_nr) checked @endif>
-                            <label class="custom-control-label" for="pwgen_sw_num">Include Numbers?</label>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                        <input type="checkbox" class="custom-control-input" id="pwgen_sw_num" @if($pwgen_nr) checked @endif>
+                        <label class="custom-control-label" for="pwgen_sw_num">Include Numbers?</label>
                     </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                            <input type="checkbox" class="custom-control-input" id="pwgen_sw_sc" @if($pwgen_sc) checked @endif>
-                            <label class="custom-control-label" for="pwgen_sw_sc">Include Special Chars?</label>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                        <input type="checkbox" class="custom-control-input" id="pwgen_sw_sc" @if($pwgen_sc) checked @endif>
+                        <label class="custom-control-label" for="pwgen_sw_sc">Include Special Chars?</label>
                     </div>
-                    <div class="form-group">
-                        <div class="custom-control">
-                            <input type="numeric" class="form-control" id="pwgen_length" value="{{$pwgen_length}}"/>
-                            <label for="pwgen_length">Define the Length of your Password(s)</label>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control">
+                        <input type="numeric" class="form-control" id="pwgen_length" value="{{$pwgen_length}}"/>
+                        <label for="pwgen_length">Define the Length of your Password(s)</label>
                     </div>
-                    <div class="form-group">
-                        <label for="pwgen_sw_amount">Select how many Passwords you want</label>
-                        <select name="pwgen_sw_amount" id="pwgen_sw_amount" class="custom-select">
-                            <option value="1" @if ($pwgen_amount == 1) selected @endif>1</option>
-                            <option value="5" @if ($pwgen_amount == 5) selected @endif>5</option>
-                            <option value="10" @if ($pwgen_amount == 10) selected @endif>10</option>
-                            <option value="15" @if ($pwgen_amount == 15) selected @endif>15</option>
-                            <option value="50" @if ($pwgen_amount == 50) selected @endif>50</option>
-                            <option value="100" @if ($pwgen_amount == 100) selected @endif>100</option>
-                        </select>
-                    </div>
-                    <button onclick="getPassword()" class="btn btn-success btn-block">Generate Passwords</button>
-                </form>
+                </div>
+                <div class="form-group">
+                    <label for="pwgen_sw_amount">Select how many Passwords you want</label>
+                    <select name="pwgen_sw_amount" id="pwgen_sw_amount" class="custom-select">
+                        <option value="1" @if ($pwgen_amount == 1) selected @endif>1</option>
+                        <option value="5" @if ($pwgen_amount == 5) selected @endif>5</option>
+                        <option value="10" @if ($pwgen_amount == 10) selected @endif>10</option>
+                        <option value="15" @if ($pwgen_amount == 15) selected @endif>15</option>
+                        <option value="50" @if ($pwgen_amount == 50) selected @endif>50</option>
+                        <option value="100" @if ($pwgen_amount == 100) selected @endif>100</option>
+                    </select>
+                </div>
+                <button onclick="getPassword()" class="btn btn-success btn-block">Generate Passwords</button>
             </div>
         </div>
         <div class="card bg-secondary col-12">
