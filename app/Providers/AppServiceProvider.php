@@ -52,12 +52,12 @@ class AppServiceProvider extends ServiceProvider
                 ],
                 [
                     'text' => 'tool_brwc_title',
-                    'icon' => 'fas fa-fw fa-dashboard',
+                    'icon' => 'fas fa-fw fa-chart-line',
                     'url' => '/tools/brwc'
                 ],
                 [
                     'text' => 'tool_earnpscalc_title',
-                    'icon' => 'fas fa-fw fa-time',
+                    'icon' => 'fas fa-fw fa-stopwatch',
                     'url' => '/tools/earnpscalc'
                 ],
                 [
@@ -87,12 +87,12 @@ class AppServiceProvider extends ServiceProvider
                 ],
                 [
                     'text' => 'tool_strrev_title',
-                    'icon' => 'fas fa-fw fa-reverse',
+                    'icon' => 'fas fa-fw fa-history',
                     'url' => '/tools/strrev'
                 ],
                 [
                     'text' => 'tool_teammix_title',
-                    'icon' => 'fas fa-fw fa-shuffle',
+                    'icon' => 'fas fa-fw fa-random',
                     'url' => '/tools/teammix'
                 ],
                 [
