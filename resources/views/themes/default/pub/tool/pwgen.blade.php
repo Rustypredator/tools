@@ -51,7 +51,7 @@
                         <option value="100" @if ($pwgen_amount == 100) selected @endif>100</option>
                     </select>
                 </div>
-                <button onclick="getPassword()" class="btn btn-success btn-block">Generate Passwords</button>
+                <button onclick="genPassword()" class="btn btn-success btn-block">Generate Passwords</button>
             </div>
         </div>
         <div class="card bg-secondary col-12">
@@ -91,7 +91,7 @@
             var sc = $('#pwgen_sw_sc').val()
             var length = $('#pwgen_sw_length').val()
             var amount = $('#pwgen_sw_amount').val()
-            requestdata = "_token=" + '{{csrf_token()}}' + "&uc=" + pwgen_sw_uc + "&lc=" + pwgen_sw_lc + "&nr=" + pwgen_sw_nr + "&sc=" + pwgen_sw_sc + "&length=" + pwgen_sw_length + "&amount=" + pwgen_sw_amount
+            requestdata = "_token=" + '{{csrf_token()}}' + "&uc=" + uc + "&lc=" + lc + "&nr=" + nr + "&sc=" + sc + "&length=" + length + "&amount=" + amount
             $.ajax
             (
                 {
