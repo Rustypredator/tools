@@ -30,9 +30,9 @@ class WhatismyipController extends ToolsController
             switch ($action) {
                 case 'raw':
                     $ip = $request->ip();
-                    if ($request->hasHeader('HTTP_X_REAL_IP')) {
+                    if ($request->hasHeader('HTTP_X_REAL_IP') && !empty($request->header('HTTP_X_REAL_IP'))) {
                         $ip = $request->header('HTTP_X_REAL_IP');
-                    } elseif ($request->hasHeader('HTTP_X_FORWARDED_FOR')) {
+                    } elseif ($request->hasHeader('HTTP_X_FORWARDED_FOR')  && !empty($request->header('HTTP_X_FORWARDED_FOR'))) {
                         $ip = $request->header('HTTP_X_FORWARDED_FOR');
                     } else {
                         $ip = $request->header('REMOTE_ADDR');
