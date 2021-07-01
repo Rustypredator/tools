@@ -27,6 +27,7 @@ class PwgenController extends ToolsController
         if(is_null($action)) {
             return response()->json(['tool' => 'Password Generator', 'short' => 'pwgen', 'description' => 'it\'s a Password Generator.', 'version' => '0.0.1']);
         } else {
+            echo "controller";
             var_dump($action);
             var_dump($request);
             exit();
