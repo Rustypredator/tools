@@ -22,6 +22,8 @@ return [
      */
     'version' => env('APP_VERSION', '0.0.1'),
 
+    'proxies' => env('TRUSTED_PROXIES', '*'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
