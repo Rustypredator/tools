@@ -107,8 +107,9 @@
                     cache: false,
                     beforeSend: function() {},
                     success: function(data) {
-                        //data = JSON.parse(data)
                         console.log(data)
+                        passwords = JSON.parse(data)
+                        console.log(passwords)
                     }
                 }
             )
