@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::any('/', [App\Http\Controllers\ApiController::class, 'info']);
+
+//Dynamic Tools Routes:
+Route::get('v1/tools/{tool}/{action?}/{params?}', function($tool, $action = '', $params = '') {
+    $app = app();
+    $controller = $app->make('\App\Http\Controllers\Api\Tools\\'.ucfirst($tool).'Controller');
+    return $controller->callAction('index', $action, $params);
+});
