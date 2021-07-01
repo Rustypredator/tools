@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Config;
 
 class ApiController extends Controller
@@ -24,7 +25,6 @@ class ApiController extends Controller
      */
     public function info()
     {
-        header('Content-Type: application/json');
-        return json_encode(['api' => Config::get('app.name'), 'version' => Config::get('app.version')]);
+        return response()->json(['api' => Config::get('app.name'), 'version' => Config::get('app.version')]);
     }
 }
