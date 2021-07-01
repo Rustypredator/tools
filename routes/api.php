@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::any('/', function () {return json_encode(['api' => Config::get('app.name'), 'version' => Config::get('app.version')]);});
+Route::any('/', [App\Http\Controllers\ApiController::class, 'info']);
