@@ -25,6 +25,6 @@ Route::match(['get', 'post'], '/tools/{tool}/{action?}/{params?}', function(Requ
     $app = app();
     $controller = $app->make('\App\Http\Controllers\Api\Tools\\'.ucfirst($tool).'Controller');
     var_dump($tool);
-    var_dump($request);
+    var_dump($_POST);
     //return $controller->callAction('index', [$request, $action, $params]);
 });
