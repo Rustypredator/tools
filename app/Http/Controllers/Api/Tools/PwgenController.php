@@ -30,34 +30,25 @@ class PwgenController extends ToolsController
             exit();
             switch ($action) {
                 case 'generatePasswords':
-                    $this->generatePasswords($request);
+                    //get Inputs:
+                    $uc = $request->input('uc');
+                    $lc = $request->input('lc');
+                    $nr = $request->input('nr');
+                    $sc = $request->input('sc');
+                    $length = $request->input('length');
+                    $amount = $request->input('amount');
+                    //Validate
+                    if(!$uc && !$lc && !$nr && !$sc) {
+                        return response()->json(['success' => false, 'message' => 'You have to at least turn on one option.']);
+                    }
+                    $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
+                    return response()->json(['generatedPasswords' => $passwords]);
                     break;
                 default:
                     return response()->json([]);
                     break;
             }
         }
-    }
-
-    private function generatePasswords(Request $request) {
-        echo "function";
-        var_dump($request->input('sc'));
-        exit;
-        //get Inputs:
-        $uc = $request->input('uc');
-        $lc = $request->input('lc');
-        $nr = $request->input('nr');
-        $sc = $request->input('sc');
-        $length = $request->input('length');
-        $amount = $request->input('amount');
-        //Validate
-        if(!$uc && !$lc && !$nr && !$sc) {
-            return response()->json(['success' => false, 'message' => 'You have to at least turn on one option.']);
-        }
-        //Set cookies:
-        //Generate Passwords:
-        $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
-        return response()->json(['generatedPasswords' => $passwords]);
     }
 
     /**
