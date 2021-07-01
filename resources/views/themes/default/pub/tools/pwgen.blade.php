@@ -79,10 +79,19 @@
     <script>
         function genPassword() {
             template = '<tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>';
-            var uc = $('#pwgen_sw_uc').checked()
-            var lc = $('#pwgen_sw_lc').checked()
-            var nr = $('#pwgen_sw_nr').checked()
-            var sc = $('#pwgen_sw_sc').checked()
+            var uc, lc, nr, sc = false;
+            if($('#pwgen_sw_uc').is(":checked")) {
+                uc = true;
+            }
+            if($('#pwgen_sw_lc').is(":checked")) {
+                lc = true;
+            }
+            if($('#pwgen_sw_nr').is(":checked")) {
+                nr = true;
+            }
+            if($('#pwgen_sw_sc').is(":checked")) {
+                sc = true;
+            }
             var length = $('#pwgen_length').val()
             var amount = $('#pwgen_amount').val()
             requestdata = "_token=" + '{{csrf_token()}}' + "&uc=" + uc + "&lc=" + lc + "&nr=" + nr + "&sc=" + sc + "&length=" + length + "&amount=" + amount
