@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\Tools;
 
 use App\Http\Controllers\Api\ToolsController;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Request;
 
 class PwgenController extends ToolsController
 {
@@ -21,21 +23,34 @@ class PwgenController extends ToolsController
      *
      * @return void
      */
-    public function index($action = null, $params = null)
+    public function index(Request $request, $action = null)
     {
         if(is_null($action)) {
             return response()->json(['tool' => 'Password Generator', 'short' => 'pwgen', 'description' => 'it\'s a Password Generator.', 'version' => '0.0.1']);
         } else {
             switch ($action) {
-                case '':
-                    # code...
+                case 'generatePasswords':
+                    $this->generatePasswords($request);
                     break;
-
                 default:
-                    # code...
+                    return response()->json([]);
                     break;
             }
         }
+    }
+
+    private function generatePasswords(Request $request) {
+        //get Inputs:
+        $uc = $request->input('uc');
+        $lc = $request->input('lc');
+        $nr = $request->input('nr');
+        $sc = $request->input('sc');
+        $length = $request->input('length');
+        $amount = $request->input('amount');
+        //Set cookies:
+        //Generate Passwords:
+        $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
+        return response()->json(['generatedPasswords' => $passwords]);
     }
 
     /**
