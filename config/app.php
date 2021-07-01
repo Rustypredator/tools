@@ -15,6 +15,13 @@ return [
 
     'name' => env('APP_NAME', 'Rustys-Tools'),
 
+    /**
+     * Application Version
+     *
+     * Shows version of application.
+     */
+    'version' => env('APP_VERSION', '0.0.1'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
