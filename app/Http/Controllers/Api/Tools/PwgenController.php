@@ -57,7 +57,8 @@ class PwgenController extends ToolsController
      */
     private function generateRandomString($uppercase, $lowercase, $specialchars, $numbers, $length, $batchsize)
     {
-        echo "Generating $batchsize passwords a $length chars with $uppercase, $lowercase, $specialchars, $numbers";
+        return "Generating $batchsize passwords a $length chars with $uppercase, $lowercase, $specialchars, $numbers";
+        exit;
         $strings = array();
         for ($i = 0; $i<$batchsize; $i++) {
             //Make random string each time
