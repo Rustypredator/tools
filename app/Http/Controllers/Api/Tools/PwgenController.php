@@ -37,11 +37,6 @@ class PwgenController extends ToolsController
                     $sc = $request->input('sc');
                     $length = $request->input('length');
                     $amount = $request->input('amount');
-                    //Validate
-                    if(!$uc && !$lc && !$nr && !$sc) {
-                        echo false;
-                        return response()->json(['success' => false, 'message' => 'You have to at least turn on one option.']);
-                    }
                     $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
                     var_dump($passwords);
                     //return response()->json(['generatedPasswords' => $passwords]);
