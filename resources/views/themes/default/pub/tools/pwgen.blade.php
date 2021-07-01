@@ -79,7 +79,10 @@
     <script>
         function genPassword() {
             template = '<tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>';
-            var uc, lc, nr, sc = false;
+            uc = false;
+            lc = false;
+            nr = false;
+            sc = false;
             if($('#pwgen_sw_uc').is(":checked")) {
                 uc = true;
             }
