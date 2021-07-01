@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Api\Tools;
 
 use App\Http\Controllers\Api\ToolsController;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class PwgenController extends ToolsController
 {
