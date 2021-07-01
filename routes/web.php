@@ -1,6 +1,5 @@
 <?php
 
-use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +20,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/tools/{tool}/{toolSubsite?}', [App\Http\Controllers\Pub\ToolController::class, 'index']);
 //Dynamic Tools Routes:
 Route::get('/tools/{tool}', function($tool) {
     if (view()->exists('themes.default.pub.tools.'.$tool)) {
