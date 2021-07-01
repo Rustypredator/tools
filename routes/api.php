@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::any('/', [App\Http\Controllers\ApiController::class, 'info']);
 
 //Dynamic Tools Routes:
-Route::get('/tools/{tool}/{action?}/{params?}', function($tool, $action = '', $params = '') {
+Route::match(['get', 'post'], '/tools/{tool}/{action?}/{params?}', function($tool, $action = '', $params = '') {
     $app = app();
     $controller = $app->make('\App\Http\Controllers\Api\Tools\\'.ucfirst($tool).'Controller');
     return $controller->callAction('index', [$action, $params]);
