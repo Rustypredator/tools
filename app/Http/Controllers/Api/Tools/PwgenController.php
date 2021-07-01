@@ -29,7 +29,7 @@ class PwgenController extends ToolsController
         } else {
             echo "controller";
             var_dump($action);
-            var_dump($_POST);
+            var_dump($request->input('sc'));
             exit();
             switch ($action) {
                 case 'generatePasswords':
