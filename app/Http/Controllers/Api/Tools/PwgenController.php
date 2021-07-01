@@ -24,11 +24,14 @@ class PwgenController extends ToolsController
      */
     public function index(Request $request, $action = null)
     {
+        echo "index";
         if(is_null($action) || empty($action) || $action == '') {
             return response()->json(['tool' => 'Password Generator', 'short' => 'pwgen', 'description' => 'it\'s a Password Generator.', 'version' => '0.0.1']);
         } else {
+            echo "action is: " . $action;
             switch ($action) {
                 case 'generatePasswords':
+                    echo "action generatePasswords executing...";
                     //get Inputs:
                     $uc = (bool)$request->input('uc');
                     $lc = (bool)$request->input('lc');
@@ -36,6 +39,7 @@ class PwgenController extends ToolsController
                     $sc = (bool)$request->input('sc');
                     $length = (int)$request->input('length');
                     $amount = (int)$request->input('amount');
+                    echo "Generating $amount passwords a $length chars with $uc, $lc, $sc, $nr";
                     $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
                     var_dump($passwords);
                     //return response()->json(['generatedPasswords' => $passwords]);
