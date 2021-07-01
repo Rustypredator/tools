@@ -24,5 +24,7 @@ Route::any('/', [App\Http\Controllers\ApiController::class, 'info']);
 Route::match(['get', 'post'], '/tools/{tool}/{action?}/{params?}', function(Request $request, $tool, $action = '', $params = '') {
     $app = app();
     $controller = $app->make('\App\Http\Controllers\Api\Tools\\'.ucfirst($tool).'Controller');
-    return $controller->callAction('index', [$request, $action, $params]);
+    var_dump($tool);
+    var_dump($request);
+    //return $controller->callAction('index', [$request, $action, $params]);
 });
