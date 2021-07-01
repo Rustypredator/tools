@@ -13,6 +13,6 @@ class ToolsController extends Controller
      */
     public function __construct()
     {
-        //Public api, no authentication.
+        //
     }
 }
