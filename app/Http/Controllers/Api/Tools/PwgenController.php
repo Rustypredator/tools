@@ -37,11 +37,10 @@ class PwgenController extends ToolsController
                     $length = (int)$request->input('length');
                     $amount = (int)$request->input('amount');
                     $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
-                    //return response()->json(['generatedPasswords' => $passwords]);
                     echo json_encode(['generatedPasswords' => $passwords]);
                     break;
                 default:
-                    return response()->json([]);
+                    echo json_encode([]);
                     break;
             }
         }
@@ -55,8 +54,16 @@ class PwgenController extends ToolsController
      * @param  int $length           commands the length of the string
      * @return array                 the generated string(s)
      */
-    private function generateRandomString($uppercase, $lowercase, $specialchars, $numbers, $length, $batchsize)
+    private function generateRandomString($uppercase = false, $lowercase = false, $specialchars = false, $numbers = false, $length = 8, $batchsize = 1)
     {
+        echo "UC: " . (string)$uppercase;
+        echo "LC: " . (string)$lowercase;
+        echo "SC: " . (string)$specialchars;
+        echo "NR: " . (string)$numbers;
+        if(!$uppercase && !$lowercase && !$specialchars && !$numbers) {
+            return false;
+        }
+
         $strings = array();
         for ($i = 0; $i<$batchsize; $i++) {
             //Make random string each time
