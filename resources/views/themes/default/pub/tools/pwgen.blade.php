@@ -1,5 +1,7 @@
 @extends('themes.default.pub.master')
 
+@section('plugins.bsSlider', true)
+
 @section('content')
     <div class="row">
         <div class="card bg-gradient-warning col-12" style="margin-top:25px;">
@@ -115,7 +117,7 @@
                             $('#generatedPasswordsTable').innerHtml('<tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>');
                         } else {
                             passwords.forEach(password => {
-                                $('#generatedPasswordsTable').append('<tr><td>'+password+'</td><td><button class="btn btn-primary btn-sm" onclick="copyToClipboard('+password+')"><i class="fas fa-clipboard"></i></button></td></tr>');
+                                $('#generatedPasswordsTable').append('<tr><td style="overlay:hidden"><code>'+password+'</code></td><td><button class="btn btn-primary btn-sm" onclick="copyToClipboard('+password+')"><i class="fas fa-clipboard"></i></button></td></tr>');
                             });
                         }
                     }
