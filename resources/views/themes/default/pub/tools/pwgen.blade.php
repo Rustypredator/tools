@@ -65,8 +65,8 @@
             </div>
             <table class="panel-body table table-hover table-striped">
                 <thead>
-                    <th></th>
                     <th>Password</th>
+                    <th>Actions</th>
                 </thead>
                 <tbody id="generatedPasswordsTable">
                 </tbody>
@@ -115,12 +115,19 @@
                             $('#generatedPasswordsTable').innerHtml('<tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>');
                         } else {
                             passwords.forEach(password => {
-                                $('#generatedPasswordsTable').append('<tr><td>'+password+'</td><td></td></tr>');
+                                $('#generatedPasswordsTable').append('<tr><td>'+password+'</td><td><button class="btn btn-primary" onclick="copyToClipboard('+password+')"><i class="fas fa-clipboard"></i></button></td></tr>');
                             });
                         }
                     }
                 }
             )
+        }
+        function copyToClipboard(text) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(text).select();
+            document.execCommand("copy");
+            $temp.remove();
         }
     </script>
 @stop
