@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Tools;
 
 use App\Http\Controllers\Api\ToolsController;
-use Symfony\Component\HttpFoundation\Cookie;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class PwgenController extends ToolsController
@@ -38,11 +38,14 @@ class PwgenController extends ToolsController
                     $length = (int)$request->input('length');
                     $amount = (int)$request->input('amount');
                     $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
-                    setcookie('pwgen_uc', ($uc) ? 'on':'off', 10080);
-                    setcookie('pwgen_lc', ($lc) ? 'on':'off', 10080);
-                    setcookie('pwgen_sc', ($sc) ? 'on':'off', 10080);
-                    setcookie('pwgen_nr', ($nr) ? 'on':'off', 10080);
-                    echo json_encode(['generatedPasswords' => $passwords]);
+                    $response = new Response();
+                    $response->json(['generatedPasswords' => $passwords]);
+                    $response->withCookie(cookie('pwgen_uc', ($uc) ? 'on':'off', 10080));
+                    $response->withCookie(cookie('pwgen_lc', ($lc) ? 'on':'off', 10080));
+                    $response->withCookie(cookie('pwgen_sc', ($sc) ? 'on':'off', 10080));
+                    $response->withCookie(cookie('pwgen_nr', ($nr) ? 'on':'off', 10080));
+                    //echo json_encode(['generatedPasswords' => $passwords]);
+                    return $response;
                     break;
                 default:
                     echo json_encode([]);
