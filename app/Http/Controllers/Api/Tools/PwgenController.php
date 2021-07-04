@@ -37,7 +37,8 @@ class PwgenController extends ToolsController
                     $length = (int)$request->input('length');
                     $amount = (int)$request->input('amount');
                     $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
-                    return response()->json(['generatedPasswords' => $passwords]);
+                    //return response()->json(['generatedPasswords' => $passwords]);
+                    echo json_encode(['generatedPasswords' => $passwords]);
                     break;
                 default:
                     return response()->json([]);
