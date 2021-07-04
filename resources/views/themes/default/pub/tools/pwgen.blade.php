@@ -37,10 +37,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="custom-control">
-                        <input type="numeric" class="form-control" id="pwgen_length" value="{{Cookie::get('pwgen_length') ?? 8}}"/>
-                        <label for="pwgen_length">Define the Length of your Password(s)</label>
-                    </div>
+                    <input type="numeric" class="form-control" id="pwgen_length" value="{{Cookie::get('pwgen_length') ?? 8}}"/>
+                    <label for="pwgen_length">Define the Length of your Password(s)</label>
                 </div>
                 <div class="form-group">
                     <label for="pwgen_amount">Select how many Passwords you want</label>
