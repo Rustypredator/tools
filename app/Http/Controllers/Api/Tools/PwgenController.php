@@ -38,10 +38,10 @@ class PwgenController extends ToolsController
                     $length = (int)$request->input('length');
                     $amount = (int)$request->input('amount');
                     $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
-                    setcookie('pwgen_uc', $uc, 10080);
-                    setcookie('pwgen_lc', $lc, 10080);
-                    setcookie('pwgen_sc', $sc, 10080);
-                    setcookie('pwgen_nr', $nr, 10080);
+                    setcookie('pwgen_uc', ($uc) ? 'on':'off', 10080);
+                    setcookie('pwgen_lc', ($lc) ? 'on':'off', 10080);
+                    setcookie('pwgen_sc', ($sc) ? 'on':'off', 10080);
+                    setcookie('pwgen_nr', ($nr) ? 'on':'off', 10080);
                     echo json_encode(['generatedPasswords' => $passwords]);
                     break;
                 default:
