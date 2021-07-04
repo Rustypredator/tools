@@ -115,7 +115,7 @@
                             $('#generatedPasswordsTable').innerHtml('<tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>');
                         } else {
                             passwords.forEach(password => {
-                                $('#generatedPasswordsTable').append('<tr><td>'+password+'</td><td><button class="btn btn-primary" onclick="copyToClipboard('+password+')"><i class="fas fa-clipboard"></i></button></td></tr>');
+                                $('#generatedPasswordsTable').append('<tr><td>'+password+'</td><td><button class="btn btn-primary btn-sm" onclick="copyToClipboard('+password+')"><i class="fas fa-clipboard"></i></button></td></tr>');
                             });
                         }
                     }
@@ -128,6 +128,7 @@
             $temp.val(text).select();
             document.execCommand("copy");
             $temp.remove();
+            toastr["success"]("Copy", "Copied " + text + " to your clipboard.");
         }
     </script>
 @stop
