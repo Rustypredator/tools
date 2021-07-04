@@ -57,7 +57,7 @@ class PwgenController extends ToolsController
     private function generateRandomString($uppercase = false, $lowercase = false, $specialchars = false, $numbers = false, $length = 8, $batchsize = 1)
     {
         if(!$uppercase && !$lowercase && !$specialchars && !$numbers) {
-            return false;
+            return [];
         }
 
         $strings = array();

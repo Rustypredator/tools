@@ -109,7 +109,13 @@
                     success: function(data) {
                         console.log(data)
                         passwords = JSON.parse(data)
-                        console.log(passwords)
+                        if(passwords.length < 1) {
+                            $('#generatedPasswordsTable').innerHtml('<tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>');
+                        } else {
+                            passwords.array.forEach(password => {
+                                $('#generatedPasswordsTable').append('<tr><td>'+password+'</td><td></td></tr>');
+                            });
+                        }
                     }
                 }
             )
