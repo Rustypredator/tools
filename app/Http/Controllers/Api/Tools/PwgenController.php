@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api\Tools;
 
 use App\Http\Controllers\Api\ToolsController;
-use Illuminate\Http\Response;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class PwgenController extends ToolsController
 {
@@ -38,12 +39,12 @@ class PwgenController extends ToolsController
                     $length = (int)$request->input('length');
                     $amount = (int)$request->input('amount');
                     $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
+                    Cookie::queue('pwgen_uc', ($uc) ? 'on':'off', 10080);
+                    Cookie::queue('pwgen_lc', ($lc) ? 'on':'off', 10080);
+                    Cookie::queue('pwgen_sc', ($sc) ? 'on':'off', 10080);
+                    Cookie::queue('pwgen_nr', ($nr) ? 'on':'off', 10080);
                     $response = new Response();
                     $response->json(['generatedPasswords' => $passwords]);
-                    $response->withCookie(cookie('pwgen_uc', ($uc) ? 'on':'off', 10080));
-                    $response->withCookie(cookie('pwgen_lc', ($lc) ? 'on':'off', 10080));
-                    $response->withCookie(cookie('pwgen_sc', ($sc) ? 'on':'off', 10080));
-                    $response->withCookie(cookie('pwgen_nr', ($nr) ? 'on':'off', 10080));
                     //echo json_encode(['generatedPasswords' => $passwords]);
                     return $response;
                     break;
