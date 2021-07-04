@@ -30,10 +30,10 @@ class PwgenController extends ToolsController
             switch ($action) {
                 case 'generatePasswords':
                     //get Inputs:
-                    $uc = $request->input('uc');
-                    $lc = $request->input('lc');
-                    $nr = $request->input('nr');
-                    $sc = $request->input('sc');
+                    $uc = ($request->input('uc') === 'true') ? true:false;
+                    $lc = ($request->input('lc') === 'true') ? true:false;
+                    $nr = ($request->input('nr') === 'true') ? true:false;
+                    $sc = ($request->input('sc') === 'true') ? true:false;
                     $length = (int)$request->input('length');
                     $amount = (int)$request->input('amount');
                     $passwords = $this->generateRandomString($uc, $lc, $sc, $nr, $length, $amount);
