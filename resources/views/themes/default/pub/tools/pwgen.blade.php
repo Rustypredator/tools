@@ -117,7 +117,7 @@
                             $('#generatedPasswordsTable').innerHtml('<tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>');
                         } else {
                             passwords.forEach(password => {
-                                $('#generatedPasswordsTable').append('<tr><td style="overflow:hidden">'+password+'</td><td><button class="btn btn-primary btn-sm" onclick="copyToClipboard('+password+')"><i class="fas fa-clipboard"></i></button></td></tr>');
+                                $('#generatedPasswordsTable').append('<tr><td style="word-break:break-all;">'+password+'</td><td><button class="btn btn-primary btn-sm" onclick="copyToClipboard('+password+')"><i class="fas fa-clipboard"></i></button></td></tr>');
                             });
                         }
                     }
