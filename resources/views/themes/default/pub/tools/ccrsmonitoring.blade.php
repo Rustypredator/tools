@@ -35,8 +35,8 @@
                 beforeSend: function() {},
                 success: function(data) {
                     console.log(data)
-                    response = JSON.parse(data)
-                    passwords = response.generatedPasswords[0];
+                    //response = JSON.parse(data)
+                    passwords = data.generatedPasswords[0];
                     $('#ccrsm_key').val(passwords);
                 }
             }
