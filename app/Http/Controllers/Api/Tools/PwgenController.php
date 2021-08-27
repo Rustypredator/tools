@@ -43,10 +43,10 @@ class PwgenController extends ToolsController
                     Cookie::queue('pwgen_lc', ($lc) ? 'on':'off', 10080);
                     Cookie::queue('pwgen_sc', ($sc) ? 'on':'off', 10080);
                     Cookie::queue('pwgen_nr', ($nr) ? 'on':'off', 10080);
-                    $response = new Response();
-                    $response->json(['generatedPasswords' => $passwords]);
+                    //$response = new Response();
+                    return response()->json(['generatedPasswords' => $passwords]);
                     //echo json_encode(['generatedPasswords' => $passwords]);
-                    return $response;
+                    //return $response;
                     break;
                 default:
                     echo json_encode([]);
