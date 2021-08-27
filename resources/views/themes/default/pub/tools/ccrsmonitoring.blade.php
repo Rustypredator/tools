@@ -14,7 +14,7 @@
                     If you already have a key, paste it below to access your settings.<br/>
                     otherwise click the button to create a new one.
                 </p>
-                <button>Generate new Key</button>
+                <button onclick="genkey()">Generate new Key</button>
                 <input type="text" id="ccrsm_key" name="ccrsm_key" value=""/>
             </div>
         </div>
@@ -22,4 +22,25 @@
 @stop
 
 @section('client-js')
+<script>
+    function genkey() {
+        requestdata = "_token=" + '{{csrf_token()}}' + "&uc=true&lc=true&nr=true&sc=true&length=32&amount=1"
+        $.ajax
+        (
+            {
+                type: 'POST',
+                url: '/api/tools/pwgen/generatePasswords',
+                data: requestdata,
+                cache: false,
+                beforeSend: function() {},
+                success: function(data) {
+                    console.log(data)
+                    response = JSON.parse(data)
+                    passwords = response.generatedPasswords[0];
+                    $('#ccrsm_key').val(passwords);
+                }
+            }
+        )
+    }
+</script>
 @stop
