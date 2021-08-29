@@ -12,16 +12,24 @@
             <div class="card-body">
                 <p>
                     If you already have a key, paste it below to access your settings.<br/>
-                    otherwise click the button to create a new one.
+                    otherwise click the button to create a new one.<br/>
+                    <br/>
+                    To Activate the monitoring, install <a>this</a> program on your ComputerCraft computer and put the key in the first line. Then start the Program of course.
                 </p>
-                <button onclick="genkey()">Generate new Key</button>
-                <input type="text" id="ccrsm_key" name="ccrsm_key" value=""/>
+                <button class="btn btn-sm btn-danger" onclick="genkey()">Generate new Key</button>
+                <input class="form-control" type="text" id="ccrsm_key" name="ccrsm_key" value=""/>
             </div>
         </div>
     </div>
 @stop
 
 @section('client-js')
+<script>
+    $('#ccrsm_key').on("change", function() {
+        //Load settings or something
+        console.log("stuff")
+    });
+</script>
 <script>
     function genkey() {
         requestdata = "_token=" + '{{csrf_token()}}' + "&uc=true&lc=true&nr=true&sc=true&length=32&amount=1"
