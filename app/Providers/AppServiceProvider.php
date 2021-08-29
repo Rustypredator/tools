@@ -52,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
                 ],
                 [
                     'text' => 'Minecraft',
-                    'icon' => 'fab fa-fw fa-cubes',
+                    'icon' => 'fas fa-fw fa-cubes',
                     'submenu' => [
                         [
                             'text' => 'tool_brwc_title',
@@ -66,26 +66,31 @@ class AppServiceProvider extends ServiceProvider
                         ],
                     ]
                 ],
-
+                [
+                    'text' => "tool_encryptions",
+                    'icon' => 'fas fa-fw fa-key',
+                    'submenu' => [
+                        [
+                            'text' => 'tool_enigma_title',
+                            'icon' => 'fas fa-fw fa-link',
+                            'url' => '/tools/enigma'
+                        ],
+                        [
+                            'text' => 'tool_morse_title',
+                            'icon' => 'fas fa-fw fa-link',
+                            'url' => '/tools/morse'
+                        ],
+                        [
+                            'text' => 'tool_vigenere_title',
+                            'icon' => 'fas fa-fw fa-link',
+                            'url' => '/tools/vigenere'
+                        ],
+                    ]
+                ],
                 [
                     'text' => 'tool_earnpscalc_title',
                     'icon' => 'fas fa-fw fa-stopwatch',
                     'url' => '/tools/earnpscalc'
-                ],
-                [
-                    'text' => 'tool_enigma_title',
-                    'icon' => 'fas fa-fw fa-link',
-                    'url' => '/tools/enigma'
-                ],
-                [
-                    'text' => 'tool_morse_title',
-                    'icon' => 'fas fa-fw fa-link',
-                    'url' => '/tools/morse'
-                ],
-                [
-                    'text' => 'tool_vigenere_title',
-                    'icon' => 'fas fa-fw fa-link',
-                    'url' => '/tools/vigenere'
                 ],
                 [
                     'text' => 'tool_secompcalc_title',
