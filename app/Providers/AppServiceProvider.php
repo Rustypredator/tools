@@ -51,15 +51,22 @@ class AppServiceProvider extends ServiceProvider
                     'url' => '/tools/pwgen'
                 ],
                 [
-                    'text' => 'tool_brwc_title',
-                    'icon' => 'fas fa-fw fa-chart-line',
-                    'url' => '/tools/brwc'
+                    'text' => 'Minecraft',
+                    'icon' => 'fab fa-fw fa-cubes',
+                    'submenu' => [
+                        [
+                            'text' => 'tool_brwc_title',
+                            'icon' => 'fas fa-fw fa-chart-line',
+                            'url' => '/tools/brwc'
+                        ],
+                        [
+                            'text' => 'tool_cc_rsmonitoring',
+                            'icon' => 'fas fa-fw fa-chart-line',
+                            'url' => '/tools/ccrsmonitoring'
+                        ],
+                    ]
                 ],
-                [
-                    'text' => 'tool_cc_rsmonitoring',
-                    'icon' => 'fas fa-fw fa-chart-line',
-                    'url' => '/tools/ccrsmonitoring'
-                ],
+
                 [
                     'text' => 'tool_earnpscalc_title',
                     'icon' => 'fas fa-fw fa-stopwatch',
