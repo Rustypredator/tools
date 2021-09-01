@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div clas="col">
+        <div class="col">
             <div class="card bg-gradient-warning">
                 <div class="card-header border-0">
                     <h3 class="card-title"><i class="fas fa-cog mr-1"></i>ComputerCraft - RefinedStorage Monitoring</h3>
