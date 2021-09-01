@@ -57,8 +57,7 @@ class AppServiceProvider extends ServiceProvider
                         [
                             'text' => 'tool_brwc_title',
                             'icon' => 'fas fa-fw fa-chart-line',
-                            'url' => '/tools/brwc',
-                            'classes' => 'ml-3'
+                            'url' => '/tools/brwc'
                         ],
                         [
                             'text' => 'tool_cc_rsmonitoring',
