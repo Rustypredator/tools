@@ -18,7 +18,7 @@ class CreateCcrsmonSystems extends Migration
             $table->text('key');
             $table->foreignId('owner')->nullable();
             $table->timestamp('registered_at')->useCurrent();
-            $table->foreign('owner')->references('id')->on('user');
+            $table->foreign('owner')->references('id')->on('users');
         });
     }
 
