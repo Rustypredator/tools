@@ -65,6 +65,7 @@ class CcrsmonitoringController extends ToolsController
         }
         DB::table('tools_ccrsmon_systems')->insert($insertData);
         request()->json(['success' => true, 'message' => 'successfully registered.']);
+        return true;
     }
 
     private function ingest(Request $request) {

@@ -39,7 +39,7 @@
 </script>
 <script>
     function genkey() {
-        requestdata = "_token=" + '{{csrf_token()}}' + "&uc=true&lc=true&nr=true&sc=true&length=32&amount=1"
+        requestdata = "_token=" + '{{csrf_token()}}' + "&uc=true&lc=true&nr=true&sc=false&length=64&amount=1"
         $.ajax
         (
             {
