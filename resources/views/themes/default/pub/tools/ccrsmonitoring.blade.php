@@ -2,66 +2,74 @@
 
 @section('content')
     <div class="row">
-        <div class="card bg-gradient-warning col-12" style="margin-top:25px;">
-            <div class="card-header border-0">
-                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>ComputerCraft - RefinedStorage Monitoring</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
-                </div>
-            </div>
-            <div class="card-body">
-                <p>
-                    If you already have a key, paste it below to access your settings.<br/>
-                    otherwise click the button to create a new one.<br/>
-                    <br/>
-                    To Activate the monitoring, install <a>this</a> program on your ComputerCraft computer and put the key in the first line. Then start the Program of course.<br/>
-                    <br/>
-                    <ul>Please note:
-                        <li>to limit the amount of data i have to save, inactive systems will be cleared regularly (inactive for more than 7 days.)</li>
-                        <li>if you want to download/delete all data of your system i have recorded, please send me an E-Mail or message me on discord.</li>
-                    </ul>
-                </p>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline btn-danger" onclick="genkey()">Generate new Key</button>
+        <div clas="col-12">
+            <div class="card bg-gradient-warning">
+                <div class="card-header border-0">
+                    <h3 class="card-title"><i class="fas fa-cog mr-1"></i>ComputerCraft - RefinedStorage Monitoring</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
                     </div>
-                    <input class="form-control" type="text" id="ccrsm_key" name="ccrsm_key" value=""/>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline btn-success" onclick="sendKey()">Send Key (Login)</button>
+                </div>
+                <div class="card-body">
+                    <p>
+                        If you already have a key, paste it below to access your settings.<br/>
+                        otherwise click the button to create a new one.<br/>
+                        <br/>
+                        To Activate the monitoring, install <a>this</a> program on your ComputerCraft computer and put the key in the first line. Then start the Program of course.<br/>
+                        <br/>
+                        <ul>Please note:
+                            <li>to limit the amount of data i have to save, inactive systems will be cleared regularly (inactive for more than 7 days.)</li>
+                            <li>if you want to download/delete all data of your system i have recorded, please send me an E-Mail or message me on discord.</li>
+                        </ul>
+                    </p>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline btn-danger" onclick="genkey()">Generate new Key</button>
+                        </div>
+                        <input class="form-control" type="text" id="ccrsm_key" name="ccrsm_key" value=""/>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline btn-success" onclick="sendKey()">Send Key (Login)</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="card bg-gradient-primary col-6" style="margin-top:25px;">
-            <div class="card-header border-0">
-                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Basic info</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
+        <div class="col-6">
+            <div class="card bg-gradient-primary" style="margin-top:25px;">
+                <div class="card-header border-0">
+                    <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Basic info</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body" id="basic_info">
+                <div class="card-body" id="basic_info">
+                </div>
             </div>
         </div>
-        <div class="card bg-gradient-primary col-6" style="margin-top:25px;">
-            <div class="card-header border-0">
-                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Storage overview</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
+        <div class="col-6">
+            <div class="card bg-gradient-primary" style="margin-top:25px;">
+                <div class="card-header border-0">
+                    <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Storage overview</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body" id="storage_overview">
+                <div class="card-body" id="storage_overview">
+                </div>
             </div>
         </div>
-        <div class="card bg-gradient-primary col-6" style="margin-top:25px;">
-            <div class="card-header border-0">
-                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Tasks</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
+        <div class="col-6">
+            <div class="card bg-gradient-primary" style="margin-top:25px;">
+                <div class="card-header border-0">
+                    <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Tasks</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body" id="tasks">
+                <div class="card-body" id="tasks">
+                </div>
             </div>
         </div>
     </div>
