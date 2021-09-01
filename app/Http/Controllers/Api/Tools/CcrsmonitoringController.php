@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Tools;
 use App\Http\Controllers\Api\ToolsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CcrsmonitoringController extends ToolsController
 {
@@ -29,10 +30,41 @@ class CcrsmonitoringController extends ToolsController
             case 'ingest':
                 $this->ingest($request);
                 break;
+            case 'reglog':
+                $this->registerSystem($request);
+                break;
             default:
                 request()->json(["unknown action"]);
                 break;
         }
+    }
+
+    /**
+     * Registers a new System.
+     *
+     * @param Request $request
+     * @return void
+     */
+    private function registerSystem(Request $request) {
+        $key = $request->input('key');
+        //check if system already registered:
+        $check = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
+        if ($check) {
+            //already exists and key matches.
+            //check owner
+            if ($check->owner == Auth::id() || $check->owner == null) {
+                request()->json(['success' => true, 'message' => 'successfully logged in.']);
+                return true;
+            }
+        }
+        $insertData['key'] = $key;
+        if (Auth::check()) {
+            $insertData['owner'] = Auth::id();
+        } else {
+            $insertData['owner'] = null;
+        }
+        DB::table('tools_ccrsmon_systems')->insert($insertData);
+        request()->json(['success' => true, 'message' => 'successfully registered.']);
     }
 
     private function ingest(Request $request) {
