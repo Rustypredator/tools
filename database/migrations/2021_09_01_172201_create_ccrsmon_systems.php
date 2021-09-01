@@ -16,8 +16,9 @@ class CreateCcrsmonSystems extends Migration
         Schema::create('tools_ccrsmon_systems', function (Blueprint $table) {
             $table->id();
             $table->text('key');
-            $table->owner()->nullable();
+            $table->foreignId('owner')->nullable();
             $table->timestamp('registered_at')->useCurrent();
+            $table->foreign('owner')->references('id')->on('user');
         });
     }
 
