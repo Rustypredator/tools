@@ -58,4 +58,23 @@
         )
     }
 </script>
+<script>
+    function sendKey() {
+        key = $('#ccrsm_key').val();
+        requestdata = "_token=" + '{{csrf_token()}}' + "&key=" + key
+        $.ajax
+        (
+            {
+                type: 'POST',
+                url: '/api/tools/ccrsmonitoring/reglog',
+                data: requestdata,
+                cache: false,
+                beforeSend: function() {},
+                success: function(data) {
+                    console.log(data)
+                }
+            }
+        )
+    }
+</script>
 @stop
