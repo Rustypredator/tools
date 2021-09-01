@@ -37,7 +37,7 @@
     </div>
     <div class="row">
         <div class="col-6">
-            <div class="card bg-gradient-primary" style="margin-top:25px;">
+            <div class="card bg-gradient-primary" id="card_basic_info" style="margin-top:25px;">
                 <div class="card-header border-0">
                     <h3 class="card-title"><i class="fas fa-info-circle"></i>Basic info</h3>
                     <div class="card-tools">
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="card bg-gradient-primary" style="margin-top:25px;">
+            <div class="card bg-gradient-primary" id="card_storage_overview" style="margin-top:25px;">
                 <div class="card-header border-0">
                     <h3 class="card-title"><i class="fas fa-hdd"></i>Storage overview</h3>
                     <div class="card-tools">
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="card bg-gradient-primary" style="margin-top:25px;">
+            <div class="card bg-gradient-primary" id="card_tasks" style="margin-top:25px;">
                 <div class="card-header border-0">
                     <h3 class="card-title"><i class="fas fa-clipboard-check"></i>Tasks</h3>
                     <div class="card-tools">
@@ -81,6 +81,11 @@
         //Load settings or something
         console.log("stuff")
     });
+</script>
+<script>
+    $('#card_basic_info').CardWidget('collapse')
+    $('#card_storage_overview').CardWidget('collapse')
+    $('#card_tasks').CardWidget('collapse')
 </script>
 <script>
     function genkey() {
