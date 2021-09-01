@@ -16,8 +16,15 @@
                     <br/>
                     To Activate the monitoring, install <a>this</a> program on your ComputerCraft computer and put the key in the first line. Then start the Program of course.
                 </p>
-                <button class="btn btn-sm btn-danger" onclick="genkey()">Generate new Key</button>
-                <input class="form-control" type="text" id="ccrsm_key" name="ccrsm_key" value=""/>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline btn-danger" onclick="genkey()">Generate new Key</button>
+                    </div>
+                    <input class="form-control" type="text" id="ccrsm_key" name="ccrsm_key" value=""/>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline btn-success" onclick="sendKey()">Send Key (Login)</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
