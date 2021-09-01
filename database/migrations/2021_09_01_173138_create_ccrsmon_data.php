@@ -24,7 +24,7 @@ class CreateCcrsmonData extends Migration
             $table->json('energyStorage');
             $table->json('storages');
             $table->ipAddress('source');
-            $table->addedAt()->useCurrent();
+            $table->timestamp('addedAt')->useCurrent();
             $table->foreign('system')->references('id')->on('tools_ccrsmon_systems');
         });
     }
