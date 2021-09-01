@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <div class="card bg-gradient-warning">
+            <div class="card bg-gradient-warning" style="margin-top:25px;">
                 <div class="card-header border-0">
                     <h3 class="card-title"><i class="fas fa-cog mr-1"></i>ComputerCraft - RefinedStorage Monitoring</h3>
                     <div class="card-tools">
