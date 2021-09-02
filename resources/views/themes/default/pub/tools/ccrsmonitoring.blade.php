@@ -12,10 +12,10 @@
                 </div>
                 <div class="card-body">
                     <p>
-                        If you already have a key, paste it below to access your settings.<br/>
+                        If you already have a key, paste it below and click "Send Key" to access your data.<br/>
                         otherwise click the button to create a new one.<br/>
                         <br/>
-                        To Activate the monitoring, install <a>this</a> program on your ComputerCraft computer and put the key in the first line. Then start the Program of course.<br/>
+                        To Activate the monitoring, install <a href="#">this(pastebin.com)</a> program on your ComputerCraft computer and put the key in the first line. Then start the Program of course.<br/>
                         <br/>
                         <ul>Please note:
                             <li>to limit the amount of data i have to save, inactive systems will be cleared regularly (inactive for more than 7 days.)</li>
@@ -117,6 +117,25 @@
             {
                 type: 'POST',
                 url: '/api/tools/ccrsmonitoring/reglog',
+                data: requestdata,
+                cache: false,
+                beforeSend: function() {},
+                success: function(data) {
+                    console.log(data)
+                }
+            }
+        )
+    }
+</script>
+<script>
+    function getData() {
+        key = $('#ccrsm_key').val();
+        requestdata = "_token=" + '{{csrf_token()}}' + "&key=" + key
+        $.ajax
+        (
+            {
+                type: 'POST',
+                url: '/api/tools/ccrsmonitoring/data',
                 data: requestdata,
                 cache: false,
                 beforeSend: function() {},

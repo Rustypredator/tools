@@ -33,6 +33,9 @@ class CcrsmonitoringController extends ToolsController
             case 'reglog':
                 $this->registerSystem($request);
                 break;
+            case 'data':
+                $this->data($request);
+                break;
             default:
                 request()->json(["unknown action"]);
                 break;
@@ -68,6 +71,12 @@ class CcrsmonitoringController extends ToolsController
         return true;
     }
 
+    /**
+     * Ingests Data from a system
+     *
+     * @param Request $request
+     * @return void
+     */
     private function ingest(Request $request) {
         //Ingest data from endpoint
         //$data = $request->getContent(); //or $request->all();
@@ -93,6 +102,25 @@ class CcrsmonitoringController extends ToolsController
             $energyStorage = $data[5];
             $storages = $data[6];
             DB::table('tools_ccrsmon_data')->insert(["items" => $items, "tasks" => $tasks, "fluids" => $fluids, "patterns" => $patterns, "energyUsage" => $energyUsage, "energyStorage" => $energyStorage, "storages" => $storages]);
+        }
+    }
+
+    /**
+     * Returns data
+     *
+     * @param Request $request
+     * @return void
+     */
+    private function data(Request $request) {
+        $key = $request->input('key');
+        $system = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
+        if (!$system || $system->key !== $key) {
+            request()->json(["unknown system!"]);
+            return false;
+        } else {
+            $data = DB::table('tools_ccrsmon_data')->select('*')->orderBy('addedAt', 'desc')->first();
+            request()->json($data);
+            return true;
         }
     }
 }
