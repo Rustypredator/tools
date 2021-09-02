@@ -118,7 +118,7 @@ class CcrsmonitoringController extends ToolsController
             request()->json(["unknown system!"]);
             return false;
         } else {
-            $data = DB::table('tools_ccrsmon_data')->select('*')->orderBy('addedAt', 'desc')->first();
+            $data = DB::table('tools_ccrsmon_data')->select('*')->where('key', $key)->orderBy('addedAt', 'desc')->first();
             request()->json($data);
             return true;
         }
