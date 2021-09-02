@@ -6,6 +6,10 @@ use App\Http\Controllers\Api\ToolsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use InfluxDB2\Client;
+use InfluxDB2\Model\WritePrecision;
+use InfluxDB2\Point;
+
 
 class CcrsmonitoringController extends ToolsController
 {
@@ -101,6 +105,31 @@ class CcrsmonitoringController extends ToolsController
             $energyStorage = $data[5];
             $storages = $data[6];
             DB::table('tools_ccrsmon_data')->insert(["items" => $items, "tasks" => $tasks, "fluids" => $fluids, "patterns" => $patterns, "energyUsage" => $energyUsage, "energyStorage" => $energyStorage, "storages" => $storages]);
+            //write to influxdb?
+            $token = 'o4t0e1Eq2iDF7QokqJ75udxnu77ETHSYI_9Qj5VxbAFivEw2sjMqfv4LnOXeggiHZ263kFCKX2Fiv2oyQ_SrkA==';
+            $org = 'SKMPNT';
+            $bucket = 'htav_mc_ccrsm';
+
+            $client = new Client([
+                "url" => "https://web.steltenkamp.net:8086",
+                "token" => $token,
+            ]);
+            $writeApi = $client->createWriteApi();
+
+            //tags:
+            $tags = ['id' => $system->id];
+            //Items:
+            foreach ($items as $item) {
+                $dataArray = [
+                    'name' => 'item_'.$item['name'],
+                    'tags' => $tags,
+                    'fields' => [
+                        'stored' => $item['stored']
+                    ],
+                    'time' => microtime(true)
+                ];
+                $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+            }
         }
     }
 

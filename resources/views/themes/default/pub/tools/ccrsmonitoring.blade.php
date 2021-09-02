@@ -39,7 +39,7 @@
         <div class="col-6">
             <div class="card bg-gradient-primary" id="card_basic_info" style="margin-top:25px;">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><i class="fas fa-info-circle"></i>Basic info</h3>
+                    <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i>Basic info</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
                     </div>
@@ -51,7 +51,7 @@
         <div class="col-6">
             <div class="card bg-gradient-primary" id="card_storage_overview" style="margin-top:25px;">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><i class="fas fa-hdd"></i>Storage overview</h3>
+                    <h3 class="card-title"><i class="fas fa-hdd mr-1"></i>Storage overview</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
                     </div>
@@ -63,7 +63,7 @@
         <div class="col-6">
             <div class="card bg-gradient-primary" id="card_tasks" style="margin-top:25px;">
                 <div class="card-header border-0">
-                    <h3 class="card-title"><i class="fas fa-clipboard-check"></i>Tasks</h3>
+                    <h3 class="card-title"><i class="fas fa-clipboard-check mr-1"></i>Tasks</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
                     </div>
