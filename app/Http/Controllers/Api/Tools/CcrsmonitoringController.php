@@ -37,7 +37,7 @@ class CcrsmonitoringController extends ToolsController
                 $this->data($request);
                 break;
             default:
-                return request()->json(["unknown action"]);
+                return response()->json(["unknown action"]);
                 break;
         }
     }
@@ -57,7 +57,7 @@ class CcrsmonitoringController extends ToolsController
             //already exists and key matches.
             //check owner
             if ($check->owner == Auth::id() || $check->owner == null) {
-                return request()->json(['success' => true, 'message' => 'successfully logged in.']);
+                return response()->json(['success' => true, 'message' => 'successfully logged in.']);
             }
         }
         $insertData['key'] = $key;
@@ -67,7 +67,7 @@ class CcrsmonitoringController extends ToolsController
             $insertData['owner'] = null;
         }
         DB::table('tools_ccrsmon_systems')->insert($insertData);
-        return request()->json(['success' => true, 'message' => 'successfully registered.']);
+        return response()->json(['success' => true, 'message' => 'successfully registered.']);
     }
 
     /**
@@ -85,7 +85,7 @@ class CcrsmonitoringController extends ToolsController
         $key = $request->bearerToken();
         $system = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
         if (!$system) {
-            return request()->json(["unknown system! please remember to set your token!"]);
+            return response()->json(["unknown system! please remember to set your token!"]);
         }
         if ($key == $system->key) {
             //key matches, save data.
@@ -115,10 +115,10 @@ class CcrsmonitoringController extends ToolsController
         $key = $request->input('key');
         $system = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
         if (!$system || $system->key !== $key) {
-            return request()->json(["unknown system!"]);
+            return response()->json(["unknown system!"]);
         } else {
             $data = DB::table('tools_ccrsmon_data')->select('*')->where('id', $system->id)->orderBy('addedAt', 'desc')->first();
-            return request()->json($data);
+            return response()->json($data);
         }
     }
 }
