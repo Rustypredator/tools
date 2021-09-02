@@ -26,7 +26,7 @@ class PwgenController extends ToolsController
      */
     public function index(Request $request, $action = null)
     {
-        if(is_null($action) || empty($action) || $action == '') {
+        if (is_null($action) || empty($action) || $action == '') {
             return response()->json(['tool' => 'Password Generator', 'short' => 'pwgen', 'description' => 'it\'s a Password Generator.', 'version' => '0.0.1']);
         } else {
             switch ($action) {
@@ -65,7 +65,7 @@ class PwgenController extends ToolsController
      */
     private function generateRandomString($uppercase = false, $lowercase = false, $specialchars = false, $numbers = false, $length = 8, $batchsize = 1)
     {
-        if(!$uppercase && !$lowercase && !$specialchars && !$numbers) {
+        if (!$uppercase && !$lowercase && !$specialchars && !$numbers) {
             return [];
         }
 
