@@ -37,7 +37,7 @@ class CcrsmonitoringController extends ToolsController
                 $this->data($request);
                 break;
             default:
-                request()->json(["unknown action"]);
+                return request()->json(["unknown action"]);
                 break;
         }
     }
@@ -48,7 +48,8 @@ class CcrsmonitoringController extends ToolsController
      * @param Request $request
      * @return void
      */
-    private function registerSystem(Request $request) {
+    private function registerSystem(Request $request)
+    {
         $key = $request->input('key');
         //check if system already registered:
         $check = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
@@ -56,8 +57,7 @@ class CcrsmonitoringController extends ToolsController
             //already exists and key matches.
             //check owner
             if ($check->owner == Auth::id() || $check->owner == null) {
-                request()->json(['success' => true, 'message' => 'successfully logged in.']);
-                return true;
+                return request()->json(['success' => true, 'message' => 'successfully logged in.']);
             }
         }
         $insertData['key'] = $key;
@@ -67,8 +67,7 @@ class CcrsmonitoringController extends ToolsController
             $insertData['owner'] = null;
         }
         DB::table('tools_ccrsmon_systems')->insert($insertData);
-        request()->json(['success' => true, 'message' => 'successfully registered.']);
-        return true;
+        return request()->json(['success' => true, 'message' => 'successfully registered.']);
     }
 
     /**
@@ -77,7 +76,8 @@ class CcrsmonitoringController extends ToolsController
      * @param Request $request
      * @return void
      */
-    private function ingest(Request $request) {
+    private function ingest(Request $request)
+    {
         //Ingest data from endpoint
         //$data = $request->getContent(); //or $request->all();
         $data = $request->input('data');
@@ -85,8 +85,7 @@ class CcrsmonitoringController extends ToolsController
         $key = $request->bearerToken();
         $system = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
         if (!$system) {
-            request()->json(["unknown system! please remember to set your token!"]);
-            return false;
+            return request()->json(["unknown system! please remember to set your token!"]);
         }
         if ($key == $system->key) {
             //key matches, save data.
@@ -111,16 +110,15 @@ class CcrsmonitoringController extends ToolsController
      * @param Request $request
      * @return void
      */
-    private function data(Request $request) {
+    private function data(Request $request)
+    {
         $key = $request->input('key');
         $system = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
         if (!$system || $system->key !== $key) {
-            request()->json(["unknown system!"]);
-            return false;
+            return request()->json(["unknown system!"]);
         } else {
             $data = DB::table('tools_ccrsmon_data')->select('*')->where('key', $key)->orderBy('addedAt', 'desc')->first();
-            request()->json($data);
-            return true;
+            return request()->json($data);
         }
     }
 }
