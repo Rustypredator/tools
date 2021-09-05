@@ -98,7 +98,7 @@ class CcrsmonitoringController extends ToolsController
             //Convert from json:
             $data = json_decode($data);
             if (!is_array($data) || count($data) < 7) {
-                return ["unexpected data."];
+                return ["unexpected data.", 'sent_data' => $data];
             }
             $items = $data[0];
             $tasks = $data[1];
