@@ -87,6 +87,7 @@ class CcrsmonitoringController extends ToolsController
         //Ingest data from endpoint
         //$data = $request->getContent(); //or $request->all();
         $data = $request->input('data');
+        return ['data' => $data];
         //content // Items - arr, tasks -obj, fluids -obj, patterns -arr, energyUsage int, energyStorage int, storages obj
         $key = $request->bearerToken();
         $system = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
@@ -98,7 +99,7 @@ class CcrsmonitoringController extends ToolsController
             //Convert from json:
             $data = json_decode($data);
             if (!is_array($data) || count($data) < 7) {
-                return ["unexpected data.", 'sent_data' => $data];
+                return ['success' => false, 'message' => 'unexpected data.', 'sent_data' => $data];
             }
             $items = $data[0];
             $tasks = $data[1];
