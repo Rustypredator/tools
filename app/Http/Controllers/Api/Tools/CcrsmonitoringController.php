@@ -10,7 +10,6 @@ use InfluxDB2\Client;
 use InfluxDB2\Model\WritePrecision;
 use InfluxDB2\Point;
 
-
 class CcrsmonitoringController extends ToolsController
 {
     /**
@@ -63,6 +62,7 @@ class CcrsmonitoringController extends ToolsController
             if ($check->owner == Auth::id() || $check->owner == null) {
                 return response()->json(['success' => true, 'message' => 'successfully logged in.']);
             }
+            return response()->json(['success' => false, 'message' => 'Not authorized to access this system!']);
         }
         $insertData['key'] = $key;
         if (Auth::check()) {
