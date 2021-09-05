@@ -92,7 +92,9 @@ class CcrsmonitoringController extends ToolsController
             return response()->json(["unknown system! please remember to set your token!"]);
         }
         if ($key == $system->key) {
-            //key matches, save data.
+            //key matches
+            //Convert from json:
+            $data = json_decode($data);
             if (!is_array($data) || count($data) < 7) {
                 request()->json(["unexpected data."]);
                 return false;
