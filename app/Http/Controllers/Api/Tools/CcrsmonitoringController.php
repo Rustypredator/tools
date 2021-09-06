@@ -87,10 +87,7 @@ class CcrsmonitoringController extends ToolsController
         //Ingest data from endpoint
         //$data = $request->getContent(); //or $request->all();
         $data = $request->getContent();
-        $f = fopen('out.log', 'w');
-        fwrite($f, $data);
-        fclose($f);
-        return ['data' => $data];
+        $data = json_decode($data);
         //content // Items - arr, tasks -obj, fluids -obj, patterns -arr, energyUsage int, energyStorage int, storages obj
         $key = $request->bearerToken();
         $system = DB::table('tools_ccrsmon_systems')->select('*')->where('key', $key)->first();
@@ -101,17 +98,26 @@ class CcrsmonitoringController extends ToolsController
             //key matches
             //Convert from json:
             $data = json_decode($data);
-            if (!is_array($data) || count($data) < 7) {
+            if (!is_object($data)) {
                 return ['success' => false, 'message' => 'unexpected data.', 'sent_data' => $data];
             }
-            $items = $data[0];
-            $tasks = $data[1];
-            $fluids = $data[2];
-            $patterns = $data[3];
-            $energyUsage = $data[4];
-            $energyStorage = $data[5];
-            $storages = $data[6];
-            DB::table('tools_ccrsmon_data')->insert(["items" => $items, "tasks" => $tasks, "fluids" => $fluids, "patterns" => $patterns, "energyUsage" => $energyUsage, "energyStorage" => $energyStorage, "storages" => $storages]);
+            $items = $data->items;
+            $tasks = $data->tasks;
+            $fluids = $data->fluids;
+            $patterns = $data->patterns;
+            $storages = $data->storages;
+            $processed = $data->proc;
+            DB::table('tools_ccrsmon_data')->insert([
+                "system" => $system->id,
+                "items" => json_encode($items),
+                "tasks" => json_encode($tasks),
+                "fluids" => json_encode($fluids),
+                "patterns" => json_encode($patterns),
+                "energyUsage" => json_encode($processed->energy->usage),
+                "energyStorage" => json_encode($processed->energy->stored),
+                "storages" => json_encode($storages),
+                "source" => $request->ip()
+            ]);
             //write to influxdb?
             $token = 'o4t0e1Eq2iDF7QokqJ75udxnu77ETHSYI_9Qj5VxbAFivEw2sjMqfv4LnOXeggiHZ263kFCKX2Fiv2oyQ_SrkA==';
             $org = 'SKMPNT';
