@@ -125,6 +125,7 @@ class CcrsmonitoringController extends ToolsController
             $client = new Client([
                 "url" => "https://web.steltenkamp.net:8086",
                 "token" => $token,
+                "verifySSL" => false
             ]);
             $writeApi = $client->createWriteApi();
 
