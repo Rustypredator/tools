@@ -119,14 +119,19 @@ class CcrsmonitoringController extends ToolsController
                 "source" => $request->ip()
             ]);
             //write to influxdb?
-            $token = 'o4t0e1Eq2iDF7QokqJ75udxnu77ETHSYI_9Qj5VxbAFivEw2sjMqfv4LnOXeggiHZ263kFCKX2Fiv2oyQ_SrkA==';
+            $token = '3gMtFZqh8eXSA_oTOi6pWpMSGR_FHD5aQR-LNVCD8uTp0MbeY8L8PC_wDb-aBjU4_31J_HubMiwHEzx_vEoEog==';
             $org = 'SKMPNT';
             $bucket = 'htav_mc_ccrsm';
 
             $client = new Client([
                 "url" => "https://web.steltenkamp.net:8086",
                 "token" => $token,
-                "verifySSL" => false
+                "verifySSL" => false,
+                "tags" => [
+                    'system' => $system->id,
+                    'src' => $request->ip(),
+                    'version' => $request->header('user-agent', 'unknown'),
+                ]
             ]);
             $writeApi = $client->createWriteApi([
                 "writeType" => WriteType::BATCHING,
@@ -139,7 +144,6 @@ class CcrsmonitoringController extends ToolsController
             foreach ($items as $item) {
                 $dataArray = [
                     'name' => 'item_'.$item->name,
-                    'tags' => $tags,
                     'fields' => [
                         'stored' => $item->count,
                         'systen' => $system->id,
