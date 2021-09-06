@@ -141,7 +141,8 @@ class CcrsmonitoringController extends ToolsController
                     'name' => 'item_'.$item->name,
                     'tags' => $tags,
                     'fields' => [
-                        'stored' => $item->count
+                        'stored' => $item->count,
+                        'systen' => $system->id,
                     ],
                     'time' => microtime(true)
                 ];
