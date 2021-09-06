@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use InfluxDB2\Client;
 use InfluxDB2\Model\WritePrecision;
 use InfluxDB2\Point;
+use InfluxDB2\WriteType;
 
 class CcrsmonitoringController extends ToolsController
 {
@@ -127,7 +128,10 @@ class CcrsmonitoringController extends ToolsController
                 "token" => $token,
                 "verifySSL" => false
             ]);
-            $writeApi = $client->createWriteApi();
+            $writeApi = $client->createWriteApi([
+                "writeType" => WriteType::BATCHING,
+                "batchSize" => 1000
+            ]);
 
             //tags:
             $tags = ['id' => $system->id];
