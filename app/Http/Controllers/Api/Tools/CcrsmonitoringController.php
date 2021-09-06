@@ -118,7 +118,7 @@ class CcrsmonitoringController extends ToolsController
                 "source" => $request->ip()
             ]);
             //write to influxdb?
-            /*$token = 'o4t0e1Eq2iDF7QokqJ75udxnu77ETHSYI_9Qj5VxbAFivEw2sjMqfv4LnOXeggiHZ263kFCKX2Fiv2oyQ_SrkA==';
+            $token = 'o4t0e1Eq2iDF7QokqJ75udxnu77ETHSYI_9Qj5VxbAFivEw2sjMqfv4LnOXeggiHZ263kFCKX2Fiv2oyQ_SrkA==';
             $org = 'SKMPNT';
             $bucket = 'htav_mc_ccrsm';
 
@@ -133,15 +133,15 @@ class CcrsmonitoringController extends ToolsController
             //Items:
             foreach ($items as $item) {
                 $dataArray = [
-                    'name' => 'item_'.$item['name'],
+                    'name' => 'item_'.$item->name,
                     'tags' => $tags,
                     'fields' => [
-                        'stored' => $item['stored']
+                        'stored' => $item->stored
                     ],
                     'time' => microtime(true)
                 ];
                 $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
-            }*/
+            }
         }
     }
 

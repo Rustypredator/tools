@@ -128,6 +128,13 @@
     }
 </script>
 <script>
+    function writeData(data) {
+        processed = JSON.parse(data.processed)
+        items = JSON.parse(data.items)
+        $('#basic_info').innerHtml(data.processed)
+        $('#storage_overview').innerHtml()
+        $('#tasks').innerHtml()
+    }
     function getData() {
         key = $('#ccrsm_key').val();
         requestdata = "_token=" + '{{csrf_token()}}' + "&key=" + key
@@ -140,7 +147,7 @@
                 cache: false,
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log(data)
+                    writeData(data)
                 }
             }
         )
