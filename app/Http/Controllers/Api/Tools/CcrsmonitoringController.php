@@ -87,6 +87,9 @@ class CcrsmonitoringController extends ToolsController
         //Ingest data from endpoint
         //$data = $request->getContent(); //or $request->all();
         $data = $request->getContent();
+        $f = fopen('out.log', 'w');
+        fwrite($f, $data);
+        fclose($f);
         return ['data' => $data];
         //content // Items - arr, tasks -obj, fluids -obj, patterns -arr, energyUsage int, energyStorage int, storages obj
         $key = $request->bearerToken();
