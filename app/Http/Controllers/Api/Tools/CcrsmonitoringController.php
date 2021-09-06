@@ -107,6 +107,7 @@ class CcrsmonitoringController extends ToolsController
             $processed = $data->proc;
             DB::table('tools_ccrsmon_data')->insert([
                 "system" => $system->id,
+                "processed" => json_encode($processed),
                 "items" => json_encode($items),
                 "tasks" => json_encode($tasks),
                 "fluids" => json_encode($fluids),
@@ -117,7 +118,7 @@ class CcrsmonitoringController extends ToolsController
                 "source" => $request->ip()
             ]);
             //write to influxdb?
-            $token = 'o4t0e1Eq2iDF7QokqJ75udxnu77ETHSYI_9Qj5VxbAFivEw2sjMqfv4LnOXeggiHZ263kFCKX2Fiv2oyQ_SrkA==';
+            /*$token = 'o4t0e1Eq2iDF7QokqJ75udxnu77ETHSYI_9Qj5VxbAFivEw2sjMqfv4LnOXeggiHZ263kFCKX2Fiv2oyQ_SrkA==';
             $org = 'SKMPNT';
             $bucket = 'htav_mc_ccrsm';
 
@@ -140,7 +141,7 @@ class CcrsmonitoringController extends ToolsController
                     'time' => microtime(true)
                 ];
                 $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
-            }
+            }*/
         }
     }
 
