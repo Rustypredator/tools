@@ -138,19 +138,54 @@ class CcrsmonitoringController extends ToolsController
                 "batchSize" => 1000
             ]);
 
-            //tags:
-            $tags = ['id' => $system->id];
             //Items:
             foreach ($items as $item) {
                 $dataArray = [
                     'name' => 'item_'.$item->name,
                     'fields' => [
+                        'displayName' => $item->displayName,
                         'stored' => $item->count,
-                        'systen' => $system->id,
                     ],
                     'time' => microtime(true)
                 ];
                 $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+            }
+            //fluids:
+            foreach ($fluids as $fluid) {
+                $dataArray = [
+                    'name' => 'fluid_'.$fluid->name,
+                    'fields' => [
+                        'displayName' => $fluid->displayName,
+                        'stored' => $fluid->amount,
+                    ],
+                    'time' => microtime(true)
+                ];
+                $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+            }
+            //Tasks
+            foreach ($tasks as $task) {
+                $dataArray = [
+                    'name' => 'task_'.$task->stack->item->name,
+                    'fields' => [
+                        'displayName' => $task->stack->item->displayName,
+                        'quantity' => $task->quantity
+                    ],
+                    'time' => microtime(true)
+                ];
+                $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+            }
+            //Processed Data:
+            foreach ($processed as $categoryName => $category) {
+                foreach ($category as $itemName => $value) {
+                    $dataArray = [
+                        'name' => $categoryName.'_'.$itemName,
+                        'fields' => [
+                            'val' => $value
+                        ],
+                        'time' => microtime(true)
+                    ];
+                    $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+                }
             }
         }
     }
