@@ -13,7 +13,7 @@ class CcrsmonDataAddProcessed extends Migration
      */
     public function up()
     {
-        Schema::table('ccrsmon_data', function (Blueprint $table) {
+        Schema::table('tools_ccrsmon_data', function (Blueprint $table) {
             $table->json('processed')->after('system');
         });
     }
@@ -25,7 +25,7 @@ class CcrsmonDataAddProcessed extends Migration
      */
     public function down()
     {
-        Schema::table('ccrsmon_data', function (Blueprint $table) {
+        Schema::table('tools_ccrsmon_data', function (Blueprint $table) {
             $table->dropColumn('processed');
         });
     }
