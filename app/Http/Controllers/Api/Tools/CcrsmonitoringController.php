@@ -96,8 +96,6 @@ class CcrsmonitoringController extends ToolsController
         }
         if ($key == $system->key) {
             //key matches
-            //Convert from json:
-            $data = json_decode($data);
             if (!is_object($data)) {
                 return ['success' => false, 'message' => 'unexpected data.', 'sent_data' => $data];
             }
