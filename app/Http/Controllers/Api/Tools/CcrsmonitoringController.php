@@ -105,7 +105,7 @@ class CcrsmonitoringController extends ToolsController
             $patterns = $data->patterns;
             $storages = $data->storages;
             $processed = $data->proc;
-            DB::table('tools_ccrsmon_data')->insert([
+            /*DB::table('tools_ccrsmon_data')->insert([
                 "system" => $system->id,
                 "processed" => json_encode($processed),
                 "items" => json_encode($items),
@@ -116,8 +116,8 @@ class CcrsmonitoringController extends ToolsController
                 "energyStorage" => json_encode($processed->energy->stored),
                 "storages" => json_encode($storages),
                 "source" => $request->ip()
-            ]);
-            //write to influxdb?
+            ]);*/
+            //write to influxdb
             $token = '3gMtFZqh8eXSA_oTOi6pWpMSGR_FHD5aQR-LNVCD8uTp0MbeY8L8PC_wDb-aBjU4_31J_HubMiwHEzx_vEoEog==';
             $org = 'SKMPNT';
             $bucket = 'htav_mc_ccrsm';
