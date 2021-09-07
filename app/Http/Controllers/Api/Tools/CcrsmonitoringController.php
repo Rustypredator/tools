@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use InfluxDB2\Client;
 use InfluxDB2\Model\WritePrecision;
-use InfluxDB2\Point;
 use InfluxDB2\WriteType;
 
 class CcrsmonitoringController extends ToolsController
