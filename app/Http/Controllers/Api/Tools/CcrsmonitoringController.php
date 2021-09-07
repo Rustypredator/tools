@@ -131,7 +131,10 @@ class CcrsmonitoringController extends ToolsController
                     'system' => $system->id,
                     'src' => $request->ip(),
                     'version' => $request->header('user-agent', 'unknown'),
-                ]
+                ],
+                "bucket" => $bucket,
+                "org" => $org,
+                "precision" => WritePrecision::S
             ]);
             $writeApi = $client->createWriteApi([
                 "writeType" => WriteType::BATCHING,
@@ -148,7 +151,7 @@ class CcrsmonitoringController extends ToolsController
                     ],
                     'time' => microtime(true)
                 ];
-                $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+                $writeApi->write($dataArray);
             }
             //fluids:
             foreach ($fluids as $fluid) {
@@ -160,7 +163,7 @@ class CcrsmonitoringController extends ToolsController
                     ],
                     'time' => microtime(true)
                 ];
-                $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+                $writeApi->write($dataArray);
             }
             //Tasks
             foreach ($tasks as $task) {
@@ -172,7 +175,7 @@ class CcrsmonitoringController extends ToolsController
                     ],
                     'time' => microtime(true)
                 ];
-                $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+                $writeApi->write($dataArray);
             }
             //Processed Data:
             foreach ($processed as $categoryName => $category) {
@@ -184,9 +187,10 @@ class CcrsmonitoringController extends ToolsController
                         ],
                         'time' => microtime(true)
                     ];
-                    $writeApi->write($dataArray, WritePrecision::S, $bucket, $org);
+                    $writeApi->write($dataArray);
                 }
             }
+            $writeApi->close();
         }
     }
 
