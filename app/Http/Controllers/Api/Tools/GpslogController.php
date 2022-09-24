@@ -36,4 +36,37 @@ class GpslogController extends ToolsController
         }
         Log::debug('Parsed Data:', [$results]);
     }
+
+    private function writeToInfluxDB($results)
+    {
+        $token = '3gMtFZqh8eXSA_oTOi6pWpMSGR_FHD5aQR-LNVCD8uTp0MbeY8L8PC_wDb-aBjU4_31J_HubMiwHEzx_vEoEog==';
+        $org = 'SKMPNT';
+        $bucket = "rustytools_gpslog"
+
+        $client = new Client([
+            "url" => "https://influxdb.monitoring.steltenkamp.net",
+            "token" => $token,
+            "verifySSL" => false,
+            "tags" => [
+                'system' => $system->id,
+                'src' => $request->ip(),
+                'version' => $request->header('user-agent', 'unknown'),
+            ],
+            "bucket" => $bucket,
+            "org" => $org,
+            "precision" => WritePrecision::S
+        ]);
+        $writeApi = $client->createWriteApi([
+            "writeType" => WriteType::BATCHING,
+            "batchSize" => 1000
+        ]);
+
+        //entry:
+        $dataArray = [
+            'aid' => $results['aid'],
+            'fields' => $results,
+            'time' => microtime(true)
+        ];
+        $writeApi->write($dataArray);
+    }
 }
