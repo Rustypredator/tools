@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Tools;
 
 use App\Http\Controllers\Api\ToolsController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class GpslogController extends ToolsController
 {
