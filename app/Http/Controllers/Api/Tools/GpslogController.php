@@ -27,7 +27,8 @@ class GpslogController extends ToolsController
         $results = [];
         foreach ($pairs as $pair) {
             $parts = explode('=', $pair);
-            $results[$parts[0]] = $parts[1];
+            Log::debug('Parts: ', [$parts]);
+            //$results[$parts[0]] = $parts[1];
         }
         Log::debug('Parsed Data:', [$results]);
     }
