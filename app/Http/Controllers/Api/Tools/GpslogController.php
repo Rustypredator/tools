@@ -23,6 +23,8 @@ class GpslogController extends ToolsController
     private function ingest()
     {
         $data = request()->all();
+        $body = request()->getContent();
         Log::debug("data:", [$data]);
+        Log::debug("Body:", [$body]);
     }
 }
