@@ -22,9 +22,13 @@ class GpslogController extends ToolsController
 
     private function ingest()
     {
-        $data = request()->all();
         $body = request()->getContent();
-        Log::debug("data:", [$data]);
-        Log::debug("Body:", [$body]);
+        $pairs = explode('&', $body);
+        $results = [];
+        foreach ($pairs as $pair) {
+            $parts = explode('=', $pair);
+            $results[$parts[0]] = $parts[1];
+        }
+        Log::debug('Parsed Data:', [$results]);
     }
 }
