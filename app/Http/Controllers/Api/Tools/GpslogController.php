@@ -41,7 +41,7 @@ class GpslogController extends ToolsController
     {
         $token = '3gMtFZqh8eXSA_oTOi6pWpMSGR_FHD5aQR-LNVCD8uTp0MbeY8L8PC_wDb-aBjU4_31J_HubMiwHEzx_vEoEog==';
         $org = 'SKMPNT';
-        $bucket = "rustytools_gpslog"
+        $bucket = "rustytools_gpslog";
 
         $client = new Client([
             "url" => "https://influxdb.monitoring.steltenkamp.net",
