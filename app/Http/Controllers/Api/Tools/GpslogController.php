@@ -71,6 +71,7 @@ class GpslogController extends ToolsController
             'fields' => $results,
             'time' => $results['timestamp']
         ];
+        Log::Debug('Writing to influxDB API: ', $dataArray);
         $writeApi->write($dataArray);
         $writeApi->close();
     }
