@@ -41,7 +41,7 @@ class GpslogController extends ToolsController
         $this->writeToInfluxDB($results);
     }
 
-    private function validate($results)
+    private function validateResults($results)
     {
         Log::debug('Starting validation of results.');
         if (!isset($results['timestamp']) || $results['timestamp'] < 0) {
@@ -85,7 +85,7 @@ class GpslogController extends ToolsController
 
     private function writeToInfluxDB($results)
     {
-        if (!$results = $this->validate($results)) {
+        if (!$results = $this->validateResults($results)) {
             return false; //failed validation.
         }
         //insert into db
