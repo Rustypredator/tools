@@ -90,7 +90,7 @@ class GpslogController extends ToolsController
         }
         //insert into db
         $url = "https://influxdb.monitoring.steltenkamp.net";
-        $token = 'HKLfoiOOHGo8UWMXY8pUfR9hy6l4occ2R8w-pXPSNAtdQi6Xf591434uogv5kgZCu_6FIrGiFFc2bSs4GdfZzA==';
+        $token = 'w3QN8Vx68g7-l2mUDwVClGWcAJaumGYLQIesPtxNDtBnTw2T1UGZlAW5MD3opO2M_-f3Bmwb44msNBn5XwvxCg==';
         $org = 'rustyinfo';
         $bucket = "tools_gpslog";
 
