@@ -43,6 +43,9 @@ class GpslogController extends ToolsController
 
     private function writeToInfluxDB($results)
     {
+        if (!isset($results['timestamp']) || $results['timestamp'] < 0) {
+            return false;
+        }
         $token = '3gMtFZqh8eXSA_oTOi6pWpMSGR_FHD5aQR-LNVCD8uTp0MbeY8L8PC_wDb-aBjU4_31J_HubMiwHEzx_vEoEog==';
         $org = 'SKMPNT';
         $bucket = "rustytools_gpslog";
@@ -60,17 +63,15 @@ class GpslogController extends ToolsController
             "org" => $org,
             "precision" => WritePrecision::S
         ]);
-        $writeApi = $client->createWriteApi([
-            "writeType" => WriteType::BATCHING,
-            "batchSize" => 1000
-        ]);
+        $writeApi = $client->createWriteApi();
 
         //entry:
         $dataArray = [
             'aid' => $results['aid'],
             'fields' => $results,
-            'time' => microtime(true)
+            'time' => $results['timestamp']
         ];
         $writeApi->write($dataArray);
+        $writeApi->close();
     }
 }
