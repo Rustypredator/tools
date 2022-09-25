@@ -46,6 +46,12 @@ class GpslogController extends ToolsController
         if (!isset($results['timestamp']) || $results['timestamp'] < 0) {
             return false;
         }
+        //validate array:
+        $mustContainKeys = ['acc','aid','alt','batt','date','dir','dist','filename','hdop','ischarging','lat','lon','pdop','profile','prov','sat','ser','spd','starttimestamp','timeoffset','timestamp','vdop'];
+        $containedKeys = array_keys($results);
+        Log::debug("Result of diff:", [array_diff($containedKeys, $mustContainKeys)]);
+        return;
+        //insert into db
         $url = "https://influxdb.monitoring.steltenkamp.net";
         $token = 'HKLfoiOOHGo8UWMXY8pUfR9hy6l4occ2R8w-pXPSNAtdQi6Xf591434uogv5kgZCu_6FIrGiFFc2bSs4GdfZzA==';
         $org = 'rustyinfo';
