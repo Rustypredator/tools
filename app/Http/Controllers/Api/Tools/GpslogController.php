@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api\Tools;
 use App\Http\Controllers\Api\ToolsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use InfluxDB2\Client;
+use InfluxDB2\Model\WritePrecision;
+use InfluxDB2\WriteType;
 
 class GpslogController extends ToolsController
 {
