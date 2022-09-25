@@ -47,10 +47,35 @@ class GpslogController extends ToolsController
             return false;
         }
         //validate array:
-        $mustContainKeys = ['acc','aid','alt','batt','date','dir','dist','filename','hdop','ischarging','lat','lon','pdop','profile','prov','sat','ser','spd','starttimestamp','timeoffset','timestamp','vdop'];
+        $mustContainKeys = ['acc','aid','alt','batt','date','dir','dist','filename','hdop','ischarging','lat','lon','pdop','profile','prov','sat','ser','spd','starttimestamp','timeoffset','timestamp','vdop', 'time'];
+        $keyDatatype = [
+            'acc' => 'float','aid' => 'string','alt' => 'float','batt' => 'float','date' => 'string',
+            'dir' => 'float','dist' => 'float','filename' => 'string','hdop' => 'float','ischarging' => 'bool',
+            'lat' => 'float','lon' => 'float','pdop' => 'float','profile' => 'string','prov' => 'string',
+            'sat' => 'float','ser' => 'string','spd' => 'float','starttimestamp' => 'int','timeoffset' => 'string',
+            'timestamp' => 'int','vdop' => 'float', 'time' => 'string'
+        ];
         $containedKeys = array_keys($results);
-        Log::debug("Result of diff:", [array_diff($containedKeys, $mustContainKeys)]);
-        return;
+        $diff = array_diff($containedKeys, $mustContainKeys);
+        foreach ($diff as $diffId => $key) {
+            switch ($keyDatatype[$key]) {
+                case 'float':
+                    $results[$key] = 0.0;
+                    break;
+                case 'int':
+                    $results[$key] = 0;
+                    break;
+                case 'bool':
+                    $results[$key] = false;
+                    break;
+                case 'string':
+                    $results[$key] = 'undefined';
+                    break;
+                default:
+                    $results['key'] = false;
+                    break;
+            }
+        }
         //insert into db
         $url = "https://influxdb.monitoring.steltenkamp.net";
         $token = 'HKLfoiOOHGo8UWMXY8pUfR9hy6l4occ2R8w-pXPSNAtdQi6Xf591434uogv5kgZCu_6FIrGiFFc2bSs4GdfZzA==';
@@ -77,28 +102,29 @@ class GpslogController extends ToolsController
             'name' => $results['aid'],
             'tags' => [],
             'fields' => [
-                'acc' => (float)$results['acc'] ?? 0.0,
-                'aid' => (string)$results['aid'] ?? 'undefined',
-                'alt' => (float)$results['alt'] ?? 0.0,
-                'batt' => (float)$results['batt'] ?? 0.0,
-                'date' => $results['date'] ?? 'undefined',
-                'dir' => (float)$results['dir'] ?? 0.0,
-                'dist' => (float)$results['dist'] ?? 0.0,
-                'filename' => (string)$results['filename'] ?? 'undefined',
-                'hdop' => (float)$results['hdop'] ?? 0.0,
-                'ischarging' => (bool)$results['ischarging'] ?? false,
-                'lat' => (float)$results['lat'] ?? 0.0,
-                'lon' => (float)$results['lon'] ?? 0.0,
-                'pdop' => (float)$results['pdop'] ?? 0.0,
-                'profile' => (string)$results['profile'] ?? 'undefined',
-                'prov' => (string)$results['prov'] ?? 'undefined',
-                'sat' => (string)$results['sat'] ?? 'undefined',
-                'ser' => (string)$results['ser'] ?? 'undefined',
-                'spd' => (float)$results['spd'] ?? 0.0,
-                'starttimestamp' => (int)$results['starttimestamp'] ?? 0,
-                'timeoffset' => (string)$results['timeoffset'] ?? 'undefined',
-                'timestamp' => (int)$results['timestamp'] ?? 0,
-                'vdop' => (float)$results['vdop'] ?? 0.0,
+                'acc' => (float)$results['acc'],
+                'aid' => (string)$results['aid'],
+                'alt' => (float)$results['alt'],
+                'batt' => (float)$results['batt'],
+                'date' => $results['date'],
+                'dir' => (float)$results['dir'],
+                'dist' => (float)$results['dist'],
+                'filename' => (string)$results['filename'],
+                'hdop' => (float)$results['hdop'],
+                'ischarging' => (bool)$results['ischarging'],
+                'lat' => (float)$results['lat'],
+                'lon' => (float)$results['lon'],
+                'pdop' => (float)$results['pdop'],
+                'profile' => (string)$results['profile'],
+                'prov' => (string)$results['prov'],
+                'sat' => (string)$results['sat'],
+                'ser' => (string)$results['ser'],
+                'spd' => (float)$results['spd'],
+                'time' => (string)$results['time'],
+                'starttimestamp' => (int)$results['starttimestamp'],
+                'timeoffset' => (string)$results['timeoffset'],
+                'timestamp' => (int)$results['timestamp'],
+                'vdop' => (float)$results['vdop'],
             ],
             'time' => $results['timestamp']
         ];
