@@ -56,7 +56,6 @@ class GpslogController extends ToolsController
             "token" => $token,
             "verifySSL" => false,
             "tags" => [
-                'id' => $results['aid'],
                 'src' => request()->ip(),
                 'version' => request()->header('user-agent', 'unknown'),
             ],
