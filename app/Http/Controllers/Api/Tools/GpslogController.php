@@ -41,9 +41,11 @@ class GpslogController extends ToolsController
         $this->writeToInfluxDB($results);
     }
 
-    private function writeToInfluxDB($results)
+    private function validate($results)
     {
+        Log::debug('Starting validation of results.');
         if (!isset($results['timestamp']) || $results['timestamp'] < 0) {
+            Log::error("Result did not contain a Timestamp.");
             return false;
         }
         //validate array:
@@ -58,6 +60,7 @@ class GpslogController extends ToolsController
         $containedKeys = array_keys($results);
         $diff = array_diff($containedKeys, $mustContainKeys);
         foreach ($diff as $diffId => $key) {
+            Log::debug('Assigning default value to missing key \"'.$key.'\"');
             switch ($keyDatatype[$key]) {
                 case 'float':
                     $results[$key] = 0.0;
@@ -75,6 +78,15 @@ class GpslogController extends ToolsController
                     $results['key'] = false;
                     break;
             }
+        }
+        Log::debug('finished validation of results:', $results);
+        return $results;
+    }
+
+    private function writeToInfluxDB($results)
+    {
+        if (!$results = $this->validate($results)) {
+            return false; //failed validation.
         }
         //insert into db
         $url = "https://influxdb.monitoring.steltenkamp.net";
