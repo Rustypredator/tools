@@ -35,6 +35,7 @@ class GpslogController extends ToolsController
             }
         }
         Log::debug('Parsed Data:', [$results]);
+        $this->writeToInfluxDB($results);
     }
 
     private function writeToInfluxDB($results)
