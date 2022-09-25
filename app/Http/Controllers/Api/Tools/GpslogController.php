@@ -55,13 +55,14 @@ class GpslogController extends ToolsController
             "token" => $token,
             "verifySSL" => false,
             "tags" => [
-                'aid' => $results['aid'],
+                'id' => $results['aid'],
                 'src' => request()->ip(),
                 'version' => request()->header('user-agent', 'unknown'),
             ],
             "bucket" => $bucket,
             "org" => $org,
-            "precision" => WritePrecision::S
+            "precision" => WritePrecision::S,
+            "debug" => true,
         ]);
         $writeApi = $client->createWriteApi();
 
