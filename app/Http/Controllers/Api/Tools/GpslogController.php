@@ -57,27 +57,26 @@ class GpslogController extends ToolsController
             'sat' => 'float','ser' => 'string','spd' => 'float','starttimestamp' => 'int','timeoffset' => 'string',
             'timestamp' => 'int','vdop' => 'float', 'time' => 'string'
         ];
-        $containedKeys = array_keys($results);
-        $diff = array_diff($containedKeys, $mustContainKeys);
-        Log::debug('Differences:', $diff);
-        foreach ($diff as $diffId => $key) {
-            Log::debug('Assigning default value to missing key \"'.$key.'\"');
-            switch ($keyDatatype[$key]) {
-                case 'float':
-                    $results[$key] = 0.0;
-                    break;
-                case 'int':
-                    $results[$key] = 0;
-                    break;
-                case 'bool':
-                    $results[$key] = false;
-                    break;
-                case 'string':
-                    $results[$key] = 'undefined';
-                    break;
-                default:
-                    $results['key'] = false;
-                    break;
+        foreach ($mustContainKeys as $requiredKey) {
+            if (!isset($results[$requiredKey])) {
+                Log::debug('Assigning default value to missing key \"'.$requiredKey.'\"');
+                switch ($keyDatatype[$requiredKey]) {
+                    case 'float':
+                        $results[$requiredKey] = 0.0;
+                        break;
+                    case 'int':
+                        $results[$requiredKey] = 0;
+                        break;
+                    case 'bool':
+                        $results[$requiredKey] = false;
+                        break;
+                    case 'string':
+                        $results[$requiredKey] = 'undefined';
+                        break;
+                    default:
+                        $results[$requiredKey] = false;
+                        break;
+                }
             }
         }
         Log::debug('finished validation of results:', $results);
