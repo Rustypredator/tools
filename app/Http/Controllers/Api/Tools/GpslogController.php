@@ -70,7 +70,30 @@ class GpslogController extends ToolsController
         $dataArray = [
             'name' => $results['aid'],
             'tags' => [],
-            'fields' => $results,
+            'fields' => [
+                'acc' => (float)$results['acc'],
+                'aid' => (string)$results['aid'],
+                'alt' => (float)$results['alt'],
+                'batt' => (float)$results['batt'],
+                'date' => $results['date'],
+                'dir' => (float)$results['dir'],
+                'dist' => (float)$results['dist'],
+                'filename' => $results['filename'],
+                'hdop' => (float)$results['hdop'],
+                'ischarging' => (bool)$results['ischarging'],
+                'lat' => (float)$results['lat'],
+                'lon' => (float)$results['lon'],
+                'pdop' => (float)$results['pdop'],
+                'profile' => $results['profile'],
+                'prov' => $results['prov'],
+                'sat' => $results['sat'],
+                'ser' => $results['ser'],
+                'spd' => (float)$results['spd'],
+                'starttimestamp' => (int)$results['starttimestamp'],
+                'timeoffset' => $results['timeoffset'],
+                'timestamp' => (int)$results['timestamp'],
+                'vdop' => (float)$results['vdop'],
+            ],
             'time' => $results['timestamp']
         ];
         Log::Debug('Writing to influxDB API: ', $dataArray);
