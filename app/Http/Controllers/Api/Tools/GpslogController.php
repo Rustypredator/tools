@@ -59,6 +59,7 @@ class GpslogController extends ToolsController
         ];
         $containedKeys = array_keys($results);
         $diff = array_diff($containedKeys, $mustContainKeys);
+        Log::debug('Differences:', $diff);
         foreach ($diff as $diffId => $key) {
             Log::debug('Assigning default value to missing key \"'.$key.'\"');
             switch ($keyDatatype[$key]) {
