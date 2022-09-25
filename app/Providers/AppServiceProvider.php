@@ -120,14 +120,14 @@ class AppServiceProvider extends ServiceProvider
             ]);
             //ACP Stuff
             $uid = Auth::id();
-            if(is_numeric($uid) && $uid > 0) {
+            if (is_numeric($uid) && $uid > 0) {
                 //add internal stuff
                 $items = array_merge($items, [
                     'header' => 'Administration'
                 ]);
             }
             //Add to menu
-            foreach($items as $item) {
+            foreach ($items as $item) {
                 $event->menu->add($item);
             }
         });
