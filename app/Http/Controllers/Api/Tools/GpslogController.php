@@ -46,9 +46,9 @@ class GpslogController extends ToolsController
         if (!isset($results['timestamp']) || $results['timestamp'] < 0) {
             return false;
         }
-        $token = '3gMtFZqh8eXSA_oTOi6pWpMSGR_FHD5aQR-LNVCD8uTp0MbeY8L8PC_wDb-aBjU4_31J_HubMiwHEzx_vEoEog==';
-        $org = 'SKMPNT';
-        $bucket = "rustytools_gpslog";
+        $token = 'HKLfoiOOHGo8UWMXY8pUfR9hy6l4occ2R8w-pXPSNAtdQi6Xf591434uogv5kgZCu_6FIrGiFFc2bSs4GdfZzA==';
+        $org = 'rustyinfo';
+        $bucket = "tools_gpslog";
 
         $client = new Client([
             "url" => "https://influxdb.monitoring.steltenkamp.net",
