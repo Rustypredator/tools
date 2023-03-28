@@ -49,6 +49,10 @@
         }
     }
     function chunkArray(array, divider) {
+        if (divider < 1) {
+            alert("Can not divide by 0, please change your input.");
+            return [];
+        }
         console.log("Chunking array into " + divider + " Pieces")
         var length = array.length;
         var outputArray = [];
