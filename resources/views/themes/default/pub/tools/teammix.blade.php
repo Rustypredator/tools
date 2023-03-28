@@ -4,12 +4,17 @@
     <div class="row">
         <div class="card bg-gradient-warning col-12" style="margin-top:25px;">
             <div class="card-header border-0">
-                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>WIP</h3>
+                <h3 class="card-title"><i class="fas fa-cog mr-1"></i>Team Mixer</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
             <div class="card-body">
+                <p>
+                    Beware, it might happen, that you get an extra team containing overflow players.<br/>
+                    This might happen, if you have too many players to divide evenly.<br/>
+                    If you have an idea how to fix this, tell me. im too lazy.<br/>
+                </p>
                 <label for="players">Comma Separated List of your Players:</label>
                 <textarea name="players" id="players" class="form-control" rows="5"><?php if ($_POST and isset($_POST['players'])) echo $_POST['players']; else echo "This list has to be Comma Separated like this:\njohn doe,jane doe,max,peter,mali\n(You'll have to delete this text ;) )";?></textarea>
                 <label for="teams">Number of Teams</label>
@@ -48,17 +53,18 @@
             $('#teamsOutput').append(card);
         }
     }
-    function chunkArray(array, divider) {
-        if (divider < 1) {
+    function chunkArray(array, chunkCount) {
+        if (chunkCount < 1) {
             alert("Can not divide by 0, please change your input.");
             return [];
         }
-        console.log("Chunking array into " + divider + " Pieces")
-        var length = array.length;
+        var elementCount = array.length;
+        var lengthOfEachChunk = Math.round(elementCount / chunkCount);
+        console.log(`Chunking array into ${chunkCount} Pieces á ${lengthOfEachChunk} Elements.`);
         var outputArray = [];
 
-        for (i=0;i<array.length;i+=divider) {
-            divide = array.slice(i, i+divider);
+        for (i=0;i<elementCount;i+=lengthOfEachChunk) {
+            divide = array.slice(i, i+lengthOfEachChunk);
             outputArray.push(divide);
         }
 
