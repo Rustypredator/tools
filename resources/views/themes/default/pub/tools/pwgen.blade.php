@@ -108,8 +108,7 @@
                     beforeSend: function() {},
                     success: function(data) {
                         console.log(data)
-                        response = JSON.parse(data)
-                        passwords = response.generatedPasswords;
+                        passwords = data.generatedPasswords;
                         console.log(passwords)
                         if(passwords.length < 1) {
                             $('#generatedPasswordsTable').innerHtml('<tr><td colspan="2"><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>');
