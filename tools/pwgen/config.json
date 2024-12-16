@@ -1,0 +1,5 @@
+{
+    "short":"PwGen",
+    "label":"PasswordGenerator",
+    "description":"A Simple Password generator with options to choose how complex your password will be."
+}

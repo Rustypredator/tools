@@ -20,165 +20,205 @@
  *
  * @author Florian Steltenkamp <contact@rusty.info>
  */
-require_once("../functions.php");
-?>
-<html>
-    <head>
-        <title>PWGen - Rusty's Tools</title>
-        <link rel="stylesheet" href="../../style/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="../../style/css/font-awesome.min.css"
-        <script src="../../style/js/jquery-3.2.1.min.js"></script>
-        <script src="../../style/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="https://tools.rusty.info">Rusty's Tools</a>
-                </div>
+require "../../init.php";
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="https://tools.rusty.info/tools/pwgen">PWGen <span class="sr-only">(current)</span></a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        <div class="container container-fluid">
-            <div class="col-md-12">
-                <?php
-                    $content = "<h3>PWGen</h3><small>Simple Password Generator</small><p>This tool allows you, to generate a simple or more complex password. ( or more than one )<br/>Thats basically it, You can choose, wich characters you want to have, and wich length your password should be.<br/>Also you can select to generate more than one Password at a Time, wich is handy, if you want to \"upgrade\" all your accounts ;)</p><br/><h4>Guide:</h4><p>It is very simple to use this Tool.<br/><ul>Steps:<li>1. Select what your Password should contain ( using the checkboxes )</li><li>2. Select wich length your Password(s) sould be.</li><li>3. Select how many Passwords you want to generate at once</li><li>4. Push le Button</li></ul>Thats it. not that hard, right?<br/>I hope this tool will help you as much as it has helped me ;)</p>";
-                    printBootstrapPanel("pwgen_info", "success", "Info (click me)", $content, true, false);
-                ?>
-            </div>
-            <div class="col-md-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Generator Settings</div>
-                    <div class="panel-body">
-                        <form class="form" action="" method="post">
-                            <label for="uc">Include Uppercase Chars?</label>
-                            <input class="form-control" name="uc" type="checkbox"
-                            <?php
-                            if ($_POST and $_POST['uc']) {
-                                echo "checked";
-                            } ?>/>
-                            <label for="lc">Include Lowercase Chars?</label>
-                            <input class="form-control" name="lc" type="checkbox"
-                            <?php
-                            if ($_POST and $_POST['lc']) {
-                                echo "checked";
-                            } ?>/>
-                            <label for="nr">Include Numbers?</label>
-                            <input class="form-control" name="nr" type="checkbox"
-                            <?php
-                            if ($_POST and $_POST['nr']) {
-                                echo "checked";
-                            } ?>/>
-                            <label for="sc">Include Special Chars?</label>
-                            <input class="form-control" name="sc" type="checkbox"
-                            <?php
-                            if ($_POST and $_POST['sc']) {
-                                echo "checked";
-                            } ?>/>
-                            <label for="length">Define the Length of your Password(s)</label>
-                            <input class="form-control" name="length" type="numeric"
-                            <?php
-                            if ($_POST and $_POST['length']!="") {
-                                echo "value=\"".$_POST['length']."\"";
-                            } else {
-                                echo "value=\"8\"";
-                            }?>/>
-                            <label for="batch">Select how many Passwords you want</label>
-                            <select name="batch" class="form-control">
-                                <option value="1"
-                                <?php
-                                if ($_POST and $_POST['batch']=="1") {
-                                    echo "selected";
-                                } ?>>1</option>
-                                <option value="5"
-                                <?php
-                                if ($_POST and $_POST['batch']=="5") {
-                                    echo "selected";
-                                } ?>>5</option>
-                                <option value="10"
-                                <?php
-                                if ($_POST and $_POST['batch']=="10") {
-                                    echo "selected";
-                                } ?>>10</option>
-                                <option value="15"
-                                <?php
-                                if ($_POST and $_POST['batch']=="15") {
-                                    echo "selected";
-                                } ?>>15</option>
-                                <option value="50"
-                                <?php
-                                if ($_POST and $_POST['batch']=="50") {
-                                    echo "selected";
-                                } ?>>50</option>
-                                <option value="100"
-                                <?php
-                                if ($_POST and $_POST['batch']=="100") {
-                                    echo "selected";
-                                } ?>>100</option>
-                            </select>
-                            <input type="submit" class="btn btn-block btn-success"/>
+ /**
+ * Generates a Random string by the given options
+ * @param  boolean $uppercase    enables uppercase chars
+ * @param  boolean $lowercase    enables lowercase chars
+ * @param  boolean $specialchars enables special chars
+ * @param  int $length           commands the length of the string
+ * @return array                 the generated string(s)
+ */
+function generateRandomString($uppercase, $lowercase, $specialchars, $numbers, $length, $batchsize)
+{
+    $strings = array();
+    for ($i = 0; $i<$batchsize; $i++) {
+        //Make random string each time
+        $usedChars = "";
+        if ($uppercase) {
+            $usedChars .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        }
+        if ($lowercase) {
+            $usedChars .= 'abcdefghijklmnopqrstuvwxyz';
+        }
+        if ($specialchars) {
+            $usedChars .='!?@(){}[]\/=~$%&#*-+.,_';
+        }
+        if ($numbers) {
+            $usedChars .= '0123456789';
+        }
+
+        $string = "";
+        for ($b = 0; $b < $length; $b++) {
+            $string .= $usedChars[rand(0, strlen($usedChars) - 1)];
+        }
+        $strings[] = $string;
+    }
+    return $strings;
+}
+
+$toolname = "pwgen";
+$toolshort = strtolower($toolname);
+$toolDescShort = "";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<?php include $templatedir."head/head.phtml"; ?>
+    <body>
+        <?php
+            $additionalNavItems = "<li class='nav-item'><a class='nav-link' href='".$baseurl."'>Home</a></li>";
+            $additionalNavItems .= "<li class='nav-item active'><a class='nav-link' href='".$baseurl.$toolshort."'>$toolname <span class='sr-only'>(current)</span></a></li>"
+        ?>
+        <?php $additionalNavItemsRight = ""; ?>
+        <?php include $templatedir."navbar.phtml"; ?>
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-md-3 col-sm-12">
+                    <?php include $templatedir."toolnav.phtml"; ?>
+                    <div class="card text-white bg-success" style="margin-top:15px;">
+                        <div class="card-header collapsed" type="button" data-toggle="collapse" data-target="#infoCollapse" aria-expanded="false" aria-controls="infoCollapse">INFO ( Click me! )</div>
+                        <div class="card-body collapse" id="infoCollapse">
+                            <h3>PWGen</h3>
+                            <small>Simple Password Generator</small>
+                            <p>
+                                This tool allows you, to generate a simple or more complex password. ( or more than one )<br/>
+                                Thats basically it, You can choose, wich characters you want to have, and wich length your password should be.<br/>
+                                Also you can select to generate more than one Password at a Time, wich is handy, if you want to \"upgrade\" all your accounts ;)
+                            </p>
+                            <br/>
+                            <h4>Guide:</h4>
+                            <p>
+                                It is very simple to use this Tool.<br/>
+                                <ul>Steps:
+                                    <li>1. Select what your Password should contain ( using the checkboxes )</li>
+                                    <li>2. Select wich length your Password(s) sould be.</li>
+                                    <li>3. Select how many Passwords you want to generate at once</li>
+                                    <li>4. Push le Button</li>
+                                </ul>
+                                Thats it. not that hard, right?<br/>
+                                I hope this tool will help you as much as it has helped me ;)
+                            </p>
                         </div>
                     </div>
                 </div>
-                <?php if ($_POST) : ?>
-                    <?php
-                    $generated = true;
-                    $data = $_POST;
+                <div class="col-md-9 col-sm-12">
+                    <div class="card text-white bg-dark">
+                        <div class="card-header">Generator Settings</div>
+                        <div class="card-body">
+                            <form class="form" action="" method="post">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="uc" id="uc" <?php if ($_POST and $_POST['uc']) echo "checked";?>>
+                                    <label class="custom-control-label" for="uc">Include Uppercase Chars?</label>
+                                </div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="lc" id="lc" <?php if ($_POST and $_POST['lc']) echo "checked"; ?>>
+                                    <label class="custom-control-label" for="lc">Include Lowercase Chars?</label>
+                                </div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="nr" id="nr" <?php if ($_POST and $_POST['nr']) echo "checked";?>>
+                                    <label class="custom-control-label" for="nr">Include Numbers?</label>
+                                </div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="sc" id="sc" <?php if ($_POST and $_POST['sc']) echo "checked";?>>
+                                    <label class="custom-control-label" for="sc">Include Special Chars?</label>
+                                </div><br/>
+                                <label for="length">Define the Length of your Password(s)</label>
+                                <input class="form-control" name="length" type="numeric"
+                                <?php
+                                if ($_POST and $_POST['length']!="") {
+                                    echo "value=\"".$_POST['length']."\"";
+                                } else {
+                                    echo "value=\"8\"";
+                                }?>/>
+                                <label for="batch">Select how many Passwords you want</label>
+                                <select name="batch" class="form-control">
+                                    <option value="1"
+                                    <?php
+                                    if ($_POST and $_POST['batch']=="1") {
+                                        echo "selected";
+                                    } ?>>1</option>
+                                    <option value="5"
+                                    <?php
+                                    if ($_POST and $_POST['batch']=="5") {
+                                        echo "selected";
+                                    } ?>>5</option>
+                                    <option value="10"
+                                    <?php
+                                    if ($_POST and $_POST['batch']=="10") {
+                                        echo "selected";
+                                    } ?>>10</option>
+                                    <option value="15"
+                                    <?php
+                                    if ($_POST and $_POST['batch']=="15") {
+                                        echo "selected";
+                                    } ?>>15</option>
+                                    <option value="50"
+                                    <?php
+                                    if ($_POST and $_POST['batch']=="50") {
+                                        echo "selected";
+                                    } ?>>50</option>
+                                    <option value="100"
+                                    <?php
+                                    if ($_POST and $_POST['batch']=="100") {
+                                        echo "selected";
+                                    } ?>>100</option>
+                                </select>
+                                <input type="submit" class="btn btn-block btn-success"/>
+                            </form>
+                        </div>
+                    </div>
+                    <?php if ($_POST) : ?>
+                        <?php
+                        $generated = true;
+                        $data = $_POST;
 
-                    //check if at least one option is selected
-                    if ((!isset($data['uc']) or !$data['uc']) and (!isset($data['lc']) or !$data['lc']) and (!isset($data['sc']) or !$data['sc']) and (!isset($data['nr']) or !$data['nr'])) {
-                        //not one of the options was selected
-                        $generated = false;
-                    }
+                        //check if at least one option is selected
+                        if ((!isset($data['uc']) or !$data['uc']) and (!isset($data['lc']) or !$data['lc']) and (!isset($data['sc']) or !$data['sc']) and (!isset($data['nr']) or !$data['nr'])) {
+                            //not one of the options was selected
+                            $generated = false;
+                        }
 
-                    if (!isset($data['length']) or !is_numeric($data['length']) or $data['length']=="") {
-                        $generated = false;
-                    }
+                        if (!isset($data['length']) or !is_numeric($data['length']) or $data['length']=="") {
+                            $generated = false;
+                        }
 
-                    if ($generated and (!isset($data['batch']) or $data['batch']>100)) {
-                        $generated = false;
-                    }
+                        if ($generated and (!isset($data['batch']) or $data['batch']>100)) {
+                            $generated = false;
+                        }
 
-                    if ($generated) {
-                        $generated = generateRandomString($data['uc'], $data['lc'], $data['sc'], $data['nr'], $data['length'], $data['batch']);
-                    }
-                    ?>
+                        if ($generated) {
+                            $generated = generateRandomString($data['uc'], $data['lc'], $data['sc'], $data['nr'], $data['length'], $data['batch']);
+                        }
+                        ?>
+                    <div class="card text-light bg-secondary" style="margin-top:15px;">
+                        <div class="card-header">Your Passwords:</div>
+                        <table class="card-body table table-hover table-striped text-light">
+                            <thead>
+                                <th></th>
+                                <th>Password</th>
+                            </thead>
+                            <tbody>
+                                <?php if (!$generated) : ?>
+                                    <tr><td><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>
+                                <?php else : ?>
+                                    <?php foreach ($generated as $pw) : ?>
+                                        <tr><td></td><td><?php echo $pw; ?></td></tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="col-md-12">
                         <div class="panel panel-info">
-                            <div class="panel-heading">Your Passwords</div>
-                            <table class="panel-body table table-hover table-striped">
-                                <thead>
-                                    <th></th>
-                                    <th>Password</th>
-                                </thead>
-                                <tbody>
-                                    <?php if (!$generated) : ?>
-                                        <tr><td><div class="alert alert-error"><i class="fa fa-lg fa-times-circle"></i> There was an Error with your Input! Please try again!</div></td></tr>
-                                    <?php else : ?>
-                                        <?php foreach ($generated as $pw) : ?>
-                                            <tr><td></td><td><?php echo $pw; ?></td></tr>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </tbody>
-                            </table>
+                            <div class="panel-heading"></div>
+                            
                         </div>
                     </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
+        <?php include $templatedir."head/jsfiles.phtml"; ?>
     </body>
-    <footer>
-    </footer>
 </html>

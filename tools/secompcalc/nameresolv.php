@@ -1,5 +1,5 @@
 <?php
-    $partlist_object = json_decode(file_get_contents("parts.json"));
+    $partlist_object = json_decode(file_get_contents("blocks.json"));
 
     $data = $_POST;
     if (!$data) {

@@ -65,33 +65,56 @@ if (!is_numeric($data['collection'])) {
 //for author name: $re = '/workshopItemAuthorName">\s*<a href=".*?">(.*?)<\/a>/';
 //for author profile link: $re = '/workshopItemAuthorName">\s*<a href="(.*?)\/myworkshopfiles?.*<\/span>/';
 
-require_once("3rdparty/simple_html_dom.php");
-$baseurl = "http://steamcommunity.com/sharedfiles/filedetails/?id=";
-$collectionurl = $baseurl.$data['collection'];
-$html = file_get_html($collectionurl);
-$mods = array();
-$modscount = 0;
+$collectionId = $data['collection'];
+$apiKey = "39F09599C3B3F1B559C6DA83BA68284C";
 
-foreach ($html->find('.collectionItem') as $modelement) {
-    $temp['id'] = str_replace('sharedfile_', '', $modelement->id);
-    $temp['url'] = $baseurl.$temp['id'];
-    array_push($mods, $temp);
-    $modscount++;
+//request collection details:
+$url = "https://api.steampowered.com/ISteamRemoteStorage/GetCollectionDetails/v1/";
+$params = ['?key='.$apiKey, 'collectioncount' => 1, 'publishedfileids[0]' => $collectionId];
+$params2 = '?key='.$apiKey.'&collectioncount=1&publishedfileids[0]='.$collectionId;
+$ch = curl_init($url);
+curl_setopt_array($ch, [
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_POST => true,
+	CURLOPT_POSTFIELDS => $params,
+]);
+$curlData = curl_exec($ch);
+if($curlData === false) {
+    exit(curl_error($ch));
+}
+curl_close($ch);
+
+$data = json_decode($curlData)->response->collectiondetails[0];
+$data->{'modscount'} = count($data->children);
+
+//get file details:
+$url = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/";
+$params = ['?key='.$apiKey, 'itemcount' => $data->modscount];
+$ctr = 0;
+foreach($data->children as $mod) {
+	$params['publishedfileids['.$ctr.']'] = $mod->publishedfileid;
+	$ctr++;
 }
 
-//echo $html->plaintext;
-if (strpos($html->plaintext, 'That item does not exist.')) {
-    //kollektion existiert nicht.
-    echo json_encode(array(
-        'type'=>'error',
-        'message'=>'Could not find the Collection. Please make sure, it is public and that you have entered the right ID'
-    ));
-    exit;
+$ch = curl_init($url);
+curl_setopt_array($ch, [
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_POST => true,
+	CURLOPT_POSTFIELDS => $params,
+]);
+$curlData = curl_exec($ch);
+if($curlData === false) {
+    exit(curl_error($ch));
+}
+curl_close($ch);
+
+$fileDetails = json_decode($curlData)->response->publishedfiledetails;
+foreach($data->children as $key => $mod) {
+	$data->children[$key]->{'details'} = $fileDetails[$key];
 }
 
 echo json_encode(array(
     'type'=>'success',
     'message'=>'Found these:',
-    'modsdata'=>$mods,
-    'modscount'=>$modscount
+    'data'=>$data
 ));
